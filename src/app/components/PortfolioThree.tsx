@@ -1,11 +1,31 @@
-import { useState } from "react";
-import { Github, Linkedin, Mail, ExternalLink, Home, Briefcase, User, MessageSquare } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Home,
+  Briefcase,
+  User,
+  MessageSquare,
+  Menu,
+} from "lucide-react";
 import profileImage from "../../assets/profile.png";
 
 export default function PortfolioThree() {
   const [activeSection, setActiveSection] = useState("home");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
+  // Auto-collapse sidebar on mobile
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setIsSidebarOpen(false);
+    }
+  }, []);
+
+  /* ===================== DATA (UNCHANGED) ===================== */
+  
   const projects = [
     {
       title: "Secret Santa",
@@ -145,23 +165,37 @@ export default function PortfolioThree() {
     },
   ];
 
-  const categories = ["all", "React", "Full Stack", "Python", "React Native", "Node.js"];
-  const filteredProjects = selectedCategory === "all" 
-    ? projects 
-    : projects.filter(p => p.category === selectedCategory);
+  const engagement = [
+    "Participated in VJIT Hackathon, 2023",
+    "Attended a workshop at IITH for Gen AI course",
+    "Worked as Volunteer for DBMS Workshop in KMIT, 2024",
+    "Worked as Volunteer in NMDC Hyderabad Marathon, 2024",
+    "Participated in a Product Space Hackathon, 2025",
+  ];
+
+  const skills = {
+    "Front End": ["HTML", "CSS", "JavaScript", "React"],
+    "Middle Tier": ["C", "Java", "Python", "C++"],
+    "Back End": ["MySQL", "MongoDB", "Express.js", "Node.js"],
+    Frameworks: ["Bootstrap", "SpringBoot"],
+    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit"],
+    "Agentic AI": ["LangChain", "LangGraph"],
+  };
 
   const experience = [
     {
       role: "Software Development Intern",
       company: "ODT",
       period: "April 2025 - June 2025",
-      description: "Transformed PHP Symfony 1-based Londen's Campaign Manager into Python to enhance maintainability and performance. Worked on dashboards for mailed campaigns, response tracking, and data visualization.",
+      description:
+        "Transformed PHP Symfony 1-based Londen's Campaign Manager into Python to enhance maintainability and performance. Worked on dashboards for mailed campaigns, response tracking, and data visualization.",
     },
     {
       role: "Software Development Intern",
       company: "IBaseIT",
       period: "May 2024 - June 2024",
-      description: "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface.",
+      description:
+        "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface.",
     },
   ];
 
@@ -172,30 +206,26 @@ export default function PortfolioThree() {
     cgpa: "8.6 CGPA",
   };
 
-  const skills = {
-    "Front End": ["HTML", "CSS", "JavaScript", "React"],
-    "Middle Tier": ["C", "Java", "Python", "C++"],
-    "Back End": ["MySQL", "MongoDB", "Express.js", "Node.js"],
-    "Frameworks": ["Bootstrap", "SpringBoot"],
-    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit"],
-    "Agentic AI": ["LangChain", "LangGraph"],
-  };
 
-  const engagement = [
-    "Participated in VJIT Hackathon, 2023",
-    "Attended a workshop at IITH for Gen AI course",
-    "Worked as Volunteer for DBMS Workshop in KMIT, 2024",
-    "Worked as Volunteer in NMDC Hyderabad Marathon, 2024",
-    "Participated in a Product Space Hackathon, 2025",
-  ];
+  const categories = ["all", "React", "Full Stack", "Python", "React Native", "Node.js"];
+  const filteredProjects =
+    selectedCategory === "all"
+      ? projects
+      : projects.filter(p => p.category === selectedCategory);
+
+  /* ===================== UI ===================== */
 
   return (
     <div className="size-full flex bg-[#0a0a0a] text-white">
-      {/* Sidebar */}
-      <aside className="w-64 bg-[#111] border-r border-gray-800 flex flex-col fixed h-full">
+      {/* ================= SIDEBAR ================= */}
+      <aside
+        className={`w-64 bg-[#111] border-r border-gray-800 flex flex-col fixed h-full z-50
+        transform transition-transform duration-300
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
+      >
         <div className="p-6 border-b border-gray-800">
-          <img 
-            src={profileImage} 
+          <img
+            src={profileImage}
             alt="Anisha Paturi"
             className="size-16 rounded-lg object-cover mb-3"
           />
@@ -204,74 +234,63 @@ export default function PortfolioThree() {
         </div>
 
         <nav className="flex-1 p-4">
-          <button
-            onClick={() => setActiveSection("home")}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
-              activeSection === "home" ? "bg-purple-500/20 text-purple-400" : "hover:bg-gray-800"
-            }`}
-          >
-            <Home className="size-4" />
-            <span>Home</span>
-          </button>
-          <button
-            onClick={() => setActiveSection("projects")}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
-              activeSection === "projects" ? "bg-purple-500/20 text-purple-400" : "hover:bg-gray-800"
-            }`}
-          >
-            <Briefcase className="size-4" />
-            <span>Projects</span>
-          </button>
-          <button
-            onClick={() => setActiveSection("about")}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
-              activeSection === "about" ? "bg-purple-500/20 text-purple-400" : "hover:bg-gray-800"
-            }`}
-          >
-            <User className="size-4" />
-            <span>About</span>
-          </button>
-          <button
-            onClick={() => setActiveSection("contact")}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-              activeSection === "contact" ? "bg-purple-500/20 text-purple-400" : "hover:bg-gray-800"
-            }`}
-          >
-            <MessageSquare className="size-4" />
-            <span>Contact</span>
-          </button>
+          {[
+            ["home", Home],
+            ["projects", Briefcase],
+            ["about", User],
+            ["contact", MessageSquare],
+          ].map(([section, Icon]) => (
+            <button
+              key={section}
+              onClick={() => {
+                setActiveSection(section);
+                if (window.innerWidth < 768) setIsSidebarOpen(false);
+              }}
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
+                activeSection === section
+                  ? "bg-purple-500/20 text-purple-400"
+                  : "hover:bg-gray-800"
+              }`}
+            >
+              <Icon className="size-4" />
+              <span className="capitalize">{section}</span>
+            </button>
+          ))}
         </nav>
 
         <div className="p-4 border-t border-gray-800">
           <div className="flex items-center justify-center gap-3">
-            <a
-              href="https://github.com/AnishaPaturi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-            >
+            <a href="https://github.com/AnishaPaturi" target="_blank">
               <Github className="size-4" />
             </a>
             <a
               href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5"
               target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
             >
               <Linkedin className="size-4" />
             </a>
-            <a
-              href="mailto:paturi.anisha@gmail.com"
-              className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-            >
+            <a href="mailto:paturi.anisha@gmail.com">
               <Mail className="size-4" />
             </a>
           </div>
         </div>
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 ml-64 overflow-auto">
+      {/* ================= MAIN ================= */}
+      <main
+        className="min-h-screen w-full overflow-auto bg-[#0a0a0a] transition-all duration-300
+        px-6 md:px-12 md:pl-64"
+      >
+        {/* Mobile Toggle Button */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#111] border border-gray-800 rounded-lg"
+        >
+          <Menu className="size-5" />
+        </button>
+
+        {/* Main Content */}
+      
         {/* Home Section */}
         {activeSection === "home" && (
           <div className="min-h-screen flex items-center justify-center px-12">
@@ -312,7 +331,7 @@ export default function PortfolioThree() {
 
         {/* Projects Section */}
         {activeSection === "projects" && (
-          <div className="p-12">
+          <div className="min-h-screen p-12 bg-[#0a0a0a]">
             <h1 className="text-4xl mb-3">Projects</h1>
             <p className="text-gray-400 mb-12">A collection of my recent work</p>
             <div className="flex items-center mb-6">
@@ -367,7 +386,7 @@ export default function PortfolioThree() {
 
         {/* About Section */}
         {activeSection === "about" && (
-          <div className="p-12">
+            <div className="min-h-screen p-12 bg-[#0a0a0a]">
             <h1 className="text-4xl mb-3">About Me</h1>
             <p className="text-gray-400 mb-12">My journey and experience</p>
             <div className="max-w-3xl">
