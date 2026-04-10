@@ -10,6 +10,7 @@ import {
   MessageSquare,
   Menu,
 } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import profileImage from "../../assets/profile.png";
 
 export default function PortfolioThree() {
@@ -24,7 +25,7 @@ export default function PortfolioThree() {
     }
   }, []);
 
-  /* ===================== DATA (UNCHANGED) ===================== */
+  /* ===================== DATA ===================== */
   
   const projects = [
     {
@@ -286,313 +287,417 @@ export default function PortfolioThree() {
   /* ===================== UI ===================== */
 
   return (
-    <div className="size-full flex bg-[#0a0a0a] text-white">
+    <div className="size-full flex text-white relative min-h-screen overflow-hidden bg-[#050505] selection:bg-purple-500/30">
+      {/* Background Ambient Glow */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/20 blur-[120px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-900/10 blur-[120px]" />
+      </div>
+
       {/* ================= SIDEBAR ================= */}
       <aside
-        className={`w-64 bg-[#111] border-r border-gray-800 flex flex-col fixed h-full z-50
-        transform transition-transform duration-300
-        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
+        className={`w-72 bg-black/40 backdrop-blur-2xl border-r border-white/5 flex flex-col fixed h-full z-50
+        transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 shadow-2xl shadow-purple-900/10`}
       >
-        <div className="p-6 border-b border-gray-800">
-          <img
+        <div className="p-8 border-b border-white/5 flex flex-col items-center">
+          <motion.img
+            whileHover={{ scale: 1.05 }}
             src={profileImage}
             alt="Anisha Paturi"
-            className="size-16 rounded-lg object-cover mb-3"
+            className="size-24 rounded-2xl object-cover mb-5 border border-white/10 shadow-lg shadow-purple-500/20"
           />
-          <h2 className="text-lg">Anisha Paturi</h2>
-          <p className="text-sm text-gray-400">Full Stack Developer</p>
+          <h2 className="text-xl font-semibold tracking-wide bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Anisha Paturi</h2>
+          <p className="text-xs text-purple-300/60 mt-1.5 font-medium tracking-widest uppercase">Full Stack Developer</p>
         </div>
 
-        <nav className="flex-1 p-4">
+        <nav className="flex-1 p-6 space-y-2">
           {[
             ["home", Home],
             ["projects", Briefcase],
             ["about", User],
             ["contact", MessageSquare],
-          ].map(([section, Icon]) => (
-            <button
-              key={section}
-              onClick={() => {
-                setActiveSection(section);
-                if (window.innerWidth < 768) setIsSidebarOpen(false);
-              }}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-colors ${
-                activeSection === section
-                  ? "bg-purple-500/20 text-purple-400"
-                  : "hover:bg-gray-800"
-              }`}
-            >
-              <Icon className="size-4" />
-              <span className="capitalize">{section}</span>
-            </button>
-          ))}
+          ].map(([section, Icon]) => {
+            const isActive = activeSection === section;
+            return (
+              <button
+                key={section as string}
+                onClick={() => {
+                  setActiveSection(section as string);
+                  if (window.innerWidth < 768) setIsSidebarOpen(false);
+                }}
+                className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-300 relative group overflow-hidden ${
+                  isActive ? "text-white" : "text-gray-400 hover:text-white"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/5 rounded-xl border border-purple-500/20"
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  />
+                )}
+                {/* @ts-ignore */}
+                <Icon className={`size-5 relative z-10 transition-transform duration-300 ${isActive ? "scale-110 text-purple-400" : "group-hover:scale-110"}`} />
+                <span className="capitalize relative z-10 font-medium tracking-wide">{section}</span>
+              </button>
+            );
+          })}
         </nav>
 
-        <div className="p-4 border-t border-gray-800">
-          <div className="flex items-center justify-center gap-3">
-            <a href="https://github.com/AnishaPaturi" target="_blank">
-              <Github className="size-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5"
-              target="_blank"
-            >
-              <Linkedin className="size-4" />
-            </a>
-            <a href="mailto:paturi.anisha@gmail.com">
-              <Mail className="size-4" />
-            </a>
+        <div className="p-8 border-t border-white/5">
+          <div className="flex items-center justify-center gap-6">
+            <motion.a whileHover={{ scale: 1.2, color: "#c084fc" }} href="https://github.com/AnishaPaturi" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors">
+              <Github className="size-5" />
+            </motion.a>
+            <motion.a whileHover={{ scale: 1.2, color: "#60a5fa" }} href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors">
+              <Linkedin className="size-5" />
+            </motion.a>
+            <motion.a whileHover={{ scale: 1.2, color: "#f472b6" }} href="mailto:paturi.anisha@gmail.com" className="text-gray-400 transition-colors">
+              <Mail className="size-5" />
+            </motion.a>
           </div>
         </div>
       </aside>
 
       {/* ================= MAIN ================= */}
       <main
-        className="min-h-screen w-full overflow-auto bg-[#0a0a0a] transition-all duration-300
-        px-6 md:px-12 md:pl-64"
+        className="relative z-10 min-h-screen w-full overflow-auto transition-all duration-500 
+        px-6 md:px-16 md:pl-80 pt-20 md:pt-16 pb-20"
       >
-        {/* Mobile Toggle Button */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#111] border border-gray-800 rounded-lg"
+          className="md:hidden fixed top-4 left-4 z-50 p-2.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-white shadow-lg"
         >
           <Menu className="size-5" />
         </button>
 
-        {/* Main Content */}
-      
-        {/* Home Section */}
-        {activeSection === "home" && (
-          <div className="min-h-screen flex items-center justify-center px-12">
-            <div className="max-w-3xl">
-              <h1 className="text-6xl mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                Hi, I'm Anisha Paturi
-              </h1>
-              <p className="text-2xl text-gray-300 mb-8">
-                Full Stack & AI-Driven Developer
-              </p>
-              <p className="text-gray-400 mb-8 text-lg leading-relaxed">
-                Passionate Computer Science Engineering student at KMIT (CGPA 8.6) with hands-on experience in full-stack and AI-driven development. Skilled in the MERN stack, Java, and Python, with internship experience at IBaseIT and ODT. Dedicated to building scalable, intelligent solutions that create real-world impact.
-              </p>
-              <div className="flex gap-4 mb-8">
-                <button
-                  onClick={() => setActiveSection("projects")}
-                  className="px-6 py-3 bg-purple-500 rounded-lg hover:bg-purple-600 transition-colors"
+        <AnimatePresence mode="wait">
+          {/* Home Section */}
+          {activeSection === "home" && (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}
+              className="min-h-[80vh] flex items-center justify-center lg:justify-start"
+            >
+              <div className="max-w-3xl">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
+                  className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-8"
                 >
-                  View My Work
-                </button>
-                <button
-                  onClick={() => setActiveSection("contact")}
-                  className="px-6 py-3 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors"
+                  <span className="size-2 rounded-full bg-purple-400 animate-pulse" />
+                  Available for new opportunities
+                </motion.div>
+                
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+                  className="text-6xl md:text-8xl font-bold mb-6 tracking-tighter"
                 >
-                  Get In Touch
-                </button>
+                  Hi, I'm <br className="md:hidden" />
+                  <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent filter drop-shadow-md">
+                    Anisha.
+                  </span>
+                </motion.h1>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+                  className="text-2xl text-gray-300 mb-8 font-light tracking-wide"
+                >
+                  Full Stack & AI-Driven Developer
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+                  className="text-gray-400 mb-12 text-lg leading-relaxed font-light max-w-2xl"
+                >
+                  Passionate Computer Science Engineering student at KMIT (CGPA 8.6) with hands-on experience in full-stack and AI-driven development. Dedicated to building scalable, intelligent solutions that create real-world impact.
+                </motion.p>
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+                  className="flex flex-wrap gap-4 mb-16"
+                >
+                  <button
+                    onClick={() => setActiveSection("projects")}
+                    className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all font-medium tracking-wide border border-white/10"
+                  >
+                    View My Work
+                  </button>
+                  <button
+                    onClick={() => setActiveSection("contact")}
+                    className="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl transition-all font-medium tracking-wide"
+                  >
+                    Get In Touch
+                  </button>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
+                  className="flex flex-wrap gap-3 text-sm font-medium"
+                >
+                  {["MERN Stack", "Python", "Java", "AI/ML", "Agentic AI"].map((tech) => (
+                    <span key={tech} className="px-5 py-2.5 bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl text-purple-200/70 shadow-inner shadow-white/5">
+                      {tech}
+                    </span>
+                  ))}
+                </motion.div>
               </div>
-              <div className="flex flex-wrap gap-3 text-sm">
-                <span className="px-4 py-2 bg-[#111] border border-gray-800 rounded-lg">MERN Stack</span>
-                <span className="px-4 py-2 bg-[#111] border border-gray-800 rounded-lg">Python</span>
-                <span className="px-4 py-2 bg-[#111] border border-gray-800 rounded-lg">Java</span>
-                <span className="px-4 py-2 bg-[#111] border border-gray-800 rounded-lg">AI/ML</span>
-                <span className="px-4 py-2 bg-[#111] border border-gray-800 rounded-lg">GenAI</span>
-              </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
 
-        {/* Projects Section */}
-        {activeSection === "projects" && (
-          <div className="min-h-screen p-12 bg-[#0a0a0a]">
-            <h1 className="text-4xl mb-3">Projects</h1>
-            <p className="text-gray-400 mb-12">A collection of my recent work</p>
-            <div className="flex items-center mb-6">
-              {categories.map((category, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg ${
-                    selectedCategory === category ? "bg-purple-500/20 text-purple-400" : "hover:bg-gray-800"
-                  }`}
-                >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-              ))}
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredProjects.map((project, index) => (
-                <div
-                  key={index}
-                  className="bg-[#111] border border-gray-800 rounded-xl p-6 hover:border-purple-500/50 transition-all"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl mb-1">{project.title}</h3>
-                      <span className="text-sm text-gray-500">{project.year}</span>
-                    </div>
-                    <a
-                      href={project.liveLink || project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+          {/* Projects Section */}
+          {activeSection === "projects" && (
+            <motion.div
+              key="projects"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+            >
+              <h1 className="text-5xl font-bold mb-4 tracking-tight">Projects.</h1>
+              <p className="text-gray-400 font-light mb-12 text-lg">A collection of my recent work</p>
+              
+              <div className="flex flex-wrap items-center gap-3 mb-10 bg-white/5 p-2 rounded-2xl w-fit border border-white/5 backdrop-blur-md">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                      selectedCategory === category 
+                      ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" 
+                      : "text-gray-400 hover:text-white border border-transparent"
+                    }`}
+                  >
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </button>
+                ))}
+              </div>
+              
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <AnimatePresence mode="popLayout">
+                  {filteredProjects.map((project, index) => (
+                    <motion.div
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }}
+                      key={project.title}
+                      className="group relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-purple-500/40 hover:bg-white/5 transition-all duration-500 overflow-hidden shadow-2xl shadow-black/50"
                     >
-                      <ExternalLink className="size-4" />
-                    </a>
-                  </div>
-                  <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* About Section */}
-        {activeSection === "about" && (
-            <div className="min-h-screen p-12 bg-[#0a0a0a]">
-            <h1 className="text-4xl mb-3">About Me</h1>
-            <p className="text-gray-400 mb-12">My journey and experience</p>
-            <div className="max-w-3xl">
-              <div className="mb-12">
-                <h2 className="text-2xl mb-4">Background</h2>
-                <p className="text-gray-400 leading-relaxed mb-4">
-                  Passionate Computer Science Engineering student at KMIT (CGPA 8.6) with hands-on experience in full-stack and AI-driven development. Skilled in the MERN stack, Java, and Python, with internship experience at IBaseIT and ODT.
-                </p>
-                <p className="text-gray-400 leading-relaxed">
-                  Dedicated to building scalable, intelligent solutions that create real-world impact. I enjoy working across the entire stack, from designing intuitive user interfaces to architecting robust backend systems. My projects span web applications, mobile apps, and AI-powered tools.
-                </p>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl mb-6">Education</h2>
-                <div className="border-l-2 border-purple-500 pl-6">
-                  <h3 className="text-xl mb-1">{education.degree}</h3>
-                  <p className="text-purple-400 text-sm mb-2">{education.college} · {education.period}</p>
-                  <p className="text-gray-400 text-sm">Current CGPA: {education.cgpa}</p>
-                </div>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl mb-6">Experience</h2>
-                <div className="space-y-6">
-                  {experience.map((exp, index) => (
-                    <div key={index} className="border-l-2 border-purple-500 pl-6">
-                      <h3 className="text-xl mb-1">{exp.role}</h3>
-                      <p className="text-purple-400 text-sm mb-2">{exp.company} · {exp.period}</p>
-                      <p className="text-gray-400 text-sm">{exp.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl mb-6">Core Skills</h2>
-                <div className="space-y-6">
-                  {Object.entries(skills).map(([category, skillList]) => (
-                    <div key={category}>
-                      <h3 className="text-lg text-purple-400 mb-3">{category}</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {skillList.map((skill, i) => (
-                          <span
-                            key={i}
-                            className="px-3 py-1.5 bg-[#111] border border-gray-800 rounded-lg text-sm"
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <div className="relative z-10">
+                        <div className="flex items-start justify-between mb-6">
+                          <div>
+                            <h3 className="text-2xl font-bold mb-2 group-hover:text-purple-300 transition-colors tracking-tight">{project.title}</h3>
+                            <span className="text-xs font-mono px-3 py-1 bg-white/5 border border-white/10 rounded-full text-purple-200/50">{project.year}</span>
+                          </div>
+                          <motion.a
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            href={project.liveLink || project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white/5 hover:bg-purple-500 hover:text-white border border-white/10 hover:border-purple-400 rounded-xl transition-all duration-300 shadow-lg"
                           >
-                            {skill}
-                          </span>
-                        ))}
+                            <ExternalLink className="size-5" />
+                          </motion.a>
+                        </div>
+                        <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light min-h-[4rem]">{project.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1.5 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-300"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          )}
+
+          {/* About Section */}
+          {activeSection === "about" && (
+            <motion.div
+              key="about"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+            >
+              <h1 className="text-5xl font-bold mb-4 tracking-tight">About Me.</h1>
+              <p className="text-gray-400 font-light mb-12 text-lg">My journey and experience</p>
+              
+              <div className="max-w-4xl grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div className="lg:col-span-2 space-y-16">
+                  {/* Background */}
+                  <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+                    <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
+                        <User className="size-4 text-purple-400" />
+                      </div>
+                      Background
+                    </h2>
+                    <p className="text-gray-400 leading-relaxed font-light mb-4">
+                      Passionate Computer Science Engineering student at KMIT (CGPA 8.6) with hands-on experience in full-stack and AI-driven development. Skilled in the MERN stack, Java, and Python, with internship experience at IBaseIT and ODT.
+                    </p>
+                    <p className="text-gray-400 leading-relaxed font-light">
+                      Dedicated to building scalable, intelligent solutions that create real-world impact. I enjoy working across the entire stack, from designing intuitive user interfaces to architecting robust backend systems.
+                    </p>
+                  </div>
+
+                  {/* Experience */}
+                  <div>
+                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                        <Briefcase className="size-4 text-blue-400" />
+                      </div>
+                      Experience
+                    </h2>
+                    <div className="space-y-6">
+                      {experience.map((exp, index) => (
+                        <div key={index} className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-colors">
+                          <h3 className="text-xl font-medium mb-1 text-white">{exp.role}</h3>
+                          <p className="text-blue-400 text-sm mb-4 font-medium">{exp.company} <span className="text-gray-600 mx-2">|</span> {exp.period}</p>
+                          <p className="text-gray-400 text-sm leading-relaxed font-light">{exp.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Accomplishments */}
+                  <div>
+                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500/30 flex items-center justify-center">
+                        <span className="text-fuchsia-400 text-lg font-bold">★</span>
+                      </div>
+                      Accomplishments
+                    </h2>
+                    <div className="space-y-4">
+                      {accomplishments.map((item, index) => (
+                        <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+                          <div className="size-2 bg-gradient-to-br from-fuchsia-400 to-purple-600 rounded-full mt-2 shrink-0" />
+                          <div>
+                            <h3 className="text-lg font-medium mb-1 text-gray-200">{item.name}</h3>
+                            <p className="text-gray-400 text-sm font-light leading-relaxed">{item.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-12">
+                  {/* Education */}
+                  <div className="bg-gradient-to-br from-purple-900/40 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[50px]" />
+                    <h2 className="text-xl font-semibold mb-6">Education</h2>
+                    <h3 className="text-lg font-medium">{education.degree}</h3>
+                    <p className="text-purple-300 text-sm mt-2 mb-4">{education.college} <br/> {education.period}</p>
+                    <div className="inline-block px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
+                      {education.cgpa}
+                    </div>
+                  </div>
+
+                  {/* Skills */}
+                  <div>
+                    <h2 className="text-xl font-semibold mb-6">Core Skills</h2>
+                    <div className="space-y-8">
+                      {Object.entries(skills).map(([category, skillList]) => (
+                        <div key={category}>
+                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">{category}</h3>
+                          <div className="flex flex-wrap gap-2">
+                            {skillList.map((skill, i) => (
+                              <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300 hover:bg-white/10 transition-colors cursor-default">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Engagement */}
+                  <div>
+                    <h2 className="text-xl font-semibold mb-6">Engagement</h2>
+                    <div className="space-y-4">
+                      {engagement.map((item, index) => (
+                        <div key={index} className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/5">
+                          <div className="size-1.5 bg-gray-500 rounded-full mt-2" />
+                          <p className="text-gray-300 text-sm font-light">{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
+            </motion.div>
+          )}
 
-              <div className="mb-12">
-                <h2 className="text-2xl mb-6">Accomplishments</h2>
-                <div className="space-y-6">
-                  {accomplishments.map((item, index) => (
-                    <div key={index} className="border-l-2 border-purple-500 pl-6">
-                      <h3 className="text-xl mb-1">{item.name}</h3>
-                      <p className="text-gray-400 text-sm">{item.description}</p>
+          {/* Contact Section */}
+          {activeSection === "contact" && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+              className="min-h-[80vh] flex items-center justify-center lg:justify-start"
+            >
+              <div className="max-w-2xl w-full">
+                <h1 className="text-5xl font-bold mb-4 tracking-tight">Get In Touch.</h1>
+                <p className="text-gray-400 mb-12 text-lg font-light">
+                  I'm always interested in hearing about new projects and opportunities.
+                </p>
+                <div className="grid gap-6">
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="mailto:paturi.anisha@gmail.com"
+                    className="flex items-center gap-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-purple-500/50 hover:bg-white/5 transition-all group"
+                  >
+                    <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl group-hover:bg-purple-500/20 transition-colors">
+                      <Mail className="size-6 text-purple-400" />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-xl font-medium mb-1">Email directly</h3>
+                      <p className="text-gray-400 text-sm font-light">paturi.anisha@gmail.com</p>
+                    </div>
+                  </motion.a>
+                  
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="https://github.com/AnishaPaturi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-gray-500/50 hover:bg-white/5 transition-all group"
+                  >
+                    <div className="p-4 bg-gray-500/10 border border-gray-500/20 rounded-2xl group-hover:bg-gray-500/20 transition-colors">
+                      <Github className="size-6 text-gray-300" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium mb-1">View code</h3>
+                      <p className="text-gray-400 text-sm font-light">@AnishaPaturi</p>
+                    </div>
+                  </motion.a>
+
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-blue-500/50 hover:bg-white/5 transition-all group"
+                  >
+                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl group-hover:bg-blue-500/20 transition-colors">
+                      <Linkedin className="size-6 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium mb-1">Connect professionally</h3>
+                      <p className="text-gray-400 text-sm font-light">Connect with me on LinkedIn</p>
+                    </div>
+                  </motion.a>
                 </div>
               </div>
-
-              <div className="mb-12">
-                <h2 className="text-2xl mb-6">College Engagement</h2>
-                <div className="space-y-3">
-                  {engagement.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="size-2 bg-purple-500 rounded-full mt-2" />
-                      <p className="text-gray-400 text-sm">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Contact Section */}
-        {activeSection === "contact" && (
-          <div className="min-h-screen flex items-center justify-center px-12">
-            <div className="max-w-2xl w-full">
-              <h1 className="text-4xl mb-3">Get In Touch</h1>
-              <p className="text-gray-400 mb-12">
-                I'm always interested in hearing about new projects and opportunities
-              </p>
-              <div className="space-y-6">
-                <a
-                  href="mailto:paturi.anisha@gmail.com"
-                  className="flex items-center gap-4 p-6 bg-[#111] border border-gray-800 rounded-xl hover:border-purple-500/50 transition-all group"
-                >
-                  <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
-                    <Mail className="size-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg mb-1">Email</h3>
-                    <p className="text-gray-400 text-sm">paturi.anisha@gmail.com</p>
-                  </div>
-                </a>
-                <a
-                  href="https://github.com/AnishaPaturi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 bg-[#111] border border-gray-800 rounded-xl hover:border-purple-500/50 transition-all group"
-                >
-                  <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
-                    <Github className="size-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg mb-1">GitHub</h3>
-                    <p className="text-gray-400 text-sm">@AnishaPaturi</p>
-                  </div>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 bg-[#111] border border-gray-800 rounded-xl hover:border-purple-500/50 transition-all group"
-                >
-                  <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
-                    <Linkedin className="size-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg mb-1">LinkedIn</h3>
-                    <p className="text-gray-400 text-sm">Connect with me</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );
