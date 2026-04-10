@@ -28,10 +28,61 @@ export default function PortfolioThree() {
   
   const projects = [
     {
+      title: "VizTalk",
+      description: "A conversational data analytics platform that transforms voice/text queries into actionable insights and charts. Implemented speech recognition, natural language query interpretation, and automated visualization generation.",
+      tech: ["Python", "Streamlit", "Whisper", "FFmpeg", "OpenRouter", "DeepSeek"],
+      link: "https://github.com/AnishaPaturi/VizTalk",
+      year: "2026",
+      category: "Python",
+    },
+    {
+      title: "FactForge",
+      description: "A full-stack AI-driven platform that analyzes user-input text to detect misinformation, extract claims, and verify them against real-time web sources. Features NLP-based claim extraction, stance classification, and interactive dashboards.",
+      tech: ["React", "Node.js", "Python", "NLP", "Transformers", "Recharts"],
+      link: "https://github.com/AnishaPaturi/FactForge",
+      liveLink: "https://fact-forge.vercel.app",
+      year: "2026",
+      category: "Full Stack",
+    },
+    {
+      title: "Ctrl+S of Shame",
+      description: "A VS Code extension that detects errors on file save and debug events using the VS Code Diagnostics API. Deployed to the Visual Studio Code Marketplace.",
+      tech: ["TypeScript", "VS Code Extension API", "Node.js"],
+      link: "https://github.com/AnishaPaturi/CtrlSofShame",
+      year: "2026",
+      category: "TypeScript",
+    },
+    {
+      title: "IPL-Predictor-2026",
+      description: "A full-stack IPL 2026 winner prediction application using React and FastAPI. Leverages historical IPL data (2008–2025) to train an ML model forecasting future winners and provides an interactive visual dashboard.",
+      tech: ["React", "Python", "FastAPI", "Machine Learning"],
+      link: "https://github.com/AnishaPaturi/IPL-Predictor-2026",
+      liveLink: "https://ipl-predictor-2026-nu.vercel.app",
+      year: "2026",
+      category: "Full Stack",
+    },
+    {
+      title: "AI Interview Platform",
+      description: "Premium AI Interview Platform UI leveraging professional motion design and physics-based animations using Framer Motion. Contains robust features for live voice transcription and AI-driven interview analysis.",
+      tech: ["TypeScript", "Next.js", "Framer Motion", "AI"],
+      link: "https://github.com/AnishaPaturi/AI-Interview",
+      year: "2026",
+      category: "TypeScript",
+    },
+    {
+      title: "ResumeIQ",
+      description: "An AI-powered web application that scans resumes, generates an ATS-style score, identifies skill gaps, and provides personalized improvement suggestions based on current industry trends.",
+      tech: ["JavaScript", "React", "AI"],
+      link: "https://github.com/AnishaPaturi/ResumeIQ",
+      year: "2026",
+      category: "Full Stack",
+    },
+    {
       title: "Secret Santa",
       description: "A full-stack, real-time Secret Santa web application that allows users to create private groups, join via QR code or shared link, add participants live, and receive gift assignments privately on their own devices. The app supports both single-device pass-the-phone mode and multi-device real-time group mode with admin-controlled game start, festive UI, animations, snow effects, sound effects, and confetti.",
       tech: ["Next.js", "React", "Firebase", "Tailwind CSS"],
       link: "https://github.com/AnishaPaturi/Secret-Santa-",
+      liveLink: "https://secret-santa-theta-nine.vercel.app/",
       year: "2024",
       category: "Full Stack",
     },
@@ -166,11 +217,12 @@ export default function PortfolioThree() {
   ];
 
   const engagement = [
-    "Participated in VJIT Hackathon, 2023",
-    "Attended a workshop at IITH for Gen AI course",
-    "Worked as Volunteer for DBMS Workshop in KMIT, 2024",
-    "Worked as Volunteer in NMDC Hyderabad Marathon, 2024",
+    "3rd place in an Agentic AI Hackathon, 2025",
     "Participated in a Product Space Hackathon, 2025",
+    "Worked as Volunteer in NMDC Hyderabad Marathon, 2024",
+    "Worked as Volunteer for DBMS Workshop in KMIT, 2024",
+    "Attended a workshop at IITH for Gen AI course",
+    "Participated in VJIT Hackathon, 2023",
   ];
 
   const skills = {
@@ -206,8 +258,26 @@ export default function PortfolioThree() {
     cgpa: "8.6 CGPA",
   };
 
+  const accomplishments = [
+    {
+      name: "1st Position at GeeksForGeeks Intra-College Hackathon",
+      description: "Secured first place in the 2026 GeeksForGeeks hackathon competition.",
+    },
+    {
+      name: "HackerRank SQL (Advanced) Skill Certification",
+      description: "Passed the HackerRank skill certification test for advanced SQL (Earned: 10 Apr, 2026 | ID: 53EA5621369E).",
+    },
+    {
+      name: "Claude Code Course – Anthropic",
+      description: "Certified; applied LLMs for coding, debugging, and prompt engineering.",
+    },
+    {
+      name: "AWS Certified Cloud Practitioner",
+      description: "Completed 22.5-hour training on AWS fundamentals, including cloud architecture, core services, security, and pricing.",
+    },
+  ];
 
-  const categories = ["all", "React", "Full Stack", "Python", "React Native", "Node.js"];
+  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "React Native", "Node.js"];
   const filteredProjects =
     selectedCategory === "all"
       ? projects
@@ -359,7 +429,7 @@ export default function PortfolioThree() {
                       <span className="text-sm text-gray-500">{project.year}</span>
                     </div>
                     <a
-                      href={project.link}
+                      href={project.liveLink || project.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
@@ -443,7 +513,19 @@ export default function PortfolioThree() {
                 </div>
               </div>
 
-              <div>
+              <div className="mb-12">
+                <h2 className="text-2xl mb-6">Accomplishments</h2>
+                <div className="space-y-6">
+                  {accomplishments.map((item, index) => (
+                    <div key={index} className="border-l-2 border-purple-500 pl-6">
+                      <h3 className="text-xl mb-1">{item.name}</h3>
+                      <p className="text-gray-400 text-sm">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-12">
                 <h2 className="text-2xl mb-6">College Engagement</h2>
                 <div className="space-y-3">
                   {engagement.map((item, index) => (
