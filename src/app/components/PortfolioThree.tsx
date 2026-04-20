@@ -9,6 +9,8 @@ import {
   User,
   MessageSquare,
   Menu,
+  Award,
+  Code,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import profileImage from "../../assets/profile.png";
@@ -29,16 +31,24 @@ export default function PortfolioThree() {
   
   const projects = [
     {
-      title: "VizTalk",
-      description: "A conversational data analytics platform that transforms voice/text queries into actionable insights and charts. Implemented speech recognition, natural language query interpretation, and automated visualization generation.",
-      tech: ["Python", "Streamlit", "Whisper", "FFmpeg", "OpenRouter", "DeepSeek"],
-      link: "https://github.com/AnishaPaturi/VizTalk",
+      title: "AI-pdf-chatbot",
+      description: "AI-powered PDF chatbot for intelligent document interaction and query handling.",
+      tech: ["TypeScript", "AI"],
+      link: "https://github.com/AnishaPaturi/AI-pdf-chatbot",
       year: "2026",
-      category: "Python",
+      category: "TypeScript",
+    },
+    {
+      title: "AI-Interview",
+      description: "Premium AI Interview Platform UI with professional motion design and AI-driven interview analysis.",
+      tech: ["TypeScript", "Next.js", "Framer Motion", "AI"],
+      link: "https://github.com/AnishaPaturi/AI-Interview",
+      year: "2026",
+      category: "TypeScript",
     },
     {
       title: "FactForge",
-      description: "A full-stack AI-driven platform that analyzes user-input text to detect misinformation, extract claims, and verify them against real-time web sources. Features NLP-based claim extraction, stance classification, and interactive dashboards.",
+      description: "Full-stack AI-driven platform for misinformation detection with NLP claim extraction.",
       tech: ["React", "Node.js", "Python", "NLP", "Transformers", "Recharts"],
       link: "https://github.com/AnishaPaturi/FactForge",
       liveLink: "https://fact-forge.vercel.app",
@@ -46,16 +56,8 @@ export default function PortfolioThree() {
       category: "Full Stack",
     },
     {
-      title: "Ctrl+S of Shame",
-      description: "A VS Code extension that detects errors on file save and debug events using the VS Code Diagnostics API. Deployed to the Visual Studio Code Marketplace.",
-      tech: ["TypeScript", "VS Code Extension API", "Node.js"],
-      link: "https://github.com/AnishaPaturi/CtrlSofShame",
-      year: "2026",
-      category: "TypeScript",
-    },
-    {
       title: "IPL-Predictor-2026",
-      description: "A full-stack IPL 2026 winner prediction application using React and FastAPI. Leverages historical IPL data (2008–2025) to train an ML model forecasting future winners and provides an interactive visual dashboard.",
+      description: "Full-stack IPL 2026 winner prediction using ML and historical data.",
       tech: ["React", "Python", "FastAPI", "Machine Learning"],
       link: "https://github.com/AnishaPaturi/IPL-Predictor-2026",
       liveLink: "https://ipl-predictor-2026-nu.vercel.app",
@@ -63,24 +65,48 @@ export default function PortfolioThree() {
       category: "Full Stack",
     },
     {
-      title: "AI Interview Platform",
-      description: "Premium AI Interview Platform UI leveraging professional motion design and physics-based animations using Framer Motion. Contains robust features for live voice transcription and AI-driven interview analysis.",
-      tech: ["TypeScript", "Next.js", "Framer Motion", "AI"],
-      link: "https://github.com/AnishaPaturi/AI-Interview",
+      title: "Ctrl+S of Shame",
+      description: "VS Code extension detecting errors on file save using VS Code Diagnostics API.",
+      tech: ["TypeScript", "VS Code Extension API", "Node.js"],
+      link: "https://github.com/AnishaPaturi/CtrlSofShame",
       year: "2026",
       category: "TypeScript",
     },
     {
+      title: "Movie Recommendation Platform",
+      description: "AI-powered movie recommendation system with collaborative filtering.",
+      tech: ["JavaScript", "AI"],
+      link: "https://github.com/AnishaPaturi/movie-recommendation-platform",
+      year: "2026",
+      category: "JavaScript",
+    },
+    {
+      title: "VizTalk",
+      description: "Conversational data analytics platform transforming voice/text to insights and charts.",
+      tech: ["Python", "Streamlit", "Whisper", "FFmpeg", "OpenRouter", "DeepSeek"],
+      link: "https://github.com/AnishaPaturi/VizTalk",
+      year: "2025",
+      category: "Python",
+    },
+    {
+      title: "AlgoMentor Agentic DSA Planner",
+      description: "AI-driven personal DSA coach for problem-solving journeys and progress tracking.",
+      tech: ["Python", "AI", "Streamlit"],
+      link: "https://github.com/AnishaPaturi/AlgoMentor-Agentic-DSA-Planner",
+      year: "2025",
+      category: "Python",
+    },
+    {
       title: "ResumeIQ",
-      description: "An AI-powered web application that scans resumes, generates an ATS-style score, identifies skill gaps, and provides personalized improvement suggestions based on current industry trends.",
+      description: "AI-powered resume scanner with ATS scoring and skill gap analysis.",
       tech: ["JavaScript", "React", "AI"],
       link: "https://github.com/AnishaPaturi/ResumeIQ",
-      year: "2026",
+      year: "2025",
       category: "Full Stack",
     },
     {
       title: "Secret Santa",
-      description: "A full-stack, real-time Secret Santa web application that allows users to create private groups, join via QR code or shared link, add participants live, and receive gift assignments privately on their own devices. The app supports both single-device pass-the-phone mode and multi-device real-time group mode with admin-controlled game start, festive UI, animations, snow effects, sound effects, and confetti.",
+      description: "Real-time Secret Santa app with QR code joining and festive UI animations.",
       tech: ["Next.js", "React", "Firebase", "Tailwind CSS"],
       link: "https://github.com/AnishaPaturi/Secret-Santa-",
       liveLink: "https://secret-santa-theta-nine.vercel.app/",
@@ -89,7 +115,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Mood Angles",
-      description: "A comprehensive AI-driven mental wellness application designed to help users track their moods, manage wellness, and connect with psychiatrists. Built with modern web technologies and Agentic AI for a seamless user experience.",
+      description: "AI-driven mental wellness app for mood tracking and psychiatrist connections.",
       tech: ["React", "Python", "Agentic AI", "MongoDB", "Express.js", "Node.js"],
       link: "https://github.com/AnishaPaturi/Mood-Angles",
       year: "2024",
@@ -97,7 +123,7 @@ export default function PortfolioThree() {
     },
     {
       title: "SafeStreet",
-      description: "An AI-powered platform that detects, reports, and manages road damage via mobile and web interfaces. Users can capture images of potholes/cracks, auto-classify severity, send reports, and authorities get a dashboard to track & act on road safety issues.",
+      description: "AI-powered platform for road damage detection via mobile and web interfaces.",
       tech: ["React", "Transformers", "MongoDB", "Node.js", "Express.js"],
       link: "https://github.com/AnishaPaturi/SafeStreetApplication",
       year: "2024",
@@ -105,7 +131,7 @@ export default function PortfolioThree() {
     },
     {
       title: "College Connect",
-      description: "A web platform that unifies campus life by offering students access to events, announcements, study resources, and forums in one place. It streamlines college communication, giving admins tools to manage content while students stay plugged into academic and social updates.",
+      description: "Campus life platform with events, announcements, and study resources.",
       tech: ["JavaScript", "MongoDB", "Express.js", "Node.js"],
       link: "https://github.com/AnishaPaturi/College-Connect",
       year: "2024",
@@ -113,15 +139,23 @@ export default function PortfolioThree() {
     },
     {
       title: "Talent Match",
-      description: "A platform where users post problems or skill-based queries, and the system matches them with knowledgeable individuals. If someone accepts, they collaborate on a shared interface to solve the issue together.",
+      description: "Platform connecting users with skilled individuals for problem-solving.",
       tech: ["JavaScript", "MongoDB", "Express.js", "Node.js"],
       link: "https://github.com/AnishaPaturi/Talent-Match",
       year: "2024",
       category: "Full Stack",
     },
     {
+      title: "AutoDeck",
+      description: "AI-powered presentation generator creating slide decks from text input.",
+      tech: ["Python", "OpenAI", "Flask", "AI"],
+      link: "https://github.com/AnishaPaturi/AutoDeck",
+      year: "2024",
+      category: "Python",
+    },
+    {
       title: "GradeSync",
-      description: "A student grade management system that uses Python, PHP, and SQL to add, display, and calculate student grades efficiently. It streamlines managing student data and class averages through a web-based interface. Built during IBaseIT internship.",
+      description: "Student grade management system using Python, PHP, and SQL.",
       tech: ["Python", "PHP", "MySQL", "HTML", "CSS"],
       link: "https://github.com/AnishaPaturi/GradeSync",
       year: "2024",
@@ -129,15 +163,39 @@ export default function PortfolioThree() {
     },
     {
       title: "PythonLonden",
-      description: "A project that transforms the PHP Symfony 1-based Londen's Campaign Manager into Python, aiming to enhance maintainability and performance. The original system offers dashboards for mailed campaigns, response tracking, and data visualization. Built during ODT internship.",
+      description: "PHP Symfony to Python transformation for Campaign Manager.",
       tech: ["Python", "Campaign Management"],
       link: "https://github.com/AnishaPaturi/PythonLonden",
       year: "2024",
       category: "Python",
     },
     {
+      title: "LinkUp",
+      description: "Networking and connection platform for professionals.",
+      tech: ["JavaScript"],
+      link: "https://github.com/AnishaPaturi/LinkUp",
+      year: "2024",
+      category: "JavaScript",
+    },
+    {
+      title: "Lie Detector Game",
+      description: "Interactive game testing honesty detection capabilities.",
+      tech: ["Java"],
+      link: "https://github.com/AnishaPaturi/LieDetectorGame",
+      year: "2024",
+      category: "Java",
+    },
+    {
+      title: "Attendance Tracker",
+      description: "System for tracking and managing attendance records.",
+      tech: ["TypeScript"],
+      link: "https://github.com/AnishaPaturi/attendance-tracker",
+      year: "2024",
+      category: "TypeScript",
+    },
+    {
       title: "AuthenCode",
-      description: "Secure authentication system implementing modern encryption standards and best security practices with JWT token-based authentication and bcrypt password hashing.",
+      description: "Secure authentication system with JWT and bcrypt.",
       tech: ["Node.js", "JWT", "bcrypt", "Security"],
       link: "https://github.com/AnishaPaturi/AuthenCode",
       year: "2023",
@@ -145,63 +203,23 @@ export default function PortfolioThree() {
     },
     {
       title: "CodeChecker",
-      description: "Automated code review and quality checking tool that helps developers maintain code standards and best practices through static analysis and continuous integration.",
+      description: "Automated code review and quality checking tool.",
       tech: ["Python", "Static Analysis", "CI/CD"],
       link: "https://github.com/AnishaPaturi/CodeChecker",
       year: "2023",
       category: "Python",
     },
     {
-      title: "Field Antimicrobial Usage App",
-      description: "Mobile application for tracking and managing antimicrobial usage in agricultural field settings with data analytics capabilities for monitoring and reporting.",
-      tech: ["React Native", "Firebase", "Data Analytics"],
-      link: "https://github.com/AnishaPaturi/Field-Antimicrobial-Usage-App",
-      year: "2023",
-      category: "React Native",
-    },
-    {
       title: "FeedForward",
-      description: "Community-driven feedback platform enabling constructive peer reviews and collaborative improvement with real-time updates and user engagement features.",
+      description: "Community-driven feedback platform with real-time updates.",
       tech: ["React", "Firebase", "Tailwind CSS"],
       link: "https://github.com/AnishaPaturi/FeedForward",
       year: "2023",
       category: "React",
     },
     {
-      title: "AutoDeck",
-      description: "AI-powered presentation generator that creates professional slide decks from simple text input using OpenAI's language models and Flask backend.",
-      tech: ["Python", "OpenAI", "Flask", "AI"],
-      link: "https://github.com/AnishaPaturi/AutoDeck",
-      year: "2024",
-      category: "Python",
-    },
-    {
-      title: "Weather App",
-      description: "Real-time weather application with detailed forecasts, interactive maps, and location-based alerts powered by weather APIs and geolocation services.",
-      tech: ["React", "Weather API", "Geolocation"],
-      link: "https://github.com/AnishaPaturi/WeatherApp",
-      year: "2022",
-      category: "React",
-    },
-    {
-      title: "Amazon Clone",
-      description: "Full-featured e-commerce platform replicating Amazon's core functionality including shopping cart, payment processing with Stripe, checkout flow, and user authentication with Redux state management.",
-      tech: ["React", "Redux", "Firebase", "Stripe"],
-      link: "https://github.com/AnishaPaturi/Amazon-Clone",
-      year: "2022",
-      category: "React",
-    },
-    {
-      title: "To-Do",
-      description: "Clean and intuitive task management application with priority sorting, deadline tracking, and local storage persistence for managing daily tasks efficiently.",
-      tech: ["React", "Local Storage", "CSS"],
-      link: "https://github.com/AnishaPaturi/To-Do",
-      year: "2022",
-      category: "React",
-    },
-    {
       title: "SafeStreet Web",
-      description: "Web companion application to SafeStreet mobile app with enhanced mapping capabilities, real-time updates via WebSockets, and comprehensive community safety features.",
+      description: "Web companion with mapping and real-time WebSocket updates.",
       tech: ["React", "Google Maps API", "WebSockets"],
       link: "https://github.com/AnishaPaturi/SafeStreetWeb",
       year: "2023",
@@ -209,11 +227,59 @@ export default function PortfolioThree() {
     },
     {
       title: "BlueDrive Rover",
-      description: "Autonomous rover project with remote control capabilities and sensor integration for navigation using Raspberry Pi, Python programming, IoT sensors, and computer vision for obstacle detection.",
+      description: "Autonomous rover with Raspberry Pi, IoT, and computer vision.",
       tech: ["Python", "Raspberry Pi", "IoT", "Computer Vision"],
       link: "https://github.com/AnishaPaturi/BlueDrive-Rover",
       year: "2023",
       category: "Python",
+    },
+    {
+      title: "Field Antimicrobial Usage App",
+      description: "Mobile app for tracking antimicrobial usage in agriculture.",
+      tech: ["React Native", "Firebase", "Data Analytics"],
+      link: "https://github.com/AnishaPaturi/Field-Antimicrobial-Usage-App",
+      year: "2023",
+      category: "React Native",
+    },
+    // {
+    //   title: "AWS Certified Cloud Practitioner Notes",
+    //   description: "Notes compiled from AWS E-Learning lessons.",
+    //   tech: ["AWS", "Cloud"],
+    //   link: "https://github.com/AnishaPaturi/AWS-Certified-Cloud-Practitioner-Notes",
+    //   year: "2023",
+    //   category: "AWS",
+    // },
+    {
+      title: "Weather App",
+      description: "Real-time weather app with forecasts and location-based alerts.",
+      tech: ["React", "Weather API", "Geolocation"],
+      link: "https://github.com/AnishaPaturi/WeatherApp",
+      year: "2022",
+      category: "React",
+    },
+    {
+      title: "Amazon Clone",
+      description: "E-commerce clone with Redux, Firebase, and Stripe.",
+      tech: ["React", "Redux", "Firebase", "Stripe"],
+      link: "https://github.com/AnishaPaturi/Amazon-Clone",
+      year: "2022",
+      category: "React",
+    },
+    {
+      title: "IgniteJEE",
+      description: "Java EE learning and practice platform.",
+      tech: ["Java"],
+      link: "https://github.com/AnishaPaturi/IgniteJEE",
+      year: "2024",
+      category: "Java",
+    },
+    {
+      title: "Interview Prep",
+      description: "Platform for interview preparation and practice.",
+      tech: ["Java"],
+      link: "https://github.com/AnishaPaturi/Interview-Prep",
+      year: "2024",
+      category: "Java",
     },
   ];
 
@@ -227,12 +293,13 @@ export default function PortfolioThree() {
   ];
 
   const skills = {
-    "Front End": ["HTML", "CSS", "JavaScript", "React"],
-    "Middle Tier": ["C", "Java", "Python", "C++"],
-    "Back End": ["MySQL", "MongoDB", "Express.js", "Node.js"],
-    Frameworks: ["Bootstrap", "SpringBoot"],
-    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit"],
-    "Agentic AI": ["LangChain", "LangGraph"],
+    "Frontend": ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+    "Backend": ["Node.js", "Express.js", "Python", "Flask", "FastAPI"],
+    "Databases": ["MySQL", "MongoDB", "Firebase"],
+    "Programming": ["C", "C++", "Java", "Python", "TypeScript"],
+    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit", "Agentic AI"],
+    "Tools & Cloud": ["Git", "AWS", "Docker", "VS Code", "Raspberry Pi"],
+    "Libraries": ["Framer Motion", "Redux", "Bootstrap", "SpringBoot", "LangChain", "LangGraph", "Recharts"],
   };
 
   const experience = [
@@ -248,7 +315,10 @@ export default function PortfolioThree() {
       company: "IBaseIT",
       period: "May 2024 - June 2024",
       description:
-        "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface.",
+        "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface. Received Letter of Recommendation from Director of Software Engineering for outstanding performance, teamwork, and quick learning.",
+      link: "https://github.com/AnishaPaturi/GradeSync",
+      tech: ["Python", "PHP", "MySQL", "HTML", "CSS"],
+      recommendation: "Received Letter of Recommendation from Director of Software Engineering for outstanding performance, teamwork, and quick learning.",
     },
   ];
 
@@ -278,7 +348,7 @@ export default function PortfolioThree() {
     },
   ];
 
-  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "React Native", "Node.js"];
+  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "JavaScript", "Java", "React Native", "Node.js", "AWS"];
   const filteredProjects =
     selectedCategory === "all"
       ? projects
@@ -315,6 +385,9 @@ export default function PortfolioThree() {
           {[
             ["home", Home],
             ["projects", Briefcase],
+            ["skills", Code],
+            ["experience", Briefcase],
+            ["accomplishments", Award],
             ["about", User],
             ["contact", MessageSquare],
           ].map(([section, Icon]) => {
@@ -515,6 +588,169 @@ export default function PortfolioThree() {
             </motion.div>
           )}
 
+          {/* Skills Section */}
+          {activeSection === "skills" && (
+            <motion.div
+              key="skills"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+            >
+              <h1 className="text-5xl font-bold mb-4 tracking-tight">Skills.</h1>
+              <p className="text-gray-400 font-light mb-12 text-lg">Technical expertise and technologies</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {Object.entries(skills).map(([category, skillList]) => (
+                  <motion.div
+                    key={category}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-purple-500/30 transition-colors"
+                  >
+                    <h2 className="text-xl font-semibold mb-6 flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
+                        <Code className="size-4 text-purple-400" />
+                      </div>
+                      {category}
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      {skillList.map((skill, i) => (
+                        <span key={i} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-gray-300 hover:bg-purple-500/20 hover:border-purple-500/30 transition-all cursor-default">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-12 bg-gradient-to-br from-purple-900/30 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8">
+                <h2 className="text-xl font-semibold mb-6">Certifications</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <h3 className="font-medium text-purple-300">AWS Certified Cloud Practitioner</h3>
+                    <p className="text-gray-400 text-sm">22.5-hour training on AWS fundamentals</p>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <h3 className="font-medium text-purple-300">HackerRank SQL (Advanced)</h3>
+                    <p className="text-gray-400 text-sm">Skill certification for advanced SQL</p>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
+                    <h3 className="font-medium text-purple-300">Claude Code Course</h3>
+                    <p className="text-gray-400 text-sm">Anthropic certified for LLMs in coding</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Experience Section */}
+          {activeSection === "experience" && (
+            <motion.div
+              key="experience"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+            >
+              <h1 className="text-5xl font-bold mb-4 tracking-tight">Experience.</h1>
+              <p className="text-gray-400 font-light mb-12 text-lg">Professional journey and internships</p>
+              
+              <div className="space-y-8 max-w-3xl">
+                {experience.map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-colors overflow-hidden"
+                  >
+                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
+                    <div className="pl-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h3 className="text-2xl font-bold mb-1 text-white">{exp.role}</h3>
+                          <p className="text-blue-400 text-lg font-medium">{exp.company}</p>
+                        </div>
+                        <span className="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-xl text-sm text-blue-300">
+                          {exp.period}
+                        </span>
+                      </div>
+                      <p className="text-gray-400 leading-relaxed font-light mb-4">{exp.description}</p>
+                      {exp.tech && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {exp.tech.map((t, i) => (
+                            <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {exp.recommendation && (
+                        <div className="flex items-center gap-2 text-green-400 text-sm mb-3">
+                          <Award className="size-4" />
+                          <span>{exp.recommendation}</span>
+                        </div>
+                      )}
+                      {exp.link && (
+                        <motion.a
+                          whileHover={{ scale: 1.02 }}
+                          href={exp.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-xl text-sm text-purple-300 hover:bg-purple-500/20 transition-colors"
+                        >
+                          <ExternalLink className="size-4" />
+                          View Project
+                        </motion.a>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Accomplishments Section */}
+          {activeSection === "accomplishments" && (
+            <motion.div
+              key="accomplishments"
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+            >
+              <h1 className="text-5xl font-bold mb-4 tracking-tight">Accomplishments.</h1>
+              <p className="text-gray-400 font-light mb-12 text-lg">Achievements and recognitions</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                {accomplishments.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-fuchsia-500/40 transition-all group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="size-12 rounded-2xl bg-gradient-to-br from-fuchsia-500/20 to-purple-500/20 border border-fuchsia-500/30 flex items-center justify-center shrink-0">
+                        <span className="text-fuchsia-400 text-2xl font-bold">{index + 1}</span>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-medium mb-2 text-gray-200 group-hover:text-fuchsia-300 transition-colors">{item.name}</h3>
+                        <p className="text-gray-400 text-sm font-light leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-12">
+                <h2 className="text-2xl font-semibold mb-6">Hackathons & Events</h2>
+                <div className="space-y-4 max-w-3xl">
+                  {engagement.map((item, index) => (
+                    <div key={index} className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5">
+                      <div className="size-2 bg-gradient-to-br from-fuchsia-400 to-purple-600 rounded-full mt-2 shrink-0" />
+                      <p className="text-gray-300 font-light">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* About Section */}
           {activeSection === "about" && (
             <motion.div
@@ -542,89 +778,20 @@ export default function PortfolioThree() {
                     </p>
                   </div>
 
-                  {/* Experience */}
-                  <div>
-                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
-                        <Briefcase className="size-4 text-blue-400" />
-                      </div>
-                      Experience
-                    </h2>
-                    <div className="space-y-6">
-                      {experience.map((exp, index) => (
-                        <div key={index} className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-colors">
-                          <h3 className="text-xl font-medium mb-1 text-white">{exp.role}</h3>
-                          <p className="text-blue-400 text-sm mb-4 font-medium">{exp.company} <span className="text-gray-600 mx-2">|</span> {exp.period}</p>
-                          <p className="text-gray-400 text-sm leading-relaxed font-light">{exp.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Accomplishments */}
-                  <div>
-                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500/30 flex items-center justify-center">
-                        <span className="text-fuchsia-400 text-lg font-bold">★</span>
-                      </div>
-                      Accomplishments
-                    </h2>
-                    <div className="space-y-4">
-                      {accomplishments.map((item, index) => (
-                        <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
-                          <div className="size-2 bg-gradient-to-br from-fuchsia-400 to-purple-600 rounded-full mt-2 shrink-0" />
-                          <div>
-                            <h3 className="text-lg font-medium mb-1 text-gray-200">{item.name}</h3>
-                            <p className="text-gray-400 text-sm font-light leading-relaxed">{item.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Column */}
-                <div className="space-y-12">
                   {/* Education */}
-                  <div className="bg-gradient-to-br from-purple-900/40 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[50px]" />
-                    <h2 className="text-xl font-semibold mb-6">Education</h2>
-                    <h3 className="text-lg font-medium">{education.degree}</h3>
-                    <p className="text-purple-300 text-sm mt-2 mb-4">{education.college} <br/> {education.period}</p>
-                    <div className="inline-block px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
-                      {education.cgpa}
-                    </div>
-                  </div>
-
-                  {/* Skills */}
                   <div>
-                    <h2 className="text-xl font-semibold mb-6">Core Skills</h2>
-                    <div className="space-y-8">
-                      {Object.entries(skills).map(([category, skillList]) => (
-                        <div key={category}>
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">{category}</h3>
-                          <div className="flex flex-wrap gap-2">
-                            {skillList.map((skill, i) => (
-                              <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300 hover:bg-white/10 transition-colors cursor-default">
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Engagement */}
-                  <div>
-                    <h2 className="text-xl font-semibold mb-6">Engagement</h2>
-                    <div className="space-y-4">
-                      {engagement.map((item, index) => (
-                        <div key={index} className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/5">
-                          <div className="size-1.5 bg-gray-500 rounded-full mt-2" />
-                          <p className="text-gray-300 text-sm font-light">{item}</p>
-                        </div>
-                      ))}
+                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
+                        <User className="size-4 text-purple-400" />
+                      </div>
+                      Education
+                    </h2>
+                    <div className="bg-gradient-to-br from-purple-900/40 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-6 relative overflow-hidden">
+                      <h3 className="text-lg font-medium">{education.degree}</h3>
+                      <p className="text-purple-300 text-sm mt-2 mb-4">{education.college} <br/> {education.period}</p>
+                      <div className="inline-block px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
+                        {education.cgpa}
+                      </div>
                     </div>
                   </div>
                 </div>
