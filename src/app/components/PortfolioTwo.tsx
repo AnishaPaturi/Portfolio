@@ -4,6 +4,14 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 export default function PortfolioTwo() {
   const projects = [
     {
+      title: "CareerPilot-AI",
+      description: "A complete AI-powered student career preparation ecosystem.",
+      category: "AI Tool",
+      icon: Code2,
+      link: "https://github.com/AnishaPaturi/CareerPilot-AI",
+      color: "from-purple-500 to-indigo-500",
+    },
+    {
       title: "Secret Santa",
       description: "A fun application to organize Secret Santa gift exchanges",
       category: "Web App",

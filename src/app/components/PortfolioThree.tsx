@@ -31,6 +31,14 @@ export default function PortfolioThree() {
   
   const projects = [
     {
+      title: "CareerPilot-AI",
+      description: "A complete AI-powered student career preparation ecosystem integrating automated resume auditing, mock interview simulation, DSA roadmapping, and RAG-based study assistants.",
+      tech: ["React", "Spring Boot", "FastAPI", "MySQL", "ChromaDB", "AI"],
+      link: "https://github.com/AnishaPaturi/CareerPilot-AI",
+      year: "2026",
+      category: "Full Stack",
+    },
+    {
       title: "AI-pdf-chatbot",
       description: "AI-powered PDF chatbot for intelligent document interaction and query handling.",
       tech: ["TypeScript", "AI"],
@@ -56,15 +64,6 @@ export default function PortfolioThree() {
       category: "Full Stack",
     },
     {
-      title: "IPL-Predictor-2026",
-      description: "Full-stack IPL 2026 winner prediction using ML and historical data.",
-      tech: ["React", "Python", "FastAPI", "Machine Learning"],
-      link: "https://github.com/AnishaPaturi/IPL-Predictor-2026",
-      liveLink: "https://ipl-predictor-2026-nu.vercel.app",
-      year: "2026",
-      category: "Full Stack",
-    },
-    {
       title: "Ctrl+S of Shame",
       description: "VS Code extension detecting errors on file save using VS Code Diagnostics API.",
       tech: ["TypeScript", "VS Code Extension API", "Node.js"],
@@ -73,36 +72,12 @@ export default function PortfolioThree() {
       category: "TypeScript",
     },
     {
-      title: "Movie Recommendation Platform",
-      description: "AI-powered movie recommendation system with collaborative filtering.",
-      tech: ["JavaScript", "AI"],
-      link: "https://github.com/AnishaPaturi/movie-recommendation-platform",
-      year: "2026",
-      category: "JavaScript",
-    },
-    {
       title: "VizTalk",
       description: "Conversational data analytics platform transforming voice/text to insights and charts.",
       tech: ["Python", "Streamlit", "Whisper", "FFmpeg", "OpenRouter", "DeepSeek"],
       link: "https://github.com/AnishaPaturi/VizTalk",
       year: "2025",
       category: "Python",
-    },
-    {
-      title: "AlgoMentor Agentic DSA Planner",
-      description: "AI-driven personal DSA coach for problem-solving journeys and progress tracking.",
-      tech: ["Python", "AI", "Streamlit"],
-      link: "https://github.com/AnishaPaturi/AlgoMentor-Agentic-DSA-Planner",
-      year: "2025",
-      category: "Python",
-    },
-    {
-      title: "ResumeIQ",
-      description: "AI-powered resume scanner with ATS scoring and skill gap analysis.",
-      tech: ["JavaScript", "React", "AI"],
-      link: "https://github.com/AnishaPaturi/ResumeIQ",
-      year: "2025",
-      category: "Full Stack",
     },
     {
       title: "Secret Santa",
@@ -170,14 +145,6 @@ export default function PortfolioThree() {
       category: "Python",
     },
     {
-      title: "LinkUp",
-      description: "Networking and connection platform for professionals.",
-      tech: ["JavaScript"],
-      link: "https://github.com/AnishaPaturi/LinkUp",
-      year: "2024",
-      category: "JavaScript",
-    },
-    {
       title: "Lie Detector Game",
       description: "Interactive game testing honesty detection capabilities.",
       tech: ["Java"],
@@ -233,14 +200,6 @@ export default function PortfolioThree() {
       year: "2023",
       category: "Python",
     },
-    {
-      title: "Field Antimicrobial Usage App",
-      description: "Mobile app for tracking antimicrobial usage in agriculture.",
-      tech: ["React Native", "Firebase", "Data Analytics"],
-      link: "https://github.com/AnishaPaturi/Field-Antimicrobial-Usage-App",
-      year: "2023",
-      category: "React Native",
-    },
     // {
     //   title: "AWS Certified Cloud Practitioner Notes",
     //   description: "Notes compiled from AWS E-Learning lessons.",
@@ -272,15 +231,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/IgniteJEE",
       year: "2024",
       category: "Java",
-    },
-    {
-      title: "Interview Prep",
-      description: "Platform for interview preparation and practice.",
-      tech: ["Java"],
-      link: "https://github.com/AnishaPaturi/Interview-Prep",
-      year: "2024",
-      category: "Java",
-    },
+    }
   ];
 
   const engagement = [
@@ -293,13 +244,12 @@ export default function PortfolioThree() {
   ];
 
   const skills = {
-    "Frontend": ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
-    "Backend": ["Node.js", "Express.js", "Python", "Flask", "FastAPI"],
-    "Databases": ["MySQL", "MongoDB", "Firebase"],
-    "Programming": ["C", "C++", "Java", "Python", "TypeScript"],
-    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit", "Agentic AI"],
-    "Tools & Cloud": ["Git", "AWS", "Docker", "VS Code", "Raspberry Pi"],
-    "Libraries": ["Framer Motion", "Redux", "Bootstrap", "SpringBoot", "LangChain", "LangGraph", "Recharts"],
+    "Front End": ["HTML", "CSS", "JavaScript", "React"],
+    "Middle Tier": ["C", "Java", "Python", "C++"],
+    "Back End": ["MySQL", "MongoDB", "Express.js", "Node.js"],
+    Frameworks: ["Bootstrap", "SpringBoot"],
+    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit"],
+    "Agentic AI": ["LangChain", "LangGraph"],
   };
 
   const experience = [
@@ -315,10 +265,7 @@ export default function PortfolioThree() {
       company: "IBaseIT",
       period: "May 2024 - June 2024",
       description:
-        "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface. Received Letter of Recommendation from Director of Software Engineering for outstanding performance, teamwork, and quick learning.",
-      link: "https://github.com/AnishaPaturi/GradeSync",
-      tech: ["Python", "PHP", "MySQL", "HTML", "CSS"],
-      recommendation: "Received Letter of Recommendation from Director of Software Engineering for outstanding performance, teamwork, and quick learning.",
+        "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface.",
     },
   ];
 
@@ -671,37 +618,24 @@ export default function PortfolioThree() {
                           {exp.period}
                         </span>
                       </div>
-                      <p className="text-gray-400 leading-relaxed font-light mb-4">{exp.description}</p>
-                      {exp.tech && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {exp.tech.map((t, i) => (
-                            <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      {exp.recommendation && (
-                        <div className="flex items-center gap-2 text-green-400 text-sm mb-3">
-                          <Award className="size-4" />
-                          <span>{exp.recommendation}</span>
-                        </div>
-                      )}
-                      {exp.link && (
-                        <motion.a
-                          whileHover={{ scale: 1.02 }}
-                          href={exp.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-xl text-sm text-purple-300 hover:bg-purple-500/20 transition-colors"
-                        >
-                          <ExternalLink className="size-4" />
-                          View Project
-                        </motion.a>
-                      )}
+                      <p className="text-gray-400 leading-relaxed font-light">{exp.description}</p>
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              <div className="mt-12">
+                <h2 className="text-2xl font-semibold mb-6">Education</h2>
+                <div className="bg-gradient-to-br from-purple-900/30 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 max-w-3xl">
+                  <h3 className="text-xl font-medium mb-2">{education.degree}</h3>
+                  <p className="text-purple-300 text-lg mb-4">{education.college}</p>
+                  <div className="flex items-center gap-6">
+                    <div className="px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
+                      {education.cgpa}
+                    </div>
+                    <span className="text-gray-400">{education.period}</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           )}
@@ -778,20 +712,89 @@ export default function PortfolioThree() {
                     </p>
                   </div>
 
-                  {/* Education */}
+                  {/* Experience */}
                   <div>
                     <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
-                        <User className="size-4 text-purple-400" />
+                      <div className="size-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                        <Briefcase className="size-4 text-blue-400" />
                       </div>
-                      Education
+                      Experience
                     </h2>
-                    <div className="bg-gradient-to-br from-purple-900/40 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-6 relative overflow-hidden">
-                      <h3 className="text-lg font-medium">{education.degree}</h3>
-                      <p className="text-purple-300 text-sm mt-2 mb-4">{education.college} <br/> {education.period}</p>
-                      <div className="inline-block px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
-                        {education.cgpa}
+                    <div className="space-y-6">
+                      {experience.map((exp, index) => (
+                        <div key={index} className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-colors">
+                          <h3 className="text-xl font-medium mb-1 text-white">{exp.role}</h3>
+                          <p className="text-blue-400 text-sm mb-4 font-medium">{exp.company} <span className="text-gray-600 mx-2">|</span> {exp.period}</p>
+                          <p className="text-gray-400 text-sm leading-relaxed font-light">{exp.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Accomplishments */}
+                  <div>
+                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+                      <div className="size-8 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500/30 flex items-center justify-center">
+                        <span className="text-fuchsia-400 text-lg font-bold">★</span>
                       </div>
+                      Accomplishments
+                    </h2>
+                    <div className="space-y-4">
+                      {accomplishments.map((item, index) => (
+                        <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+                          <div className="size-2 bg-gradient-to-br from-fuchsia-400 to-purple-600 rounded-full mt-2 shrink-0" />
+                          <div>
+                            <h3 className="text-lg font-medium mb-1 text-gray-200">{item.name}</h3>
+                            <p className="text-gray-400 text-sm font-light leading-relaxed">{item.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="space-y-12">
+                  {/* Education */}
+                  <div className="bg-gradient-to-br from-purple-900/40 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[50px]" />
+                    <h2 className="text-xl font-semibold mb-6">Education</h2>
+                    <h3 className="text-lg font-medium">{education.degree}</h3>
+                    <p className="text-purple-300 text-sm mt-2 mb-4">{education.college} <br/> {education.period}</p>
+                    <div className="inline-block px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
+                      {education.cgpa}
+                    </div>
+                  </div>
+
+                  {/* Skills */}
+                  <div>
+                    <h2 className="text-xl font-semibold mb-6">Core Skills</h2>
+                    <div className="space-y-8">
+                      {Object.entries(skills).map(([category, skillList]) => (
+                        <div key={category}>
+                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">{category}</h3>
+                          <div className="flex flex-wrap gap-2">
+                            {skillList.map((skill, i) => (
+                              <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300 hover:bg-white/10 transition-colors cursor-default">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Engagement */}
+                  <div>
+                    <h2 className="text-xl font-semibold mb-6">Engagement</h2>
+                    <div className="space-y-4">
+                      {engagement.map((item, index) => (
+                        <div key={index} className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/5">
+                          <div className="size-1.5 bg-gray-500 rounded-full mt-2" />
+                          <p className="text-gray-300 text-sm font-light">{item}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>

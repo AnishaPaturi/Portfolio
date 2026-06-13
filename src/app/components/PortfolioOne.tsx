@@ -4,6 +4,12 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 export default function PortfolioOne() {
   const projects = [
     {
+      title: "CareerPilot-AI",
+      description: "A complete AI-powered student career preparation ecosystem with automated resume auditing, mock interview simulation, DSA roadmapping, and RAG-based study assistants.",
+      tech: ["React", "Spring Boot", "FastAPI", "MySQL", "ChromaDB", "AI"],
+      link: "https://github.com/AnishaPaturi/CareerPilot-AI",
+    },
+    {
       title: "Secret Santa",
       description: "A fun application to organize Secret Santa gift exchanges with friends and family",
       tech: ["React", "Node.js"],
