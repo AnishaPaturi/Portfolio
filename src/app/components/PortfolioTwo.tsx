@@ -44,14 +44,6 @@ export default function PortfolioTwo() {
       color: "from-emerald-500 to-teal-500",
     },
     {
-      title: "FeedForward",
-      description: "Community platform for sharing feedback and insights",
-      category: "Web App",
-      icon: Laptop,
-      link: "https://github.com/AnishaPaturi/FeedForward",
-      color: "from-orange-500 to-amber-500",
-    },
-    {
       title: "AutoDeck",
       description: "AI-powered automated presentation generator",
       category: "AI Tool",

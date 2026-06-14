@@ -28,12 +28,6 @@ export default function PortfolioOne() {
       link: "https://github.com/AnishaPaturi/AuthenCode",
     },
     {
-      title: "FeedForward",
-      description: "Community platform for sharing feedback and insights",
-      tech: ["React", "Firebase"],
-      link: "https://github.com/AnishaPaturi/FeedForward",
-    },
-    {
       title: "AutoDeck",
       description: "Automated presentation generator using AI",
       tech: ["Python", "AI"],
