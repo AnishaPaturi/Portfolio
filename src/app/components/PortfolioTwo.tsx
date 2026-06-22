@@ -4,6 +4,14 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 export default function PortfolioTwo() {
   const projects = [
     {
+      title: "HomeVerse",
+      description: "AI-powered interior design platform with interactive 3D customization.",
+      category: "AI Tool",
+      icon: Laptop,
+      link: "https://github.com/AnishaPaturi/HomeVerse",
+      color: "from-cyan-500 to-blue-500",
+    },
+    {
       title: "CareerPilot-AI",
       description: "A complete AI-powered student career preparation ecosystem.",
       category: "AI Tool",

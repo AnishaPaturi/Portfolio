@@ -31,6 +31,14 @@ export default function PortfolioThree() {
   
   const projects = [
     {
+      title: "HomeVerse",
+      description: "An AI-powered interior design and room customization platform that transforms 2D room photos into interactive, editable 3D environments with an AI Design Copilot.",
+      tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "SAM 2", "AI"],
+      link: "https://github.com/AnishaPaturi/HomeVerse",
+      year: "2026",
+      category: "Full Stack",
+    },
+    {
       title: "CareerPilot-AI",
       description: "A complete AI-powered student career preparation ecosystem integrating automated resume auditing, mock interview simulation, DSA roadmapping, and RAG-based study assistants.",
       tech: ["React", "Spring Boot", "FastAPI", "MySQL", "ChromaDB", "AI"],
