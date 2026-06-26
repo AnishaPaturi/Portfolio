@@ -28,11 +28,11 @@ export default function PortfolioTwo() {
       color: "from-fuchsia-500 to-purple-500",
     },
     {
-      title: "Network Security Toolkit",
-      description: "Java-based network diagnostics toolkit for port scanning, active host discovery, and packet sniffing.",
+      title: "SentinelX",
+      description: "Java-based desktop network security and vulnerability assessment platform for port scanning and packet sniffing.",
       category: "Security",
       icon: Code2,
-      link: "https://github.com/AnishaPaturi/network-port-scanner",
+      link: "https://github.com/AnishaPaturi/SentinelX",
       color: "from-sky-500 to-indigo-500",
     },
     {
