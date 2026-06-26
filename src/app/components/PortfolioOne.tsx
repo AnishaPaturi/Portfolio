@@ -26,6 +26,7 @@ export default function PortfolioOne() {
       description: "A desktop-based network security and vulnerability assessment platform capable of multithreaded port scanning, banner grabbing, host discovery, and real-time packet capture/protocol analysis using Pcap4J.",
       tech: ["Java", "Swing", "Socket Programming", "Pcap4J", "Networking", "Multithreading"],
       link: "https://github.com/AnishaPaturi/SentinelX",
+      liveLink: "https://sentinel-x-beta-pink.vercel.app/",
     },
     {
       title: "Secret Santa",
@@ -127,9 +128,14 @@ export default function PortfolioOne() {
                 className="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl">{project.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-xl font-medium">{project.title}</h3>
+                    {project.liveLink && (
+                      <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs rounded-full font-medium">Live</span>
+                    )}
+                  </div>
                   <a
-                    href={project.link}
+                    href={project.liveLink || project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 bg-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"

@@ -33,6 +33,7 @@ export default function PortfolioTwo() {
       category: "Security",
       icon: Code2,
       link: "https://github.com/AnishaPaturi/SentinelX",
+      liveLink: "https://sentinel-x-beta-pink.vercel.app/",
       color: "from-sky-500 to-indigo-500",
     },
     {
@@ -192,10 +193,15 @@ export default function PortfolioTwo() {
                         <span className="text-xs text-gray-500 mb-1 block">
                           {project.category}
                         </span>
-                        <h3 className="text-xl">{project.title}</h3>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-xl">{project.title}</h3>
+                          {project.liveLink && (
+                            <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs rounded-full font-medium">Live</span>
+                          )}
+                        </div>
                       </div>
                       <a
-                        href={project.link}
+                        href={project.liveLink || project.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 hover:bg-gray-100 rounded-lg transition-colors"

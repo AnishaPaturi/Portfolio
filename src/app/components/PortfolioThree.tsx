@@ -59,6 +59,7 @@ export default function PortfolioThree() {
       description: "A desktop-based network security and vulnerability assessment platform capable of multithreaded port scanning, banner grabbing, host discovery, and real-time packet capture/protocol analysis using Pcap4J.",
       tech: ["Java", "Swing", "Socket Programming", "Pcap4J", "Networking", "Multithreading"],
       link: "https://github.com/AnishaPaturi/SentinelX",
+      liveLink: "https://sentinel-x-beta-pink.vercel.app/",
       year: "2026",
       category: "Java",
     },
@@ -527,7 +528,12 @@ export default function PortfolioThree() {
                         <div className="flex items-start justify-between mb-6">
                           <div>
                             <h3 className="text-2xl font-bold mb-2 group-hover:text-purple-300 transition-colors tracking-tight">{project.title}</h3>
-                            <span className="text-xs font-mono px-3 py-1 bg-white/5 border border-white/10 rounded-full text-purple-200/50">{project.year}</span>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="text-xs font-mono px-3 py-1 bg-white/5 border border-white/10 rounded-full text-purple-200/50">{project.year}</span>
+                              {project.liveLink && (
+                                <span className="text-xs font-mono px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 font-medium">Live</span>
+                              )}
+                            </div>
                           </div>
                           <motion.a
                             whileHover={{ scale: 1.1 }}
