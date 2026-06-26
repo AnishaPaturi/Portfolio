@@ -47,6 +47,22 @@ export default function PortfolioThree() {
       category: "Full Stack",
     },
     {
+      title: "ResumeIQ",
+      description: "A multi-agent AI resume analyzer that scans resumes, calculates an ATS compatibility score, performs skill gap analysis against job target criteria, and generates personalized roadmap recommendations.",
+      tech: ["React", "TypeScript", "FastAPI", "Python", "MongoDB", "OpenRouter", "AI Agents"],
+      link: "https://github.com/AnishaPaturi/ResumeIQ",
+      year: "2026",
+      category: "Full Stack",
+    },
+    {
+      title: "Network Security Toolkit",
+      description: "A Java-based cybersecurity and network diagnostics toolkit featuring multithreaded port scanning, banner grabbing service identification, active host discovery, and live packet sniffing using Pcap4J.",
+      tech: ["Java", "Swing", "Socket Programming", "Pcap4J", "Npcap", "Multithreading"],
+      link: "https://github.com/AnishaPaturi/network-port-scanner",
+      year: "2026",
+      category: "Java",
+    },
+    {
       title: "AI-pdf-chatbot",
       description: "AI-powered PDF chatbot for intelligent document interaction and query handling.",
       tech: ["TypeScript", "AI"],

@@ -20,6 +20,22 @@ export default function PortfolioTwo() {
       color: "from-purple-500 to-indigo-500",
     },
     {
+      title: "ResumeIQ",
+      description: "A multi-agent AI resume analyzer evaluating ATS score compatibility and skill gaps.",
+      category: "AI Tool",
+      icon: Code2,
+      link: "https://github.com/AnishaPaturi/ResumeIQ",
+      color: "from-fuchsia-500 to-purple-500",
+    },
+    {
+      title: "Network Security Toolkit",
+      description: "Java-based network diagnostics toolkit for port scanning, active host discovery, and packet sniffing.",
+      category: "Security",
+      icon: Code2,
+      link: "https://github.com/AnishaPaturi/network-port-scanner",
+      color: "from-sky-500 to-indigo-500",
+    },
+    {
       title: "Secret Santa",
       description: "A fun application to organize Secret Santa gift exchanges",
       category: "Web App",
