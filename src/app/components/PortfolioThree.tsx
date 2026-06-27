@@ -219,11 +219,11 @@ export default function PortfolioThree() {
     },
     {
       title: "BlueDrive Rover",
-      description: "Autonomous rover with Raspberry Pi, IoT, and computer vision.",
-      tech: ["Python", "Raspberry Pi", "IoT", "Computer Vision"],
+      description: "A Bluetooth-controlled robotic vehicle developed to demonstrate real-time wireless navigation using embedded systems and mobile communication. The project integrates an Arduino microcontroller, HC-05 Bluetooth module, motor driver, DC motors, and a rechargeable power supply to execute movement commands received from an Android device. It supports directional controls including forward, reverse, left, right, and stop with responsive command processing over serial communication.",
+      tech: ["Arduino", "C++", "HC-05 Bluetooth", "IoT", "Embedded Systems", "Motor Control"],
       link: "https://github.com/AnishaPaturi/BlueDrive-Rover",
       year: "2023",
-      category: "Python",
+      category: "Hardware",
     },
     // {
     //   title: "AWS Certified Cloud Practitioner Notes",
@@ -320,7 +320,7 @@ export default function PortfolioThree() {
     },
   ];
 
-  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "JavaScript", "Java", "React Native", "Node.js", "AWS"];
+  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "JavaScript", "Java", "React Native", "Node.js", "AWS", "Hardware"];
   const filteredProjects =
     selectedCategory === "all"
       ? projects
