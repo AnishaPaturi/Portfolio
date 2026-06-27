@@ -61,8 +61,8 @@ export default function PortfolioTwo() {
       color: "from-blue-500 to-cyan-500",
     },
     {
-      title: "CodeChecker",
-      description: "Automated code review and quality checking tool",
+      title: "AI Code Reviewer – Reflective Edition",
+      description: "An agentic AI-powered command-line application that reviews code, reflects on its analysis, and refines its feedback. Built with Python and the OpenAI API.",
       category: "Dev Tool",
       icon: Code2,
       link: "https://github.com/AnishaPaturi/CodeChecker",

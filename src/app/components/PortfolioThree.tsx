@@ -196,9 +196,9 @@ export default function PortfolioThree() {
       category: "Node.js",
     },
     {
-      title: "CodeChecker",
-      description: "Automated code review and quality checking tool.",
-      tech: ["Python", "Static Analysis", "CI/CD"],
+      title: "AI Code Reviewer – Reflective Edition",
+      description: "AI Code Reviewer – Reflective Edition is an agentic AI-powered command-line application that demonstrates multi-step reasoning by reviewing code, reflecting on its own analysis, and refining its feedback to produce more accurate and balanced code reviews. Inspired by the agentic AI workflow of review → reflect → improve, the tool evaluates code for logic, structure, readability, naming conventions, maintainability, and optimization opportunities before performing a secondary self-review to identify overlooked issues or unnecessary criticism. Built with Python and the OpenAI API, the application features a lightweight terminal interface with color-coded outputs, making it an efficient developer utility for improving code quality and encouraging iterative AI-assisted programming. Through this project, I gained practical experience in prompt engineering, agentic AI workflows, LLM integration, and designing intelligent developer tools that leverage reflective reasoning.",
+      tech: ["Python", "OpenAI API", "Agentic AI", "CLI"],
       link: "https://github.com/AnishaPaturi/CodeChecker",
       year: "2023",
       category: "Python",
