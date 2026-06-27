@@ -72,6 +72,12 @@ export default function PortfolioOne() {
       tech: ["React", "Vite", "Tailwind CSS", "shadcn/ui"],
       link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
     },
+    {
+      title: "AI Procurement Verification Agent",
+      description: "A production-grade, multi-agent AI system that automates the verification of vendor invoices against purchase orders. Built with Python, FastAPI, LangChain, LangGraph, and OpenAI.",
+      tech: ["Python", "FastAPI", "LangChain", "LangGraph", "OpenAI"],
+      link: "https://github.com/AnishaPaturi/Invoice_Agent",
+    },
   ];
 
   return (

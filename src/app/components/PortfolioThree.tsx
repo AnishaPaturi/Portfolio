@@ -277,6 +277,14 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
       year: "2026",
       category: "React",
+    },
+    {
+      title: "AI Procurement Verification Agent",
+      description: "AI Procurement Verification Agent is a production-grade, multi-agent AI system that automates the verification of vendor invoices against purchase orders, enabling organizations to accelerate procurement workflows while reducing manual effort and fraud risk. Built with Python, FastAPI, LangChain, LangGraph, and OpenAI, the application orchestrates specialized AI agents for OCR-based document extraction, structured parsing, semantic item matching, discrepancy detection, risk analysis, and automated decision-making. The system identifies inconsistencies in quantities, pricing, taxes, delivery charges, and vendor information, calculates weighted risk scores, applies fraud detection heuristics, and determines whether an invoice should be approved, rejected, or escalated for human review. Designed with a modular, extensible architecture and RESTful APIs, the project demonstrates advanced concepts in agentic AI, workflow orchestration, document intelligence, semantic search, and enterprise automation while showcasing scalable AI solutions for real-world procurement processes.",
+      tech: ["Python", "FastAPI", "LangChain", "LangGraph", "OpenAI"],
+      link: "https://github.com/AnishaPaturi/Invoice_Agent",
+      year: "2026",
+      category: "Python",
     }
   ];
 

@@ -119,6 +119,14 @@ export default function PortfolioTwo() {
       link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
       color: "from-cyan-500 to-blue-500",
     },
+    {
+      title: "AI Procurement Verification Agent",
+      description: "A production-grade, multi-agent AI system that automates the verification of vendor invoices against purchase orders. Built with Python, FastAPI, LangChain, LangGraph, and OpenAI.",
+      category: "Dev Tool",
+      icon: Laptop,
+      link: "https://github.com/AnishaPaturi/Invoice_Agent",
+      color: "from-purple-500 to-indigo-500",
+    },
   ];
 
   const skills = [
