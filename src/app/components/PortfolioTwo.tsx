@@ -77,11 +77,11 @@ export default function PortfolioTwo() {
       color: "from-indigo-500 to-blue-500",
     },
     {
-      title: "SafeStreet App",
-      description: "Safety application for navigating urban environments",
+      title: "SafeStreet",
+      description: "An AI-powered road damage detection and maintenance platform combining a React Native mobile application with a web-based management dashboard to streamline reporting and monitoring. Built using React Native, React, Node.js, Express, Python Flask, MongoDB, and Google Gemini AI.",
       category: "Mobile",
       icon: Smartphone,
-      link: "https://github.com/AnishaPaturi/SafeStreetApplication",
+      link: "https://github.com/AnishaPaturi/SafeStreet-final",
       color: "from-red-500 to-pink-500",
     },
     {

@@ -123,9 +123,9 @@ export default function PortfolioThree() {
     },
     {
       title: "SafeStreet",
-      description: "AI-powered platform for road damage detection via mobile and web interfaces.",
-      tech: ["React", "Transformers", "MongoDB", "Node.js", "Express.js"],
-      link: "https://github.com/AnishaPaturi/SafeStreetApplication",
+      description: "SafeStreet is an AI-powered road damage detection and maintenance platform that combines a React Native mobile application with a web-based management dashboard to streamline the reporting, analysis, and monitoring of road infrastructure issues. The mobile application enables users to capture and upload images of damaged roads, where an AI Vision Transformer (ViT) model classifies the type and severity of the damage, generates detailed summaries, and facilitates report sharing via email. The companion web platform provides authorities with a centralized dashboard for managing damage reports, user authentication with OTP verification, email notifications, and an NLP-powered chatbot to assist with user queries. Built using React Native, React, Node.js, Express, Python Flask, MongoDB, and Google Gemini AI, the project integrates computer vision, natural language processing, and full-stack development to create an intelligent, scalable solution for improving road maintenance workflows and enabling faster, data-driven decision-making.",
+      tech: ["React Native", "React", "Node.js", "Express", "Python Flask", "MongoDB", "Gemini AI"],
+      link: "https://github.com/AnishaPaturi/SafeStreet-final",
       year: "2024",
       category: "Full Stack",
     },
