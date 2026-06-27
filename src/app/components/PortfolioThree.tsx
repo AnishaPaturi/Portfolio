@@ -263,12 +263,12 @@ export default function PortfolioThree() {
       category: "JavaScript",
     },
     {
-      title: "IgniteJEE",
-      description: "Java EE learning and practice platform.",
-      tech: ["Java"],
+      title: "IgniteJEE (Work in Progress)",
+      description: "IgniteJEE (Work in Progress) is an AI-powered learning platform currently under development to help JEE Main aspirants study more effectively through interactive revision tools, visual learning modules, and personalized practice recommendations. Built using React, Tailwind CSS, Firebase, Node.js, and Firestore/MongoDB, IgniteJEE aims to provide intelligent study workflows, chapter-wise weakness analysis, mock tests, and progress tracking to improve learning efficiency and exam performance.",
+      tech: ["React", "Tailwind CSS", "Firebase", "Node.js", "MongoDB", "AI"],
       link: "https://github.com/AnishaPaturi/IgniteJEE",
       year: "2024",
-      category: "Java",
+      category: "React",
     }
   ];
 
