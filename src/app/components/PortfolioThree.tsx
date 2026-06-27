@@ -171,12 +171,12 @@ export default function PortfolioThree() {
       category: "Python",
     },
     {
-      title: "Lie Detector Game",
-      description: "Interactive game testing honesty detection capabilities.",
-      tech: ["Java"],
+      title: "AI-Powered Lie Detector App (Work in Progress)",
+      description: "AI-Powered Lie Detector App (Work in Progress) is a cross-platform mobile application currently under development that combines artificial intelligence, computer vision, and audio signal processing to estimate the probability of deception from live or recorded video interactions. The application analyzes facial microexpressions using MediaPipe FaceMesh and vocal tone variations through Librosa-based audio analysis, combining these features with a machine learning model to generate deception confidence scores and interactive visual analytics. Built with React Native, Expo, FastAPI, Express.js, and MongoDB Atlas, the system features secure JWT-based user authentication, video recording and upload capabilities, real-time inference, and a multiplayer \"Two Truths and a Lie\" game mode for an engaging user experience. The project is designed with a modular architecture that separates authentication, AI inference, and the mobile client, enabling scalability and maintainability while expanding my expertise in full-stack development, mobile applications, machine learning, computer vision, and AI-driven analytics.",
+      tech: ["React Native", "Expo", "FastAPI", "Express.js", "MongoDB Atlas", "MediaPipe", "Librosa"],
       link: "https://github.com/AnishaPaturi/LieDetectorGame",
       year: "2024",
-      category: "Java",
+      category: "React Native",
     },
     {
       title: "Attendance Tracker",
