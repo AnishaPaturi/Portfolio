@@ -94,10 +94,11 @@ export default function PortfolioTwo() {
     },
     {
       title: "Talent Match",
-      description: "Platform connecting talent with opportunities",
+      description: "A full-stack networking and project collaboration platform designed to connect students, professionals, and innovators based on their skills, academic interests, and project requirements. Built using HTML, CSS, JavaScript, Node.js, and Express.js.",
       category: "Web App",
       icon: Laptop,
       link: "https://github.com/AnishaPaturi/Talent-Match",
+      liveLink: "https://talent-match-sandy-omega.vercel.app/",
       color: "from-cyan-500 to-blue-500",
     },
   ];

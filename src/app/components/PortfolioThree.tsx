@@ -139,9 +139,10 @@ export default function PortfolioThree() {
     },
     {
       title: "Talent Match",
-      description: "Platform connecting users with skilled individuals for problem-solving.",
-      tech: ["JavaScript", "MongoDB", "Express.js", "Node.js"],
+      description: "A full-stack networking and project collaboration platform designed to connect students, professionals, and innovators based on their skills, academic interests, and project requirements. Built using HTML, CSS, JavaScript, Node.js, and Express.js, it features a modular backend with RESTful APIs and persistent JSON-based data storage for authentication and matching.",
+      tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js"],
       link: "https://github.com/AnishaPaturi/Talent-Match",
+      liveLink: "https://talent-match-sandy-omega.vercel.app/",
       year: "2024",
       category: "Full Stack",
     },
