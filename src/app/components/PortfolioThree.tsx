@@ -81,8 +81,8 @@ export default function PortfolioThree() {
     },
     {
       title: "FactForge",
-      description: "Full-stack AI-driven platform for misinformation detection with NLP claim extraction.",
-      tech: ["React", "Node.js", "Python", "NLP", "Transformers", "Recharts"],
+      description: "FactForge is an AI-powered fact and claim verification platform designed to combat misinformation by automatically analyzing text, extracting verifiable claims, retrieving supporting evidence, and generating explainable verification results. Built with React, FastAPI, Tailwind CSS, and SQLite, the platform integrates large language models through OpenRouter and real-time web search via Tavily to classify claims as True, False, Partially True, or Unverifiable while providing confidence scores, bias analysis, AI-generated content detection, and detailed explanations. It also features secure user authentication, verification history tracking, and downloadable PDF reports, creating a complete end-to-end fact-checking workflow.",
+      tech: ["React", "FastAPI", "SQLite", "OpenRouter", "Tavily", "AI", "NLP"],
       link: "https://github.com/AnishaPaturi/FactForge",
       liveLink: "https://fact-forge.vercel.app",
       year: "2026",
