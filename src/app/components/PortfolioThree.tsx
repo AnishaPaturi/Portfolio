@@ -236,12 +236,13 @@ export default function PortfolioThree() {
     //   category: "AWS",
     // },
     {
-      title: "Weather App",
-      description: "Real-time weather app with forecasts and location-based alerts.",
-      tech: ["React", "Weather API", "Geolocation"],
+      title: "WeatherApp",
+      description: "WeatherApp is a responsive web application that provides real-time weather information and 5-day forecasts using the OpenWeather API. The application allows users to search for weather conditions across cities worldwide, automatically detect their current location, save favorite locations for quick access, and switch between Celsius and Fahrenheit units. It also supports multiple languages and features dynamic backgrounds that adapt to current weather conditions, creating an engaging and personalized user experience. Built using HTML, CSS, and JavaScript, the project emphasizes seamless API integration, responsive design, geolocation services, and efficient error handling to deliver accurate weather updates. Through this project, I strengthened my skills in REST API integration, asynchronous JavaScript, client-side data management, and creating interactive, user-centric web applications.",
+      tech: ["HTML", "CSS", "JavaScript", "OpenWeather API", "Geolocation"],
       link: "https://github.com/AnishaPaturi/WeatherApp",
+      liveLink: "https://weather-app-two-olive-86.vercel.app/",
       year: "2022",
-      category: "React",
+      category: "JavaScript",
     },
     {
       title: "Amazon Clone",
