@@ -66,6 +66,12 @@ export default function PortfolioOne() {
       link: "https://github.com/AnishaPaturi/To-Do",
       liveLink: "https://to-do-phi-kohl.vercel.app/",
     },
+    {
+      title: "Murder Mystery Web Platform (Work in Progress)",
+      description: "An interactive web application currently under development where users solve fictional murder cases by exploring crime scenes, analyzing evidence, and connecting clues. Built with React, Vite, Tailwind CSS, and shadcn/ui.",
+      tech: ["React", "Vite", "Tailwind CSS", "shadcn/ui"],
+      link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
+    },
   ];
 
   return (

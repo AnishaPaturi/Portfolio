@@ -111,6 +111,14 @@ export default function PortfolioTwo() {
       liveLink: "https://to-do-phi-kohl.vercel.app/",
       color: "from-purple-500 to-indigo-500",
     },
+    {
+      title: "Murder Mystery Web Platform (Work in Progress)",
+      description: "An interactive web application currently under development where users solve fictional murder cases by exploring crime scenes, analyzing evidence, and connecting clues. Built with React, Vite, Tailwind CSS, and shadcn/ui.",
+      category: "Web App",
+      icon: Laptop,
+      link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
+      color: "from-cyan-500 to-blue-500",
+    },
   ];
 
   const skills = [

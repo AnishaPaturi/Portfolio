@@ -269,6 +269,14 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/IgniteJEE",
       year: "2024",
       category: "React",
+    },
+    {
+      title: "Murder Mystery Web Platform (Work in Progress)",
+      description: "Murder Mystery Web Platform (Work in Progress) is an interactive web application currently under development that immerses users in a detective-style investigation where they solve fictional murder cases by exploring crime scenes, analyzing evidence, interviewing suspects, and connecting clues. Built with React, Vite, Tailwind CSS, and shadcn/ui, the platform features an interactive drag-and-drop evidence board, detailed suspect profiles, organized case files, and a responsive interface enhanced with modern animations and intuitive user interactions. The project focuses on delivering an engaging investigative experience through thoughtful UI/UX design, reusable components, and scalable front-end architecture while incorporating data visualization and interactive gameplay mechanics. Through this project, I am expanding my expertise in modern React development, state management, drag-and-drop interfaces, responsive design, and building immersive web applications with component-driven architecture.",
+      tech: ["React", "Vite", "Tailwind CSS", "shadcn/ui"],
+      link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
+      year: "2026",
+      category: "React",
     }
   ];
 
