@@ -36,10 +36,11 @@ export default function PortfolioOne() {
       liveLink: "https://secret-santa-theta-nine.vercel.app/",
     },
     {
-      title: "Mood Angles",
-      description: "An innovative mood tracking application using angular perspectives",
-      tech: ["Angular", "TypeScript"],
+      title: "Mood-Angles",
+      description: "An AI-powered mental health and telepsychiatry platform combining intelligent mood tracking, machine learning, RAG, and telepsychiatry services. Built with the MERN stack, Python, and LangChain.",
+      tech: ["MongoDB", "Express.js", "React", "Node.js", "Python", "LangChain"],
       link: "https://github.com/AnishaPaturi/Mood-Angles",
+      liveLink: "https://mood-angles.vercel.app",
     },
     {
       title: "CodeSleuth – Human vs AI Code Detector",

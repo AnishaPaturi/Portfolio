@@ -46,11 +46,12 @@ export default function PortfolioTwo() {
       color: "from-pink-500 to-rose-500",
     },
     {
-      title: "Mood Angles",
-      description: "Mood tracking application with angular perspectives",
-      category: "Mobile",
-      icon: Smartphone,
+      title: "Mood-Angles",
+      description: "An AI-powered mental health and telepsychiatry platform combining intelligent mood tracking, machine learning, RAG, and telepsychiatry services. Built with the MERN stack, Python, and LangChain.",
+      category: "Web App",
+      icon: Laptop,
       link: "https://github.com/AnishaPaturi/Mood-Angles",
+      liveLink: "https://mood-angles.vercel.app",
       color: "from-violet-500 to-purple-500",
     },
     {
