@@ -59,6 +59,13 @@ export default function PortfolioOne() {
       tech: ["Python", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/GradeSync",
     },
+    {
+      title: "Just Do It.",
+      description: "A modern, responsive to-do list application designed to help users organize daily tasks through a clean interface and engaging animations. Built using HTML, CSS, Bootstrap, and vanilla JavaScript.",
+      tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+      link: "https://github.com/AnishaPaturi/To-Do",
+      liveLink: "https://to-do-phi-kohl.vercel.app/",
+    },
   ];
 
   return (

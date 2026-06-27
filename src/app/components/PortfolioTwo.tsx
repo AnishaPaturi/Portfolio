@@ -102,6 +102,15 @@ export default function PortfolioTwo() {
       liveLink: "https://talent-match-sandy-omega.vercel.app/",
       color: "from-cyan-500 to-blue-500",
     },
+    {
+      title: "Just Do It.",
+      description: "A modern, responsive to-do list application designed to help users organize daily tasks through a clean interface and engaging animations. Built using HTML, CSS, Bootstrap, and vanilla JavaScript.",
+      category: "Web App",
+      icon: Laptop,
+      link: "https://github.com/AnishaPaturi/To-Do",
+      liveLink: "https://to-do-phi-kohl.vercel.app/",
+      color: "from-purple-500 to-indigo-500",
+    },
   ];
 
   const skills = [

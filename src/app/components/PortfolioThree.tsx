@@ -254,6 +254,15 @@ export default function PortfolioThree() {
       category: "JavaScript",
     },
     {
+      title: "Just Do It.",
+      description: "Just Do It. is a modern, responsive to-do list application designed to help users organize daily tasks through a clean interface and engaging animations. Built using HTML, CSS, Bootstrap, and vanilla JavaScript, the application allows users to quickly add tasks, mark them as completed, and remove them with smooth, interactive UI transitions. The project incorporates custom animations, responsive grid layouts, hover effects, and intuitive keyboard interactions to create a seamless user experience while maintaining a lightweight, single-page architecture without external JavaScript frameworks. Through this project, I strengthened my skills in front-end development, DOM manipulation, responsive web design, CSS animations, and creating polished, user-friendly interfaces using modern web technologies.",
+      tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+      link: "https://github.com/AnishaPaturi/To-Do",
+      liveLink: "https://to-do-phi-kohl.vercel.app/",
+      year: "2022",
+      category: "JavaScript",
+    },
+    {
       title: "IgniteJEE",
       description: "Java EE learning and practice platform.",
       tech: ["Java"],
