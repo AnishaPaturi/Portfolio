@@ -38,10 +38,11 @@ export default function PortfolioTwo() {
     },
     {
       title: "Secret Santa",
-      description: "A fun application to organize Secret Santa gift exchanges",
+      description: "A real-time web application modernizing the traditional gift exchange with QR code invites and instant assignments. Built with Next.js, React, Firebase, Tailwind CSS, and Framer Motion.",
       category: "Web App",
       icon: Laptop,
       link: "https://github.com/AnishaPaturi/Secret-Santa-",
+      liveLink: "https://secret-santa-theta-nine.vercel.app/",
       color: "from-pink-500 to-rose-500",
     },
     {

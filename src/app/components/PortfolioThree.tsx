@@ -106,8 +106,8 @@ export default function PortfolioThree() {
     },
     {
       title: "Secret Santa",
-      description: "Real-time Secret Santa app with QR code joining and festive UI animations.",
-      tech: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+      description: "Secret Santa is a real-time web application that modernizes the traditional Secret Santa gift exchange by enabling users to create groups, invite participants through QR codes or shareable links, and instantly assign gift recipients without requiring page refreshes. Built with Next.js, React, Firebase Firestore, Tailwind CSS, and Framer Motion, the platform leverages real-time database synchronization to keep all participants updated while ensuring that each user can view only their own assigned recipient. The application features a festive and responsive user interface enhanced with animations, sound effects, confetti celebrations, and persistent session management for a seamless experience across desktop and mobile devices. This project strengthened my expertise in real-time application development, cloud-based databases, responsive UI design, state management, and deploying scalable full-stack applications using modern web technologies.",
+      tech: ["Next.js", "React", "Firebase", "Tailwind CSS", "Framer Motion"],
       link: "https://github.com/AnishaPaturi/Secret-Santa-",
       liveLink: "https://secret-santa-theta-nine.vercel.app/",
       year: "2024",
