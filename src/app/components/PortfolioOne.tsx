@@ -10,10 +10,11 @@ export default function PortfolioOne() {
       link: "https://github.com/AnishaPaturi/HomeVerse",
     },
     {
-      title: "CareerPilot-AI",
-      description: "A complete AI-powered student career preparation ecosystem with automated resume auditing, mock interview simulation, DSA roadmapping, and RAG-based study assistants.",
-      tech: ["React", "Spring Boot", "FastAPI", "MySQL", "ChromaDB", "AI"],
+      title: "AI CareerOS (CareerPilot-AI)",
+      description: "A unified AI-powered career preparation and placement ecosystem bringing together mock interviews, resume auditing, DSA planning, and RAG search. Built using a Spring Boot and FastAPI microservices architecture.",
+      tech: ["Spring Boot", "FastAPI", "React", "MySQL", "ChromaDB", "LangChain", "Microservices"],
       link: "https://github.com/AnishaPaturi/CareerPilot-AI",
+      liveLink: "https://career-pilot-ai-delta.vercel.app",
     },
     {
       title: "ResumeIQ",

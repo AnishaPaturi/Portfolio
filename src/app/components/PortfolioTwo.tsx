@@ -12,11 +12,12 @@ export default function PortfolioTwo() {
       color: "from-cyan-500 to-blue-500",
     },
     {
-      title: "CareerPilot-AI",
-      description: "A complete AI-powered student career preparation ecosystem.",
+      title: "AI CareerOS (CareerPilot-AI)",
+      description: "A unified AI-powered career preparation and placement ecosystem bringing together mock interviews, resume auditing, DSA planning, and RAG search. Built using a Spring Boot and FastAPI microservices architecture.",
       category: "AI Tool",
       icon: Code2,
       link: "https://github.com/AnishaPaturi/CareerPilot-AI",
+      liveLink: "https://career-pilot-ai-delta.vercel.app",
       color: "from-purple-500 to-indigo-500",
     },
     {
