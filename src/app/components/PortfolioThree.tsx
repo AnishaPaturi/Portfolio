@@ -204,9 +204,9 @@ export default function PortfolioThree() {
       category: "Python",
     },
     {
-      title: "FeedForward",
-      description: "Community-driven feedback platform with real-time updates.",
-      tech: ["React", "Firebase", "Tailwind CSS"],
+      title: "FeedForward: Customer Feedback Prioritizer for Product Teams",
+      description: "FeedForward: Customer Feedback Prioritizer for Product Teams is an AI-powered platform designed to help product teams efficiently manage and prioritize large volumes of customer feedback collected from surveys, in-app reviews, and social media. The application leverages natural language processing (NLP) to automatically categorize feedback based on urgency and business impact, identify recurring pain points, and generate prioritized action items that enable faster, data-driven product decisions. Built with React.js, Python, and MongoDB, the platform provides an intuitive dashboard for visualizing feedback insights while supporting seamless integration with productivity tools such as Notion, Slack, and Email for streamlined team collaboration. This project enhanced my skills in AI-driven text processing, full-stack web development, database management, API integration, and building intelligent applications that transform unstructured customer feedback into actionable business insights.",
+      tech: ["React", "Python", "MongoDB", "NLP"],
       link: "https://github.com/AnishaPaturi/FeedForward",
       year: "2023",
       category: "React",
