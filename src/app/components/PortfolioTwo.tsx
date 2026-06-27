@@ -129,6 +129,15 @@ export default function PortfolioTwo() {
       link: "https://github.com/AnishaPaturi/Invoice_Agent",
       color: "from-purple-500 to-indigo-500",
     },
+    {
+      title: "CineMatch AI – Movie Recommendation Platform",
+      description: "An AI-powered movie recommendation ecosystem combining machine learning with full-stack web and mobile development. Built with React, React Native, FastAPI, Node.js, Express, MongoDB, and Docker.",
+      category: "Mobile",
+      icon: Smartphone,
+      link: "https://github.com/AnishaPaturi/movie-recommendation-platform",
+      liveLink: "https://movie-recommendation-platform-nine.vercel.app/",
+      color: "from-cyan-500 to-blue-500",
+    },
   ];
 
   const skills = [

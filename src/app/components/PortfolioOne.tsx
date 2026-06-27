@@ -80,6 +80,13 @@ export default function PortfolioOne() {
       tech: ["Python", "FastAPI", "LangChain", "LangGraph", "OpenAI"],
       link: "https://github.com/AnishaPaturi/Invoice_Agent",
     },
+    {
+      title: "CineMatch AI – Movie Recommendation Platform",
+      description: "An AI-powered movie recommendation ecosystem combining machine learning with full-stack web and mobile development. Built with React, React Native, FastAPI, Node.js, Express, MongoDB, and Docker.",
+      tech: ["React Native", "React", "FastAPI", "Node.js", "MongoDB", "Docker"],
+      link: "https://github.com/AnishaPaturi/movie-recommendation-platform",
+      liveLink: "https://movie-recommendation-platform-nine.vercel.app/",
+    },
   ];
 
   return (

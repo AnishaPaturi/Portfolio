@@ -287,6 +287,15 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/Invoice_Agent",
       year: "2026",
       category: "Python",
+    },
+    {
+      title: "CineMatch AI – Movie Recommendation Platform",
+      description: "CineMatch AI – Movie Recommendation Platform is an AI-powered movie recommendation ecosystem that combines machine learning with full-stack web and mobile development to deliver personalized movie discovery experiences. Built using React, React Native, FastAPI, Node.js, Express, MongoDB, and Docker, the platform leverages TF-IDF vectorization and cosine similarity to generate intelligent content-based movie recommendations while integrating real-time IMDb poster retrieval, debounced autocomplete search, recommendation history, and a \"Surprise Me\" discovery feature. Its microservices architecture separates the machine learning engine, API gateway, database, and client applications, providing a scalable and maintainable system for both web and mobile users. Through this project, I strengthened my expertise in recommendation systems, machine learning, microservices architecture, RESTful API development, full-stack engineering, database design, and deploying AI-powered applications with modern cloud-native technologies.",
+      tech: ["React Native", "React", "FastAPI", "Node.js", "MongoDB", "Docker"],
+      link: "https://github.com/AnishaPaturi/movie-recommendation-platform",
+      liveLink: "https://movie-recommendation-platform-nine.vercel.app/",
+      year: "2025",
+      category: "React Native",
     }
   ];
 
