@@ -71,8 +71,8 @@ export default function PortfolioTwo() {
     },
     {
       title: "AutoDeck",
-      description: "AI-powered automated presentation generator",
-      category: "AI Tool",
+      description: "A Python automation tool designed to streamline the organization of image collections and automatically generate professional PowerPoint presentations. Built with Python, python-pptx, and Pillow.",
+      category: "Dev Tool",
       icon: Code2,
       link: "https://github.com/AnishaPaturi/AutoDeck",
       color: "from-indigo-500 to-blue-500",

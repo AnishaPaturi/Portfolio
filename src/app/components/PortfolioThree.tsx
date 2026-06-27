@@ -149,8 +149,8 @@ export default function PortfolioThree() {
     },
     {
       title: "AutoDeck",
-      description: "AI-powered presentation generator creating slide decks from text input.",
-      tech: ["Python", "OpenAI", "Flask", "AI"],
+      description: "AutoDeck is a Python automation tool designed to streamline the organization of image collections and automatically generate professional PowerPoint presentations. The application categorizes images into folders based on their file formats, creates presentation slides with one image per slide, and optionally exports the generated presentations as PDF documents using Microsoft PowerPoint or LibreOffice. Built with Python, python-pptx, and Pillow, the tool supports multiple image formats, cross-platform compatibility, flexible file management through copy or move operations, and detailed logging for reliable execution. By automating repetitive tasks involved in presentation creation, AutoDeck improves productivity and reduces manual effort while demonstrating practical applications of file system automation, document generation, and cross-platform scripting.",
+      tech: ["Python", "python-pptx", "Pillow", "Automation"],
       link: "https://github.com/AnishaPaturi/AutoDeck",
       year: "2024",
       category: "Python",
