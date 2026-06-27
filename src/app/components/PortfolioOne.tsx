@@ -54,8 +54,8 @@ export default function PortfolioOne() {
     },
     {
       title: "GradeSync",
-      description: "Student grade management and synchronization platform",
-      tech: ["Full Stack", "Database"],
+      description: "A comprehensive student grade management and analytics system showcasing multiple data persistence strategies (flat files, JSON, MySQL) with responsive web dashboards, a Python HTTP server, and PHP modules.",
+      tech: ["Python", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/GradeSync",
     },
   ];

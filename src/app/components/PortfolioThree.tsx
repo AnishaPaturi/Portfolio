@@ -155,8 +155,8 @@ export default function PortfolioThree() {
     },
     {
       title: "GradeSync",
-      description: "Student grade management system using Python, PHP, and SQL.",
-      tech: ["Python", "PHP", "MySQL", "HTML", "CSS"],
+      description: "A comprehensive student grade management and analytics system developed during my software internship at IBaseIT to demonstrate multiple data persistence strategies through a unified application. The project features responsive web dashboards, command-line interfaces, and a PHP-based application supporting multiple storage backends like flat files, JSON documents, and MySQL databases.",
+      tech: ["Python", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/GradeSync",
       year: "2024",
       category: "Python",
@@ -290,7 +290,7 @@ export default function PortfolioThree() {
       company: "IBaseIT",
       period: "May 2024 - June 2024",
       description:
-        "Developed GradeSync, a student grade management system using Python, PHP, and SQL. Streamlined managing student data and class averages through a web-based interface.",
+        "Developed GradeSync, a comprehensive student grade management and analytics system. Implemented responsive web dashboards and supported multiple storage backends including flat files, JSON, and MySQL databases.",
     },
   ];
 
