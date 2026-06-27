@@ -31,9 +31,9 @@ export default function PortfolioThree() {
   
   const projects = [
     {
-      title: "HomeVerse",
-      description: "An AI-powered interior design and room customization platform that transforms 2D room photos into interactive, editable 3D environments with an AI Design Copilot.",
-      tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "SAM 2", "AI"],
+      title: "HomeVerse (Work in Progress)",
+      description: "HomeVerse (Work in Progress) is an AI-powered interior design platform currently under development that transforms ordinary room photos into fully customizable 3D living spaces using computer vision, generative AI, and interactive design tools. Built with Next.js, FastAPI, Three.js, React Three Fiber, PostgreSQL, and modern AI models, the platform analyzes uploaded room images through object detection and segmentation, generates multiple interior design variations in different styles, and converts the selected design into an editable 3D studio where users can modify furniture, materials, colors, lighting, and layouts. It also features an AI Design Copilot capable of understanding natural language design requests, along with plans for furniture marketplace integration, immersive walkthroughs, AR visualization, and budget estimation. Through this project, I am expanding my expertise in computer vision, generative AI, 3D graphics, full-stack development, interactive visualization, and building scalable AI-powered PropTech applications that bridge interior design with intelligent spatial customization.",
+      tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "React Three Fiber", "AI"],
       link: "https://github.com/AnishaPaturi/HomeVerse",
       year: "2026",
       category: "Full Stack",

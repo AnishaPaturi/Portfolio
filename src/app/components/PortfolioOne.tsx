@@ -4,9 +4,9 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 export default function PortfolioOne() {
   const projects = [
     {
-      title: "HomeVerse",
-      description: "An AI-powered interior design and room customization platform that transforms 2D room photos into interactive, editable 3D environments with an AI Design Copilot.",
-      tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "SAM 2", "AI"],
+      title: "HomeVerse (Work in Progress)",
+      description: "An AI-powered interior design platform currently under development that transforms room photos into editable 3D spaces. Built with Next.js, FastAPI, Three.js, React Three Fiber, and PostgreSQL.",
+      tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "React Three Fiber", "AI"],
       link: "https://github.com/AnishaPaturi/HomeVerse",
     },
     {
