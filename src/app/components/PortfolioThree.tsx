@@ -246,11 +246,12 @@ export default function PortfolioThree() {
     },
     {
       title: "Amazon Clone",
-      description: "E-commerce clone with Redux, Firebase, and Stripe.",
-      tech: ["React", "Redux", "Firebase", "Stripe"],
+      description: "Amazon Clone is a modern, responsive front-end e-commerce application that recreates the core user experience of Amazon using HTML, CSS, and vanilla JavaScript. The application features an automated hero banner slider, interactive product carousels, a fully functional shopping cart drawer with real-time quantity and subtotal updates, intelligent search suggestions, and a location preference modal with postal code validation. Designed with a clean and responsive interface, it incorporates smooth animations, dynamic notifications, and a customizable design system to deliver an engaging shopping experience without relying on external JavaScript frameworks. This project strengthened my understanding of responsive web design, DOM manipulation, state management, UI/UX principles, and modern front-end development by building complex interactive components entirely with native web technologies.",
+      tech: ["HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/Amazon-Clone",
+      liveLink: "https://amazon-clone-silk-six-95.vercel.app/",
       year: "2022",
-      category: "React",
+      category: "JavaScript",
     },
     {
       title: "IgniteJEE",
