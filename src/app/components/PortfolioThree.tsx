@@ -97,9 +97,9 @@ export default function PortfolioThree() {
       category: "TypeScript",
     },
     {
-      title: "VizTalk",
-      description: "Conversational data analytics platform transforming voice/text to insights and charts.",
-      tech: ["Python", "Streamlit", "Whisper", "FFmpeg", "OpenRouter", "DeepSeek"],
+      title: "VizTalk – Conversational BI Dashboard",
+      description: "VizTalk – Conversational BI Dashboard is an AI-powered business intelligence platform that enables users to generate interactive dashboards and data visualizations using natural language queries, eliminating the need to write SQL manually. Built with Streamlit, FastAPI, SQLite, and Plotly, the application leverages large language models through OpenRouter and DeepSeek to convert user prompts into optimized SQL queries, execute them on a marketing analytics dataset, automatically select the most suitable chart type, and present results through interactive visualizations. The platform also supports user authentication, persistent chat history, voice input, and browser-based session management, creating a seamless conversational analytics experience for non-technical users. Through this project, I gained practical experience in AI-powered data analytics, LLM integration, natural language-to-SQL generation, backend API development, database management, and building intelligent business intelligence applications.",
+      tech: ["Streamlit", "FastAPI", "SQLite", "Plotly", "OpenRouter", "DeepSeek", "AI"],
       link: "https://github.com/AnishaPaturi/VizTalk",
       year: "2025",
       category: "Python",
