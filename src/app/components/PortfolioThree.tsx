@@ -90,7 +90,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Ctrl+S of Shame",
-      description: "VS Code extension detecting errors on file save using VS Code Diagnostics API.",
+      description: "Ctrl+S of Shame is a fun and lightweight Visual Studio Code extension designed to encourage better coding habits by adding a humorous consequence to saving or debugging code with compilation errors. The extension monitors the editor for diagnostics and automatically plays a dramatic scream whenever a file containing errors is saved or a debugging session is started without resolving existing issues. It also incorporates a cooldown mechanism to prevent repetitive audio triggers and ensure a smooth user experience. Built using the Visual Studio Code Extension API, the project demonstrates event-driven programming, editor integration, and developer tooling while showcasing how productivity tools can combine functionality with engaging user interactions.",
       tech: ["TypeScript", "VS Code Extension API", "Node.js"],
       link: "https://github.com/AnishaPaturi/CtrlSofShame",
       year: "2026",
