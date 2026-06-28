@@ -1355,7 +1355,7 @@ export default function PortfolioThree() {
                             
                             <div className="relative z-10 text-center p-8 pointer-events-none">
                               <div className="inline-block px-3 py-1 bg-blue-50 border border-blue-200 text-blue-700 rounded-full text-[10px] font-mono mb-3">
-                                {project.year} • Featured
+                                Featured
                               </div>
                               <h4 className="text-2xl font-bold text-slate-800 font-display">
                                 {project.title}
@@ -1416,8 +1416,7 @@ export default function PortfolioThree() {
                         onMouseLeave={() => setCursorText("")}
                       >
                         <div>
-                          <div className="flex items-center justify-between gap-4 mb-3">
-                            <span className="text-[10px] font-mono text-slate-400">{project.year}</span>
+                          <div className="flex items-center justify-end mb-3">
                             
                             <a
                               href={project.liveLink || project.link}
