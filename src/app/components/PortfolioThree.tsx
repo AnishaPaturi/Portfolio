@@ -4,11 +4,10 @@ import {
   Linkedin,
   Mail,
   ExternalLink,
-  Home,
+  Menu,
   Briefcase,
   User,
   MessageSquare,
-  Menu,
   Award,
   Code,
   Smartphone,
@@ -21,7 +20,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react
 import profileImage from "../../assets/profile.png";
 
 export default function PortfolioThree() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("about");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -388,27 +387,65 @@ export default function PortfolioThree() {
   ];
 
   const skillsData = [
-    { name: "React", category: "Frontend", level: 90, gradient: "from-blue-400 to-cyan-500", icon: "react" },
-    { name: "HTML", category: "Frontend", level: 95, gradient: "from-orange-500 to-red-500", icon: "html" },
-    { name: "CSS", category: "Frontend", level: 90, gradient: "from-blue-500 to-indigo-500", icon: "css" },
-    { name: "JavaScript", category: "Language", level: 92, gradient: "from-yellow-400 to-amber-500", icon: "js" },
-    { name: "TypeScript", category: "Language", level: 88, gradient: "from-blue-500 to-blue-600", icon: "ts" },
-    { name: "Python", category: "Language", level: 95, gradient: "from-blue-500 to-yellow-500", icon: "python" },
-    { name: "Java", category: "Language", level: 90, gradient: "from-red-500 to-orange-500", icon: "java" },
-    { name: "C++", category: "Language", level: 75, gradient: "from-blue-600 to-indigo-600", icon: "cpp" },
-    { name: "MongoDB", category: "Database", level: 80, gradient: "from-green-400 to-emerald-500", icon: "mongodb" },
-    { name: "MySQL", category: "Database", level: 82, gradient: "from-blue-400 to-indigo-500", icon: "mysql" },
-    { name: "Express.js", category: "Backend", level: 85, gradient: "from-gray-400 to-gray-500", icon: "express" },
-    { name: "Node.js", category: "Runtime", level: 88, gradient: "from-green-500 to-emerald-600", icon: "node" },
-    { name: "SpringBoot", category: "Framework", level: 80, gradient: "from-green-500 to-emerald-500", icon: "springboot" },
-    { name: "Bootstrap", category: "Framework", level: 85, gradient: "from-purple-500 to-indigo-600", icon: "bootstrap" },
-    { name: "LangChain", category: "Agentic AI", level: 85, gradient: "from-purple-500 to-fuchsia-500", icon: "langchain" },
-    { name: "LangGraph", category: "Agentic AI", level: 80, gradient: "from-indigo-500 to-purple-600", icon: "langchain" },
-    { name: "Machine Learning", category: "AI/ML", level: 85, gradient: "from-pink-500 to-rose-500", icon: "brain" },
-    { name: "Deep Learning", category: "AI/ML", level: 80, gradient: "from-rose-500 to-red-500", icon: "brain" },
-    { name: "Transformers", category: "AI/ML", level: 82, gradient: "from-purple-500 to-pink-500", icon: "brain" },
-    { name: "GenAI", category: "AI/ML", level: 88, gradient: "from-purple-400 to-blue-500", icon: "brain" },
-    { name: "Streamlit", category: "AI/ML", level: 85, gradient: "from-red-400 to-orange-500", icon: "streamlit" },
+    // Front End
+    { name: "React", category: "Front End", level: 90, gradient: "from-blue-500 to-cyan-500", icon: "react" },
+    { name: "HTML", category: "Front End", level: 95, gradient: "from-orange-500 to-red-500", icon: "html" },
+    { name: "CSS", category: "Front End", level: 90, gradient: "from-blue-600 to-indigo-600", icon: "css" },
+    { name: "JavaScript", category: "Front End", level: 92, gradient: "from-yellow-500 to-amber-500", icon: "js" },
+    
+    // Middle Tier
+    { name: "C", category: "Middle Tier", level: 78, gradient: "from-blue-600 to-cyan-600", icon: "cpp" },
+    { name: "Java", category: "Middle Tier", level: 90, gradient: "from-red-500 to-orange-500", icon: "java" },
+    { name: "Python", category: "Middle Tier", level: 95, gradient: "from-blue-600 to-yellow-600", icon: "python" },
+    { name: "C++", category: "Middle Tier", level: 82, gradient: "from-blue-600 to-indigo-600", icon: "cpp" },
+    
+    // Back End
+    { name: "MySQL", category: "Back End", level: 85, gradient: "from-blue-500 to-indigo-600", icon: "mysql" },
+    { name: "MongoDB", category: "Back End", level: 82, gradient: "from-green-500 to-emerald-600", icon: "mongodb" },
+    { name: "Express.js", category: "Back End", level: 85, gradient: "from-gray-500 to-gray-600", icon: "express" },
+    { name: "Node.js", category: "Back End", level: 88, gradient: "from-green-600 to-emerald-600", icon: "node" },
+    
+    // Frameworks
+    { name: "Bootstrap", category: "Frame Works", level: 85, gradient: "from-purple-600 to-indigo-600", icon: "bootstrap" },
+    { name: "SpringBoot (Basics)", category: "Frame Works", level: 80, gradient: "from-green-600 to-emerald-500", icon: "springboot" },
+    
+    // AI/ML
+    { name: "Machine Learning", category: "AI/ML", level: 88, gradient: "from-pink-600 to-rose-600", icon: "brain" },
+    { name: "Deep Learning", category: "AI/ML", level: 85, gradient: "from-rose-600 to-red-600", icon: "brain" },
+    { name: "Transformers", category: "AI/ML", level: 84, gradient: "from-purple-600 to-pink-600", icon: "brain" },
+    { name: "GenAI", category: "AI/ML", level: 90, gradient: "from-purple-500 to-blue-600", icon: "brain" },
+    { name: "Streamlit", category: "AI/ML", level: 85, gradient: "from-red-500 to-orange-500", icon: "streamlit" },
+    { name: "TensorFlow", category: "AI/ML", level: 82, gradient: "from-orange-500 to-yellow-500", icon: "brain" },
+    { name: "Keras", category: "AI/ML", level: 80, gradient: "from-red-500 to-rose-500", icon: "brain" },
+    { name: "PyTorch", category: "AI/ML", level: 84, gradient: "from-orange-600 to-red-600", icon: "brain" },
+    { name: "Vision Transformer (ViT)", category: "AI/ML", level: 82, gradient: "from-purple-500 to-pink-500", icon: "brain" },
+    
+    // Agentic AI
+    { name: "LangChain", category: "Agentic AI", level: 88, gradient: "from-purple-600 to-fuchsia-600", icon: "langchain" },
+    { name: "LangGraph", category: "Agentic AI", level: 85, gradient: "from-indigo-600 to-purple-600", icon: "langchain" },
+    
+    // Cloud & DevOps
+    { name: "AWS", category: "Cloud & DevOps", level: 80, gradient: "from-yellow-500 to-orange-500", icon: "aws" },
+    { name: "Docker", category: "Cloud & DevOps", level: 85, gradient: "from-blue-400 to-blue-500", icon: "docker" },
+    { name: "Kubernetes", category: "Cloud & DevOps", level: 75, gradient: "from-blue-600 to-indigo-600", icon: "kubernetes" },
+    
+    // CS Fundamentals
+    { name: "Data Structures & Algorithms (DSA)", category: "Computer Science Fundamentals", level: 90, gradient: "from-purple-600 to-indigo-600", icon: "dsa" },
+    { name: "Algorithm Analysis", category: "Computer Science Fundamentals", level: 88, gradient: "from-indigo-600 to-blue-600", icon: "dsa" },
+    { name: "Problem Solving", category: "Computer Science Fundamentals", level: 92, gradient: "from-emerald-500 to-teal-500", icon: "dsa" },
+    { name: "Competitive Programming", category: "Computer Science Fundamentals", level: 85, gradient: "from-red-500 to-rose-500", icon: "dsa" },
+    
+    // Backend Concepts
+    { name: "Pagination", category: "Backend Concepts", level: 88, gradient: "from-slate-500 to-slate-600", icon: "backend" },
+    { name: "Idempotency", category: "Backend Concepts", level: 85, gradient: "from-slate-600 to-slate-700", icon: "backend" },
+    { name: "Caching (Redis Basics)", category: "Backend Concepts", level: 84, gradient: "from-red-600 to-orange-600", icon: "backend" },
+    { name: "RabbitMQ", category: "Backend Concepts", level: 80, gradient: "from-orange-500 to-amber-500", icon: "backend" },
+    { name: "Prometheus", category: "Backend Concepts", level: 78, gradient: "from-[#e6522c] to-orange-600", icon: "backend" },
+    
+    // Tools & Platforms
+    { name: "Git", category: "Tools & Platforms", level: 92, gradient: "from-orange-600 to-red-600", icon: "git" },
+    { name: "GitHub", category: "Tools & Platforms", level: 94, gradient: "from-slate-800 to-slate-900", icon: "github" },
+    { name: "Jupyter Notebook", category: "Tools & Platforms", level: 88, gradient: "from-orange-500 to-amber-600", icon: "jupyter" },
   ];
 
   const experience = [
@@ -478,7 +515,7 @@ export default function PortfolioThree() {
     switch (iconName) {
       case "react":
         return (
-          <svg viewBox="0 0 100 100" className="size-12 text-[#61DAFB] fill-none stroke-current" strokeWidth="2.5">
+          <svg viewBox="0 0 100 100" className="size-12 text-[#149eca] fill-none stroke-current" strokeWidth="2.5">
             <ellipse cx="50" cy="50" rx="8" ry="20" transform="rotate(30 50 50)" />
             <ellipse cx="50" cy="50" rx="8" ry="20" transform="rotate(90 50 50)" />
             <ellipse cx="50" cy="50" rx="8" ry="20" transform="rotate(150 50 50)" />
@@ -501,7 +538,7 @@ export default function PortfolioThree() {
         );
       case "js":
         return (
-          <svg viewBox="0 0 100 100" className="size-12 text-[#F7DF1E] fill-none stroke-current" strokeWidth="2.5">
+          <svg viewBox="0 0 100 100" className="size-12 text-[#d1b000] fill-none stroke-current" strokeWidth="2.5">
             <rect x="15" y="15" width="70" height="70" rx="8" />
             <text x="58" y="72" fontSize="36" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor" textAnchor="middle">JS</text>
           </svg>
@@ -517,7 +554,7 @@ export default function PortfolioThree() {
         return (
           <svg viewBox="0 0 100 100" className="size-12 fill-none stroke-current" strokeWidth="2.5">
             <path d="M50 10 C35 10 30 18 30 28 L30 38 L50 38 L50 42 L24 42 C16 42 10 48 10 60 C10 72 18 78 28 78 L38 78 L38 72 C38 60 48 50 60 50 L72 50 L72 40 C72 24 64 10 50 10 Z" stroke="#3776AB" />
-            <path d="M50 90 C65 90 70 82 70 72 L70 62 L50 62 L50 58 L76 58 C84 58 90 52 90 40 C90 28 82 22 72 22 L62 22 L62 28 C62 40 52 50 40 50 L28 50 L28 60 C28 76 36 90 50 90 Z" stroke="#FFD43B" />
+            <path d="M50 90 C65 90 70 82 70 72 L70 62 L50 62 L50 58 L76 58 C84 58 90 52 90 40 C90 28 82 22 72 22 L62 22 L62 28 C62 40 52 50 40 50 L28 50 L28 60 C28 76 36 90 50 90 Z" stroke="#a48b11" />
           </svg>
         );
       case "java":
@@ -554,7 +591,7 @@ export default function PortfolioThree() {
         );
       case "express":
         return (
-          <svg viewBox="0 0 100 100" className="size-12 text-white fill-none stroke-current" strokeWidth="2.5">
+          <svg viewBox="0 0 100 100" className="size-12 text-slate-800 fill-none stroke-current" strokeWidth="2.5">
             <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="36" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor">ex</text>
             <circle cx="50" cy="50" r="42" />
           </svg>
@@ -603,8 +640,69 @@ export default function PortfolioThree() {
             <circle cx="50" cy="55" r="10" />
           </svg>
         );
+      case "git":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-[#F05032] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="18" r="3" />
+            <circle cx="6" cy="6" r="3" />
+            <circle cx="12" cy="6" r="3" />
+            <path d="M6 9a9 9 0 0 0 9 9" />
+            <path d="M12 9v6" />
+          </svg>
+        );
+      case "github":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-slate-800 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+        );
+      case "aws":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-[#FF9900] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        );
+      case "docker":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-[#2496ED] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 10.5V13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2.5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2zM6 6h4v2.5H6zM14 6h4v2.5H14z" />
+          </svg>
+        );
+      case "kubernetes":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-[#326CE5] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2l8.5 5v10L12 22l-8.5-5V7z" />
+            <path d="M12 6v12M7.5 12h9" />
+          </svg>
+        );
+      case "jupyter":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#F37626] fill-none stroke-current" strokeWidth="2.5">
+            <ellipse cx="50" cy="35" rx="30" ry="10" />
+            <ellipse cx="50" cy="65" rx="30" ry="10" />
+            <circle cx="50" cy="50" r="8" fill="currentColor" />
+          </svg>
+        );
+      case "dsa":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-indigo-650 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="9" rx="1" />
+            <rect x="14" y="3" width="7" height="5" rx="1" />
+            <rect x="14" y="12" width="7" height="9" rx="1" />
+            <rect x="3" y="16" width="7" height="5" rx="1" />
+            <path d="M7 7h7M10 18h4" />
+          </svg>
+        );
+      case "backend":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-slate-700 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3" />
+            <path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            <path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6" />
+          </svg>
+        );
       default:
-        return <Code className="size-12 text-purple-400" />;
+        return <Code className="size-12 text-purple-600" />;
     }
   };
 
@@ -646,26 +744,26 @@ export default function PortfolioThree() {
     const getColorClass = (level: number) => {
       switch (level) {
         case 1:
-          return "bg-[#0e4429] border-[#104b2e]";
+          return "bg-[#c6e48b] border-[#b0d87a]";
         case 2:
-          return "bg-[#006d32] border-[#017838]";
+          return "bg-[#7bc96f] border-[#6eb762]";
         case 3:
-          return "bg-[#26a641] border-[#29b647]";
+          return "bg-[#239a3b] border-[#1d8731]";
         case 4:
-          return "bg-[#39d353] border-[#3ee65b]";
+          return "bg-[#196127] border-[#144f1f]";
         default:
-          return "bg-[#161b22] border-[#21262d]";
+          return "bg-[#ebedf0] border-[#dcdfe4]";
       }
     };
 
     return (
-      <div className="flex flex-col items-center p-6 bg-[#09090f]/90 border border-white/5 rounded-3xl shadow-2xl backdrop-blur-md">
+      <div className="flex flex-col items-center p-6 bg-white border border-slate-200/60 rounded-3xl shadow-xl backdrop-blur-md">
         <div className="w-full flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <Calendar className="size-5 text-purple-400" />
-            <h3 className="text-lg font-bold text-white tracking-wide">Contributions Graph</h3>
+            <Calendar className="size-5 text-purple-600" />
+            <h3 className="text-lg font-bold text-slate-800 tracking-wide">Contributions Graph</h3>
           </div>
-          <span className="text-xs text-gray-500 font-mono">Simulated from @AnishaPaturi live activity</span>
+          <span className="text-xs text-slate-400 font-mono">Simulated from @AnishaPaturi live activity</span>
         </div>
         <div className="overflow-x-auto w-full flex justify-center py-2 max-w-full">
           <div className="grid grid-flow-col gap-[3px] select-none min-w-[700px]">
@@ -684,17 +782,17 @@ export default function PortfolioThree() {
             ))}
           </div>
         </div>
-        <div className="w-full flex items-center justify-between mt-6 text-xs text-gray-400">
+        <div className="w-full flex items-center justify-between mt-6 text-xs text-slate-500">
           <div className="flex items-center gap-2">
             <span>840 contributions in the last year</span>
           </div>
           <div className="flex items-center gap-1.5 font-mono">
             <span>Less</span>
-            <div className="size-[10px] rounded-[2px] bg-[#161b22] border-[#21262d]" />
-            <div className="size-[10px] rounded-[2px] bg-[#0e4429] border-[#104b2e]" />
-            <div className="size-[10px] rounded-[2px] bg-[#006d32] border-[#017838]" />
-            <div className="size-[10px] rounded-[2px] bg-[#26a641] border-[#29b647]" />
-            <div className="size-[10px] rounded-[2px] bg-[#39d353] border-[#3ee65b]" />
+            <div className="size-[10px] rounded-[2px] bg-[#ebedf0] border-[#dcdfe4]" />
+            <div className="size-[10px] rounded-[2px] bg-[#c6e48b] border-[#b0d87a]" />
+            <div className="size-[10px] rounded-[2px] bg-[#7bc96f] border-[#6eb762]" />
+            <div className="size-[10px] rounded-[2px] bg-[#239a3b] border-[#1d8731]" />
+            <div className="size-[10px] rounded-[2px] bg-[#196127] border-[#144f1f]" />
             <span>More</span>
           </div>
         </div>
@@ -714,23 +812,23 @@ export default function PortfolioThree() {
   ];
 
   return (
-    <div className="size-full flex flex-col text-white relative min-h-screen overflow-hidden bg-[#050508] selection:bg-purple-500/30 font-sans">
+    <div className="size-full flex flex-col text-slate-800 relative min-h-screen overflow-hidden bg-[#f4f3f9] selection:bg-purple-500/20 font-sans">
       
-      {/* Custom Cursor Ring & Dot */}
+      {/* Custom Cursor Ring & Dot (Themed Light) */}
       {!isMobile && (
         <>
           <motion.div
-            className="fixed top-0 left-0 size-8 rounded-full border border-purple-500 pointer-events-none z-[9999]"
+            className="fixed top-0 left-0 size-8 rounded-full border border-purple-600 pointer-events-none z-[9999]"
             style={{
               x: cursorXSpring,
               y: cursorYSpring,
               scale: cursorHovered ? 1.4 : 1,
-              backgroundColor: cursorHovered ? "rgba(168, 85, 247, 0.15)" : "transparent",
-              borderColor: cursorHovered ? "#d8b4fe" : "#a855f7",
+              backgroundColor: cursorHovered ? "rgba(147, 51, 234, 0.08)" : "transparent",
+              borderColor: cursorHovered ? "#a855f7" : "#7c3aed",
             }}
           />
           <motion.div
-            className="fixed top-0 left-0 size-2 bg-purple-500 rounded-full pointer-events-none z-[9999]"
+            className="fixed top-0 left-0 size-2 bg-purple-600 rounded-full pointer-events-none z-[9999]"
             style={{
               x: useSpring(cursorX, { damping: 15, stiffness: 450 }),
               y: useSpring(cursorY, { damping: 15, stiffness: 450 }),
@@ -740,25 +838,29 @@ export default function PortfolioThree() {
         </>
       )}
 
-      {/* Ambient background blur blobs */}
+      {/* Soft Ambient Theme Blobs matching the light peach/lavender of 1.png */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-25%] left-[-15%] w-[60%] h-[60%] rounded-full bg-purple-950/20 blur-[130px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-950/15 blur-[120px]" />
-        <div className="absolute top-[40%] right-[10%] w-[45%] h-[45%] rounded-full bg-fuchsia-950/10 blur-[140px]" />
+        <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-rose-200/40 blur-[120px]" />
+        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-200/30 blur-[130px]" />
+        <div className="absolute bottom-[-15%] right-[10%] w-[45%] h-[45%] rounded-full bg-blue-100/40 blur-[140px]" />
       </div>
 
-      {/* ================= FLOATING TOP NAVIGATION HEADER (Styled like 7.png) ================= */}
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-black/60 backdrop-blur-2xl border border-purple-500/20 rounded-full px-6 py-3 shadow-[0_10px_30px_rgba(168,85,247,0.08)] flex items-center justify-between transition-all duration-300">
+      {/* ================= FLOATING TOP NAVIGATION HEADER (Light Theme version of 7.png) ================= */}
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/70 backdrop-blur-2xl border border-slate-200/60 rounded-full px-6 py-3 shadow-[0_10px_35px_rgba(0,0,0,0.04)] flex items-center justify-between transition-all duration-300">
         
-        {/* Logo / Brand Name */}
+        {/* Brand Logo Symbol + Text */}
         <button 
-          onClick={() => scrollToSection("home")}
-          className="text-sm font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent select-none cursor-pointer tracking-wider hover:opacity-80 transition-opacity"
+          onClick={() => scrollToSection("about")}
+          className="flex items-center gap-2.5 text-slate-800 font-extrabold cursor-pointer tracking-wider hover:opacity-85 transition-opacity"
         >
-          ANISHA PATURI
+          {/* Simple dark logo mimicking the header symbol in 1.png */}
+          <div className="size-6 bg-slate-900 rounded-full flex items-center justify-center text-white text-[11px] font-black tracking-tighter">
+            E
+          </div>
+          <span className="text-xs font-black tracking-widest uppercase">ANISHA PATURI</span>
         </button>
 
-        {/* Desktop Navigation Links (Pill list) */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6">
           {navItems.map(([section, label]) => {
             const isActive = activeSection === section;
@@ -767,14 +869,14 @@ export default function PortfolioThree() {
                 key={section}
                 onClick={() => scrollToSection(section)}
                 className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer relative py-1 ${
-                  isActive ? "text-purple-400" : "text-gray-400 hover:text-white"
+                  isActive ? "text-purple-600 font-extrabold" : "text-slate-500 hover:text-slate-900"
                 }`}
               >
                 {label}
                 {isActive && (
                   <motion.span 
                     layoutId="activeIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
                   />
                 )}
               </button>
@@ -785,24 +887,24 @@ export default function PortfolioThree() {
         {/* Mobile Toggle Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 bg-white/5 border border-white/10 rounded-full text-white cursor-pointer hover:bg-white/10 transition-colors"
+          className="lg:hidden p-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-full border border-slate-200/40 cursor-pointer transition-colors"
         >
           <Menu className="size-4" />
         </button>
       </header>
 
-      {/* Mobile Fullscreen Glassmorphic Overlay Menu */}
+      {/* Mobile Fullscreen Glassmorphic Overlay Menu (Light theme) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-8 lg:hidden"
+            className="fixed inset-0 z-50 bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center p-8 lg:hidden text-slate-900"
           >
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-6 right-6 p-3 bg-white/5 border border-white/10 rounded-full text-white cursor-pointer hover:bg-white/10 transition-colors"
+              className="absolute top-6 right-6 p-3 bg-slate-100 hover:bg-slate-200 border border-slate-200 rounded-full text-slate-800 cursor-pointer transition-colors"
             >
               <X className="size-6" />
             </button>
@@ -816,8 +918,8 @@ export default function PortfolioThree() {
                       scrollToSection(section);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`text-2xl font-bold uppercase tracking-widest transition-colors cursor-pointer ${
-                      isActive ? "text-purple-400" : "text-gray-400"
+                    className={`text-2xl font-black uppercase tracking-widest transition-colors cursor-pointer ${
+                      isActive ? "text-purple-600" : "text-slate-500"
                     }`}
                   >
                     {label}
@@ -835,7 +937,7 @@ export default function PortfolioThree() {
         max-w-7xl mx-auto px-6 md:px-16 pt-36 pb-20 space-y-32"
       >
 
-        {/* 1. ABOUT ME SECTION (COMBINED HERO & ABOUT ME) */}
+        {/* 1. ABOUT ME SECTION (COMBINED HERO & ABOUT ME - LIGHT THEME) */}
         <section id="about" className="scroll-mt-24 pt-8">
           <div className="max-w-6xl mx-auto">
             
@@ -844,21 +946,21 @@ export default function PortfolioThree() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold tracking-wider uppercase"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold tracking-wider uppercase"
               >
-                <span className="size-2 rounded-full bg-purple-400 animate-pulse" />
+                <span className="size-2 rounded-full bg-purple-500 animate-pulse" />
                 Available for new opportunities
               </motion.div>
             </div>
 
-            {/* Row 1: Profile Graphic Node Layout from 6.png */}
+            {/* Row 1: Profile Graphic Node Layout (Light Mode matching 6.png structure) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center mb-16 relative">
               
               {/* Left Column: Hello & Roles */}
               <div className="lg:col-span-4 space-y-12 text-left">
                 <div>
-                  <h4 className="text-6xl font-extrabold text-white mb-4">Hello,</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed font-light max-w-sm">
+                  <h4 className="text-6xl font-black text-slate-900 mb-4">Hello,</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed font-normal max-w-sm">
                     Delivering efficient, scalable solutions to transform your tech vision into reality.
                   </p>
                 </div>
@@ -871,23 +973,23 @@ export default function PortfolioThree() {
                     ["Agentic AI Developer", "agents"]
                   ].map(([role, key], idx) => (
                     <div key={idx} className="flex items-center justify-between group">
-                      <span className="text-sm font-bold text-gray-300 group-hover:text-purple-400 transition-colors uppercase tracking-widest">{role}</span>
-                      <div className="flex-1 mx-4 h-[1px] bg-white/10 relative hidden sm:block">
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 size-2 rounded-full bg-white/30 group-hover:bg-purple-400 group-hover:scale-125 transition-all" />
+                      <span className="text-sm font-bold text-slate-600 group-hover:text-purple-600 transition-colors uppercase tracking-widest">{role}</span>
+                      <div className="flex-1 mx-4 h-[1px] bg-slate-200 relative hidden sm:block">
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 size-2 rounded-full bg-slate-300 group-hover:bg-purple-600 group-hover:scale-125 transition-all" />
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Center Column: Portrait Container */}
+              {/* Center Column: Portrait Container (Light Theme) */}
               <div className="lg:col-span-4 flex justify-center relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 rounded-full blur-3xl -z-10" />
-                <div className="relative size-64 sm:size-80 rounded-[40px] border border-white/5 overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.15)] bg-gradient-to-b from-[#0e0e15] to-[#040406] p-3">
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-300/20 to-blue-300/20 rounded-full blur-3xl -z-10" />
+                <div className="relative size-64 sm:size-80 rounded-[40px] border border-slate-200 overflow-hidden shadow-xl bg-white p-3">
                   <img
                     src={profileImage}
                     alt="Anisha Paturi"
-                    className="w-full h-full object-cover rounded-[32px] border border-white/5"
+                    className="w-full h-full object-cover rounded-[32px] border border-slate-100"
                   />
                 </div>
               </div>
@@ -895,8 +997,8 @@ export default function PortfolioThree() {
               {/* Right Column: Name & Connect Nodes */}
               <div className="lg:col-span-4 space-y-10 lg:text-right flex flex-col lg:items-end">
                 <div>
-                  <h4 className="text-4xl font-light text-gray-400 uppercase tracking-widest">I am</h4>
-                  <h5 className="text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent mt-3 leading-tight">
+                  <h4 className="text-4xl font-light text-slate-400 uppercase tracking-widest">I am</h4>
+                  <h5 className="text-5xl font-black bg-gradient-to-r from-purple-600 via-fuchsia-600 to-blue-600 bg-clip-text text-transparent mt-3 leading-tight">
                     Anisha Paturi
                   </h5>
                 </div>
@@ -904,32 +1006,32 @@ export default function PortfolioThree() {
                 {/* Connecting Social Icons */}
                 <div className="flex flex-col gap-4 lg:items-end w-full sm:w-auto">
                   <div 
-                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-purple-500/30 rounded-2xl px-6 py-3.5 shadow-xl transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
+                    className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-purple-500/30 rounded-2xl px-6 py-3.5 shadow-md hover:shadow-lg transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://github.com/AnishaPaturi", "_blank")}
                   >
-                    <Github className="size-5 text-gray-400 group-hover:text-white transition-colors" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors">GitHub</span>
+                    <Github className="size-5 text-slate-500 group-hover:text-slate-900 transition-colors" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-slate-900 transition-colors">GitHub</span>
                   </div>
                   <div 
-                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-blue-500/30 rounded-2xl px-6 py-3.5 shadow-xl transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
+                    className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-blue-500/30 rounded-2xl px-6 py-3.5 shadow-md hover:shadow-lg transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://www.linkedin.com/in/anisha-paturi-8b885a2b5", "_blank")}
                   >
-                    <Linkedin className="size-5 text-gray-400 group-hover:text-white transition-colors" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors">LinkedIn</span>
+                    <Linkedin className="size-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-blue-600 transition-colors">LinkedIn</span>
                   </div>
                 </div>
 
-                {/* Action CTA Buttons (from Hero Section) */}
+                {/* Action CTA Buttons (Styled matching solid black button from 1.png) */}
                 <div className="flex flex-wrap gap-3 w-full justify-center lg:justify-end pt-2">
                   <button
                     onClick={() => scrollToSection("projects")}
-                    className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all text-xs font-bold uppercase tracking-wider border border-white/10 active:scale-95 cursor-pointer shadow-md"
+                    className="px-6 py-3 bg-slate-950 hover:bg-slate-800 text-white rounded-xl shadow-md transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer"
                   >
                     View My Work
                   </button>
                   <button
                     onClick={() => scrollToSection("contact")}
-                    className="px-6 py-3 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer"
+                    className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md rounded-xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer"
                   >
                     Get In Touch
                   </button>
@@ -938,22 +1040,22 @@ export default function PortfolioThree() {
               
             </div>
 
-            {/* Row 2: About Me Card Description */}
-            <div className="bg-[#07070a]/95 border border-white/5 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden mb-12">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[50px] pointer-events-none" />
+            {/* Row 2: About Me Card Description (Light Mode) */}
+            <div className="bg-white/80 border border-slate-200/60 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden mb-12 backdrop-blur-md">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 blur-[50px] pointer-events-none" />
               
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 {/* Left Column of Card */}
                 <div className="lg:col-span-7 space-y-6">
-                  <h4 className="text-3xl font-extrabold text-white tracking-tight">About Me</h4>
-                  <p className="text-gray-300 text-sm leading-relaxed font-light font-sans">
-                    I'm a fourth-year Computer Science Engineering student at <span className="text-purple-300 font-semibold">KMIT, Hyderabad</span> (CGPA: 8.6) passionate about building high-performance software that combines strong engineering principles with modern AI.
+                  <h4 className="text-3xl font-black text-slate-900 tracking-tight">About Me</h4>
+                  <p className="text-slate-700 text-sm leading-relaxed font-normal font-sans">
+                    I'm a fourth-year Computer Science Engineering student at <span className="text-purple-600 font-bold">KMIT, Hyderabad</span> (CGPA: 8.6) passionate about building high-performance software that combines strong engineering principles with modern AI.
                   </p>
-                  <p className="text-gray-300 text-sm leading-relaxed font-light font-sans">
+                  <p className="text-slate-600 text-sm leading-relaxed font-normal">
                     My interests lie in backend development, full-stack engineering, distributed systems, and AI-driven applications. I enjoy solving complex problems, optimizing systems for scale, and turning ideas into reliable, production-ready products using Java, Spring Boot, React, Next.js, FastAPI, Python, and SQL/NoSQL databases.
                   </p>
-                  <p className="text-gray-400 text-sm leading-relaxed font-light font-sans">
+                  <p className="text-slate-500 text-sm leading-relaxed font-normal">
                     I'm always learning, building, and pushing my skills through challenging projects, with the goal of creating technology that makes a meaningful impact.
                   </p>
                   
@@ -963,10 +1065,10 @@ export default function PortfolioThree() {
                       target="_blank"
                       rel="noopener noreferrer"
                       download="Anisha_Paturi_Resume.pdf"
-                      className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-purple-500/30 hover:border-purple-500/80 rounded-xl text-white font-semibold text-xs tracking-wider uppercase hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:bg-purple-500/5 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-purple-500/30 hover:border-purple-600/80 rounded-xl text-purple-700 font-bold text-xs tracking-wider uppercase shadow-md hover:shadow-purple-500/10 hover:bg-purple-50/30 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
                     >
                       <span>Download CV</span>
-                      <svg viewBox="0 0 24 24" className="size-5 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <svg viewBox="0 0 24 24" className="size-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                         <polyline points="7 10 12 15 17 10" />
                         <line x1="12" y1="15" x2="12" y2="3" />
@@ -975,40 +1077,40 @@ export default function PortfolioThree() {
                   </div>
                 </div>
 
-                {/* Right Column of Card: Services/Capabilities (Mocking 6.png right blocks) */}
+                {/* Right Column of Card: Services/Capabilities */}
                 <div className="lg:col-span-5 space-y-6">
                   
                   {/* Card Item 1 */}
-                  <div className="flex gap-4 p-6 bg-black/40 border border-white/5 rounded-2xl items-start hover:border-purple-500/20 transition-all duration-300 group shadow-lg">
+                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-md">
                     <div className="p-3.5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl text-white shadow-lg shrink-0">
                       <Code className="size-5" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <h5 className="font-bold text-white group-hover:text-purple-300 transition-colors text-sm">Full-Stack Development</h5>
-                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white/5 hover:bg-purple-500 hover:text-white rounded-lg border border-white/10 transition-colors cursor-pointer">
+                        <h5 className="font-extrabold text-slate-800 group-hover:text-purple-600 transition-colors text-sm">Full-Stack Development</h5>
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
                           <ExternalLink className="size-3.5" />
                         </button>
                       </div>
-                      <p className="text-gray-400 text-xs mt-2 leading-relaxed font-light">
+                      <p className="text-slate-500 text-xs mt-2 leading-relaxed font-normal">
                         Build responsive, high-performance web and mobile apps using React, Next.js, Node.js, Spring Boot, and React Native.
                       </p>
                     </div>
                   </div>
 
                   {/* Card Item 2 */}
-                  <div className="flex gap-4 p-6 bg-black/40 border border-white/5 rounded-2xl items-start hover:border-blue-500/20 transition-all duration-300 group shadow-lg">
+                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-blue-300 hover:bg-white transition-all duration-300 group shadow-md">
                     <div className="p-3.5 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl text-white shadow-lg shrink-0">
                       <Code2 className="size-5" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <h5 className="font-bold text-white group-hover:text-blue-300 transition-colors text-sm">AI & Agentic Systems</h5>
-                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white/5 hover:bg-blue-500 hover:text-white rounded-lg border border-white/10 transition-colors cursor-pointer">
+                        <h5 className="font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors text-sm">AI & Agentic Systems</h5>
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-blue-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
                           <ExternalLink className="size-3.5" />
                         </button>
                       </div>
-                      <p className="text-gray-400 text-xs mt-2 leading-relaxed font-light">
+                      <p className="text-slate-500 text-xs mt-2 leading-relaxed font-normal">
                         Architect LLM agents, vector databases, RAG search pipelines, semantic parsers, and custom multi-agent environments.
                       </p>
                     </div>
@@ -1019,33 +1121,33 @@ export default function PortfolioThree() {
               </div>
             </div>
 
-            {/* Row 3: Stats Box (Styled like 1.png but with custom data) */}
-            <div className="w-full bg-[#07070a]/90 border border-white/5 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
+            {/* Row 3: Stats Box (Styled like 1.png but with light colors and custom data) */}
+            <div className="w-full bg-white border border-slate-200/60 rounded-3xl p-8 shadow-xl backdrop-blur-md">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                 {/* Stat 1 */}
                 <div className="flex flex-col items-center p-2">
-                  <span className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                  <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
                     4 Months
                   </span>
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mt-3">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mt-3">
                     Experience
                   </span>
                 </div>
                 {/* Stat 2 */}
-                <div className="flex flex-col items-center p-2 border-t sm:border-t-0 sm:border-x border-white/5">
-                  <span className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <div className="flex flex-col items-center p-2 border-t sm:border-t-0 sm:border-x border-slate-100">
+                  <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     42
                   </span>
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mt-3">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mt-3">
                     Projects Completed
                   </span>
                 </div>
                 {/* Stat 3 */}
-                <div className="flex flex-col items-center p-2 border-t sm:border-t-0 border-white/5">
-                  <span className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                <div className="flex flex-col items-center p-2 border-t sm:border-t-0 border-slate-100">
+                  <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                     840
                   </span>
-                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mt-3">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mt-3">
                     Git Contributions
                   </span>
                 </div>
@@ -1055,31 +1157,31 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 3. SKILLS SECTION */}
+        {/* 2. SKILLS SECTION (Light Theme) */}
         <section id="skills" className="scroll-mt-24 pt-8">
-          <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-fuchsia-400 font-bold mb-3">02. Stack</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Technologies I Work With</h3>
-            <p className="text-gray-400 font-light mb-12 text-lg">My language competencies, frameworks, and databases visualized by experience</p>
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-xs uppercase tracking-widest text-fuchsia-600 font-bold mb-3">02. Stack</h2>
+            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Technologies I Work With</h3>
+            <p className="text-slate-500 font-normal mb-12 text-lg">My language competencies, frameworks, and databases visualized by experience</p>
 
-            {/* Skills Cards (Styled like 4.png) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* Skills Cards (Centered flex layout with 5 cards per row on large screens) */}
+            <div className="flex flex-wrap justify-center gap-6">
               {skillsData.map((skill) => (
                 <div
                   key={skill.name}
-                  className="relative bg-[#08080c]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-6 flex flex-col items-center hover:border-purple-500/30 hover:bg-white/5 transition-all duration-300 group interactive-card shadow-lg"
+                  className="relative w-[45%] sm:w-[180px] md:w-[200px] lg:w-[200px] xl:w-[208px] bg-white border border-slate-200/60 rounded-2xl p-6 flex flex-col items-center hover:border-purple-500/30 hover:bg-slate-50/50 hover:shadow-lg transition-all duration-300 group interactive-card shadow-md"
                 >
                   {/* Skill Icon */}
-                  <div className="mb-4 text-gray-400 group-hover:scale-110 group-hover:text-white transition-all duration-300">
+                  <div className="mb-4 text-slate-600 group-hover:scale-110 transition-all duration-300">
                     {renderSkillLogo(skill.icon)}
                   </div>
                   {/* Skill Name */}
-                  <h4 className="text-white font-bold text-md tracking-tight">{skill.name}</h4>
+                  <h4 className="text-slate-800 font-bold text-md tracking-tight">{skill.name}</h4>
                   {/* Skill Category */}
-                  <span className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">{skill.category}</span>
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">{skill.category}</span>
                   
                   {/* Experience Bar */}
-                  <div className="w-full bg-white/5 h-[5px] rounded-full mt-6 overflow-hidden">
+                  <div className="w-full bg-slate-100 h-[5px] rounded-full mt-6 overflow-hidden">
                     <motion.div
                       className={`h-full bg-gradient-to-r ${skill.gradient}`}
                       initial={{ width: 0 }}
@@ -1094,13 +1196,13 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 4. EXPERIENCE SECTION */}
+        {/* 3. EXPERIENCE SECTION (Light Theme) */}
         <section id="experience" className="scroll-mt-24 pt-8">
           <div className="max-w-3xl">
-            <h2 className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">03. Career</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight">Experience.</h3>
+            <h2 className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-3">03. Career</h2>
+            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 tracking-tight">Experience.</h3>
             
-            <div className="space-y-10 relative pl-4 border-l border-white/5">
+            <div className="space-y-10 relative pl-4 border-l border-slate-200">
               {experience.map((exp, index) => (
                 <motion.div
                   key={index}
@@ -1108,20 +1210,20 @@ export default function PortfolioThree() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-blue-500/40 transition-colors overflow-hidden group interactive-card"
+                  className="relative bg-white border border-slate-200/60 rounded-3xl p-8 hover:border-blue-500/40 transition-colors shadow-md overflow-hidden group interactive-card"
                 >
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
                   <div>
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
-                        <h4 className="text-2xl font-bold mb-1 text-white group-hover:text-blue-300 transition-colors">{exp.role}</h4>
-                        <p className="text-blue-400 text-lg font-medium">{exp.company}</p>
+                        <h4 className="text-2xl font-bold mb-1 text-slate-800 group-hover:text-blue-600 transition-colors">{exp.role}</h4>
+                        <p className="text-blue-600 text-lg font-semibold">{exp.company}</p>
                       </div>
-                      <span className="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-xl text-xs text-blue-300 font-mono">
+                      <span className="px-4 py-2 bg-blue-50 border border-blue-200/60 rounded-xl text-xs text-blue-700 font-mono font-semibold">
                         {exp.period}
                       </span>
                     </div>
-                    <p className="text-gray-400 leading-relaxed font-light text-sm">{exp.description}</p>
+                    <p className="text-slate-500 leading-relaxed font-normal text-sm">{exp.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -1129,26 +1231,26 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 5. PROJECTS SECTION */}
+        {/* 4. PROJECTS SECTION (Light Theme matching large card mockups in 5.png) */}
         <section id="projects" className="scroll-mt-24 pt-8">
           <div className="max-w-6xl">
             <div className="flex flex-wrap items-end justify-between mb-12 gap-6">
               <div>
-                <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">04. Works</h2>
-                <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Featured Projects</h3>
-                <p className="text-gray-400 font-light text-md mt-2">A selective display of engineered tools, libraries, and applications</p>
+                <h2 className="text-xs uppercase tracking-widest text-purple-600 font-bold mb-3">04. Works</h2>
+                <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Featured Projects</h3>
+                <p className="text-slate-500 font-normal text-md mt-2">A selective display of engineered tools, libraries, and applications</p>
               </div>
 
-              {/* Category Filter Tabs */}
-              <div className="flex flex-wrap gap-2 bg-white/5 p-2 rounded-2xl border border-white/5 backdrop-blur-md">
+              {/* Category Filter Tabs (Light themed) */}
+              <div className="flex flex-wrap gap-2 bg-slate-100 p-2 rounded-2xl border border-slate-200/60 backdrop-blur-md">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer ${
                       selectedCategory === category
-                        ? "bg-purple-500/20 text-purple-300 border border-purple-500/30"
-                        : "text-gray-400 hover:text-white border border-transparent"
+                        ? "bg-purple-100 text-purple-700 border border-purple-200"
+                        : "text-slate-500 hover:text-slate-900 border border-transparent"
                     }`}
                   >
                     {category === "all" ? "All Projects" : category}
@@ -1157,7 +1259,7 @@ export default function PortfolioThree() {
               </div>
             </div>
 
-            {/* Grid of Large Cards (Styled like 5.png / image.png) */}
+            {/* Grid of Large Cards (Light version of 5.png mockup) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <AnimatePresence mode="popLayout">
                 {filteredProjects.map((project) => (
@@ -1168,19 +1270,19 @@ export default function PortfolioThree() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4 }}
                     key={project.title}
-                    className="group relative bg-[#07070a] border border-white/5 rounded-3xl overflow-hidden hover:border-purple-500/30 hover:shadow-[0_0_30px_rgba(168,85,247,0.05)] transition-all duration-500 flex flex-col h-full interactive-card shadow-xl"
+                    className="group relative bg-white border border-slate-200/60 rounded-3xl overflow-hidden hover:border-purple-300 hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col h-full interactive-card shadow-md"
                   >
-                    {/* Visual mockup banner */}
-                    <div className="h-44 w-full relative overflow-hidden bg-gradient-to-br from-purple-950/20 via-black to-blue-950/20 border-b border-white/5 flex items-center justify-center">
-                      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
+                    {/* Visual mockup banner (Light theme grid) */}
+                    <div className="h-44 w-full relative overflow-hidden bg-gradient-to-br from-purple-50/40 via-slate-50 to-blue-50/40 border-b border-slate-150 flex items-center justify-center">
+                      <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
                       
                       {/* Interactive Visual Graphic */}
                       <div className="relative z-10 text-center p-6 pointer-events-none">
-                        <div className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-gray-500 mb-2">
+                        <div className="inline-block px-3 py-1 bg-slate-200/60 border border-slate-300 rounded-full text-[10px] font-mono text-slate-600 mb-2">
                           {project.year}
                         </div>
-                        <h4 className="text-md font-extrabold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                        <h4 className="text-md font-extrabold text-slate-800 group-hover:scale-105 transition-transform duration-300">
                           {project.title}
                         </h4>
                       </div>
@@ -1190,7 +1292,7 @@ export default function PortfolioThree() {
                         href={project.liveLink || project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute top-4 right-4 p-2 bg-black/60 hover:bg-purple-500 hover:text-white border border-white/10 rounded-xl transition-all duration-300 z-20 hover:scale-110"
+                        className="absolute top-4 right-4 p-2 bg-white hover:bg-purple-600 text-slate-600 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-sm transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
                       >
                         <ExternalLink className="size-4" />
                       </a>
@@ -1199,10 +1301,10 @@ export default function PortfolioThree() {
                     {/* Project Body */}
                     <div className="p-6 flex flex-col flex-1 justify-between">
                       <div>
-                        <h4 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                        <h4 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
                           {project.title}
                         </h4>
-                        <p className="text-gray-400 text-xs font-light leading-relaxed mb-6 min-h-[4.5rem] line-clamp-4">
+                        <p className="text-slate-500 text-xs font-normal leading-relaxed mb-6 min-h-[4.5rem] line-clamp-4">
                           {project.description}
                         </p>
                       </div>
@@ -1211,7 +1313,7 @@ export default function PortfolioThree() {
                         {project.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2.5 py-1 bg-white/5 border border-white/5 rounded-lg text-[9px] font-mono text-purple-300/80 uppercase"
+                            className="px-2.5 py-1 bg-slate-100 border border-slate-200/60 rounded-lg text-[9px] font-mono text-purple-600 uppercase font-semibold"
                           >
                             {tech}
                           </span>
@@ -1225,38 +1327,38 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 6. ACHIEVEMENTS SECTION */}
+        {/* 5. ACHIEVEMENTS SECTION (Light Theme) */}
         <section id="achievements" className="scroll-mt-24 pt-8">
           <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-fuchsia-400 font-bold mb-3">05. Recognition</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Achievements.</h3>
+            <h2 className="text-xs uppercase tracking-widest text-fuchsia-600 font-bold mb-3">05. Recognition</h2>
+            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight">Achievements.</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {accomplishments.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 hover:border-fuchsia-500/30 transition-all group interactive-card"
+                  className="bg-white border border-slate-200/60 rounded-3xl p-6 hover:border-fuchsia-300 shadow-md hover:shadow-lg transition-all group interactive-card"
                 >
-                  <div className="size-10 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center mb-5">
-                    <span className="text-fuchsia-400 font-mono font-bold">{index + 1}</span>
+                  <div className="size-10 rounded-xl bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-600 flex items-center justify-center mb-5">
+                    <span className="font-mono font-bold text-sm">{index + 1}</span>
                   </div>
-                  <h4 className="text-lg font-bold text-gray-200 group-hover:text-fuchsia-300 transition-colors mb-2">
+                  <h4 className="text-lg font-bold text-slate-800 group-hover:text-fuchsia-600 transition-colors mb-2">
                     {item.name}
                   </h4>
-                  <p className="text-gray-400 text-xs font-light leading-relaxed">
+                  <p className="text-slate-500 text-xs font-normal leading-relaxed">
                     {item.description}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 bg-white/5 border border-white/5 rounded-3xl p-8">
-              <h4 className="text-xl font-bold text-white mb-6">Hackathons & Extra Engagement</h4>
+            <div className="mt-12 bg-white border border-slate-200/60 rounded-3xl p-8 shadow-md">
+              <h4 className="text-xl font-bold text-slate-800 mb-6">Hackathons & Extra Engagement</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {engagement.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 bg-black/40 border border-white/5 rounded-xl p-4">
-                    <div className="size-2 rounded-full bg-fuchsia-500 shrink-0" />
-                    <p className="text-gray-300 text-xs font-light">{item}</p>
+                  <div key={index} className="flex items-center gap-4 bg-slate-50/50 border border-slate-200/60 rounded-xl p-4">
+                    <div className="size-2 rounded-full bg-fuchsia-600 shrink-0" />
+                    <p className="text-slate-700 text-xs font-normal">{item}</p>
                   </div>
                 ))}
               </div>
@@ -1264,65 +1366,65 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 7. CERTIFICATIONS SECTION */}
+        {/* 6. CERTIFICATIONS SECTION (Light Theme) */}
         <section id="certifications" className="scroll-mt-24 pt-8">
           <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-emerald-400 font-bold mb-3">06. Verification</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Certifications.</h3>
+            <h2 className="text-xs uppercase tracking-widest text-emerald-600 font-bold mb-3">06. Verification</h2>
+            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight">Certifications.</h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {certifications.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-[#08080c] border border-white/5 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/30 transition-all group interactive-card"
+                  className="bg-white border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-300 shadow-md hover:shadow-lg transition-all group interactive-card"
                 >
                   <div>
-                    <div className="size-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-400">
+                    <div className="size-10 rounded-xl bg-emerald-50 border border-emerald-250 flex items-center justify-center mb-5 text-emerald-600">
                       <ShieldCheck className="size-5" />
                     </div>
-                    <h4 className="text-md font-bold text-gray-200 group-hover:text-emerald-400 transition-colors mb-2 leading-snug">
+                    <h4 className="text-md font-bold text-slate-800 group-hover:text-emerald-600 transition-colors mb-2 leading-snug">
                       {item.name}
                     </h4>
-                    <p className="text-gray-400 text-xs font-light leading-relaxed mb-6">
+                    <p className="text-slate-500 text-xs font-normal leading-relaxed mb-6">
                       {item.description}
                     </p>
                   </div>
-                  <span className="text-[10px] text-gray-500 font-semibold tracking-widest uppercase">Verified Certification</span>
+                  <span className="text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Verified Certification</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 8. GITHUB ACTIVITY SECTION */}
+        {/* 7. GITHUB ACTIVITY SECTION (Light Theme) */}
         <section id="github-activity" className="scroll-mt-24 pt-8">
           <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">07. Contributions</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">GitHub Activity</h3>
+            <h2 className="text-xs uppercase tracking-widest text-purple-600 font-bold mb-3">07. Contributions</h2>
+            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight">GitHub Activity</h3>
             {renderGitCalendar()}
           </div>
         </section>
 
-        {/* 9. CONTACT SECTION */}
+        {/* 8. CONTACT SECTION (Light version of 2.png) */}
         <section id="contact" className="scroll-mt-24 pt-8 pb-12">
           <div className="max-w-4xl flex flex-col items-center">
-            <h2 className="text-xs uppercase tracking-widest text-emerald-400 font-bold mb-3">08. Reach</h2>
+            <h2 className="text-xs uppercase tracking-widest text-emerald-600 font-bold mb-3">08. Reach</h2>
             
-            {/* Contact details horizontal bar (Styled like 2.png) */}
+            {/* Contact details horizontal bar */}
             <div className="flex flex-col items-center mt-6 w-full">
-              <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-10 text-center">Contact me</h3>
+              <h3 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-10 text-center">Contact me</h3>
               
-              <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-14 px-10 py-8 bg-black/60 border border-emerald-500/30 rounded-3xl shadow-[0_0_30px_rgba(16,185,129,0.08)] backdrop-blur-2xl max-w-full">
+              <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-14 px-10 py-8 bg-white border border-slate-200/80 rounded-3xl shadow-xl max-w-full">
                 
                 {/* Mail */}
                 <a
                   href="mailto:paturi.anisha@gmail.com"
                   className="flex flex-col items-center gap-3 group interactive-card"
                 >
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
-                    <Mail className="size-6 text-emerald-400" />
+                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Mail className="size-6 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">Gmail</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">Gmail</span>
                 </a>
                 
                 {/* Phone */}
@@ -1330,10 +1432,10 @@ export default function PortfolioThree() {
                   href="tel:+919876543210"
                   className="flex flex-col items-center gap-3 group interactive-card"
                 >
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
-                    <Smartphone className="size-6 text-emerald-400" />
+                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Smartphone className="size-6 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">Phone</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">Phone</span>
                 </a>
 
                 {/* LinkedIn */}
@@ -1343,10 +1445,10 @@ export default function PortfolioThree() {
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-3 group interactive-card"
                 >
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
-                    <Linkedin className="size-6 text-emerald-400" />
+                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Linkedin className="size-6 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">LinkedIn</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">LinkedIn</span>
                 </a>
 
                 {/* GitHub */}
@@ -1356,10 +1458,10 @@ export default function PortfolioThree() {
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-3 group interactive-card"
                 >
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
-                    <Github className="size-6 text-emerald-400" />
+                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Github className="size-6 text-emerald-600" />
                   </div>
-                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">GitHub</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">GitHub</span>
                 </a>
                 
               </div>
@@ -1368,7 +1470,7 @@ export default function PortfolioThree() {
         </section>
 
         {/* Footer info */}
-        <footer className="w-full text-center text-gray-600 text-xs py-8 border-t border-white/5">
+        <footer className="w-full text-center text-slate-400 text-xs py-8 border-t border-slate-200">
           <p>© {new Date().getFullYear()} Anisha Paturi. Built with React, Vite & Motion.</p>
         </footer>
 
