@@ -11,28 +11,115 @@ import {
   Menu,
   Award,
   Code,
+  Smartphone,
+  ShieldCheck,
+  Code2,
+  Calendar,
+  X,
 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
 import profileImage from "../../assets/profile.png";
 
 export default function PortfolioThree() {
   const [activeSection, setActiveSection] = useState("home");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Auto-collapse sidebar on mobile
+  // Custom cursor variables
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const cursorSpringConfig = { damping: 25, stiffness: 250 };
+  const cursorXSpring = useSpring(cursorX, cursorSpringConfig);
+  const cursorYSpring = useSpring(cursorY, cursorSpringConfig);
+  const [cursorHovered, setCursorHovered] = useState(false);
+
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setIsSidebarOpen(false);
-    }
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
+    };
+
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a") ||
+        target.closest("button") ||
+        target.closest(".interactive-card")
+      ) {
+        setCursorHovered(true);
+      } else {
+        setCursorHovered(false);
+      }
+    };
+
+    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mouseover", handleMouseOver);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("mouseover", handleMouseOver);
+    };
+  }, [cursorX, cursorY]);
+
+  // Intersection Observer for scroll highlighting
+  useEffect(() => {
+    const sections = [
+      "home",
+      "about",
+      "skills",
+      "experience",
+      "projects",
+      "achievements",
+      "certifications",
+      "github-activity",
+      "contact",
+    ];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-25% 0px -55% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   /* ===================== DATA ===================== */
-  
+
   const projects = [
     {
       title: "HomeVerse (Work in Progress)",
-      description: "HomeVerse (Work in Progress) is an AI-powered interior design platform currently under development that transforms ordinary room photos into fully customizable 3D living spaces using computer vision, generative AI, and interactive design tools. Built with Next.js, FastAPI, Three.js, React Three Fiber, PostgreSQL, and modern AI models, the platform analyzes uploaded room images through object detection and segmentation, generates multiple interior design variations in different styles, and converts the selected design into an editable 3D studio where users can modify furniture, materials, colors, lighting, and layouts. It also features an AI Design Copilot capable of understanding natural language design requests, along with plans for furniture marketplace integration, immersive walkthroughs, AR visualization, and budget estimation. Through this project, I am expanding my expertise in computer vision, generative AI, 3D graphics, full-stack development, interactive visualization, and building scalable AI-powered PropTech applications that bridge interior design with intelligent spatial customization.",
+      description: "An AI-powered interior design platform currently under development that transforms ordinary room photos into fully customizable 3D living spaces using computer vision, generative AI, and interactive design tools. Built with Next.js, FastAPI, Three.js, React Three Fiber, PostgreSQL, and modern AI models, the platform analyzes uploaded room images through object detection and segmentation, generates interior design variations, and converts them into editable 3D workspaces.",
       tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "React Three Fiber", "AI"],
       link: "https://github.com/AnishaPaturi/HomeVerse",
       year: "2026",
@@ -40,7 +127,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AI CareerOS (CareerPilot-AI)",
-      description: "AI CareerOS (CareerPilot-AI) is a unified AI-powered career preparation and placement ecosystem that brings together placement management, AI-driven resume analysis, mock interview simulation, DSA planning, and document-based Retrieval-Augmented Generation (RAG) into a single intelligent platform. Built using a microservices architecture with Spring Boot, FastAPI, React, MySQL, ChromaDB, and LangChain, the platform streamlines the entire placement journey through role-based dashboards, intelligent eligibility matching, ATS resume auditing, AI-powered resume rewriting, speech-enabled mock interviews, adaptive DSA roadmaps, and semantic document search. It also incorporates enterprise-grade technologies such as JWT authentication, Redis caching, RabbitMQ message queues, Prometheus/Grafana monitoring, and Docker-based infrastructure to deliver a scalable, production-ready system. Developing this project strengthened my expertise in microservices, distributed system design, AI integration, Retrieval-Augmented Generation (RAG), full-stack development, cloud-native architecture, and enterprise software engineering while building a comprehensive platform that bridges career preparation and intelligent automation.",
+      description: "AI CareerOS (CareerPilot-AI) is a unified AI-powered career preparation and placement ecosystem that brings together placement management, AI-driven resume analysis, mock interview simulation, DSA planning, and document-based Retrieval-Augmented Generation (RAG) into a single intelligent platform. Built using a microservices architecture with Spring Boot, FastAPI, React, MySQL, ChromaDB, and LangChain.",
       tech: ["Spring Boot", "FastAPI", "React", "MySQL", "ChromaDB", "LangChain", "Microservices"],
       link: "https://github.com/AnishaPaturi/CareerPilot-AI",
       liveLink: "https://career-pilot-ai-delta.vercel.app",
@@ -66,7 +153,7 @@ export default function PortfolioThree() {
     },
     {
       title: "DocuMind – AI PDF Chatbot",
-      description: "DocuMind – AI PDF Chatbot is an enterprise-grade Retrieval-Augmented Generation (RAG) platform that enables users to upload PDF documents and interact with them through intelligent, context-aware conversations. Built with Next.js, FastAPI, LangChain, ChromaDB, SQLite, and OpenRouter, the platform combines secure JWT-based authentication, semantic vector search, and large language models to deliver accurate answers grounded in user-uploaded documents while preventing out-of-context responses. It also includes advanced capabilities such as multi-document support, document summarization, PDF viewing, highlights and notes, quoted replies, conversation history, and exporting summaries to PDF or Word formats through a modern, responsive interface. This project strengthened my expertise in Retrieval-Augmented Generation (RAG), vector databases, AI orchestration, authentication systems, full-stack development, and building scalable document intelligence applications powered by large language models.",
+      description: "An enterprise-grade Retrieval-Augmented Generation (RAG) platform that enables users to upload PDF documents and interact with them through intelligent, context-aware conversations. Built with Next.js, FastAPI, LangChain, ChromaDB, SQLite, and OpenRouter.",
       tech: ["Next.js", "FastAPI", "LangChain", "ChromaDB", "SQLite", "OpenRouter", "RAG"],
       link: "https://github.com/AnishaPaturi/AI-pdf-chatbot",
       liveLink: "https://ai-pdf-chatbot-weld.vercel.app",
@@ -83,7 +170,7 @@ export default function PortfolioThree() {
     },
     {
       title: "FactForge",
-      description: "FactForge is an AI-powered fact and claim verification platform designed to combat misinformation by automatically analyzing text, extracting verifiable claims, retrieving supporting evidence, and generating explainable verification results. Built with React, FastAPI, Tailwind CSS, and SQLite, the platform integrates large language models through OpenRouter and real-time web search via Tavily to classify claims as True, False, Partially True, or Unverifiable while providing confidence scores, bias analysis, AI-generated content detection, and detailed explanations. It also features secure user authentication, verification history tracking, and downloadable PDF reports, creating a complete end-to-end fact-checking workflow.",
+      description: "An AI-powered fact and claim verification platform designed to combat misinformation by automatically analyzing text, extracting verifiable claims, retrieving supporting evidence, and generating explainable verification results. Built with React, FastAPI, Tailwind CSS, and SQLite.",
       tech: ["React", "FastAPI", "SQLite", "OpenRouter", "Tavily", "AI", "NLP"],
       link: "https://github.com/AnishaPaturi/FactForge",
       liveLink: "https://fact-forge.vercel.app",
@@ -92,7 +179,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Ctrl+S of Shame",
-      description: "Ctrl+S of Shame is a fun and lightweight Visual Studio Code extension designed to encourage better coding habits by adding a humorous consequence to saving or debugging code with compilation errors. The extension monitors the editor for diagnostics and automatically plays a dramatic scream whenever a file containing errors is saved or a debugging session is started without resolving existing issues. It also incorporates a cooldown mechanism to prevent repetitive audio triggers and ensure a smooth user experience. Built using the Visual Studio Code Extension API, the project demonstrates event-driven programming, editor integration, and developer tooling while showcasing how productivity tools can combine functionality with engaging user interactions.",
+      description: "Ctrl+S of Shame is a fun and lightweight VS Code extension designed to encourage better coding habits by adding a humorous consequence to saving or debugging code with compilation errors.",
       tech: ["TypeScript", "VS Code Extension API", "Node.js"],
       link: "https://github.com/AnishaPaturi/CtrlSofShame",
       year: "2026",
@@ -100,7 +187,7 @@ export default function PortfolioThree() {
     },
     {
       title: "VizTalk – Conversational BI Dashboard",
-      description: "VizTalk – Conversational BI Dashboard is an AI-powered business intelligence platform that enables users to generate interactive dashboards and data visualizations using natural language queries, eliminating the need to write SQL manually. Built with Streamlit, FastAPI, SQLite, and Plotly, the application leverages large language models through OpenRouter and DeepSeek to convert user prompts into optimized SQL queries, execute them on a marketing analytics dataset, automatically select the most suitable chart type, and present results through interactive visualizations. The platform also supports user authentication, persistent chat history, voice input, and browser-based session management, creating a seamless conversational analytics experience for non-technical users. Through this project, I gained practical experience in AI-powered data analytics, LLM integration, natural language-to-SQL generation, backend API development, database management, and building intelligent business intelligence applications.",
+      description: "An AI-powered business intelligence platform that enables users to generate interactive dashboards and data visualizations using natural language queries. Built with Streamlit, FastAPI, SQLite, Plotly, OpenRouter, and DeepSeek.",
       tech: ["Streamlit", "FastAPI", "SQLite", "Plotly", "OpenRouter", "DeepSeek", "AI"],
       link: "https://github.com/AnishaPaturi/VizTalk",
       year: "2025",
@@ -108,7 +195,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Secret Santa",
-      description: "Secret Santa is a real-time web application that modernizes the traditional Secret Santa gift exchange by enabling users to create groups, invite participants through QR codes or shareable links, and instantly assign gift recipients without requiring page refreshes. Built with Next.js, React, Firebase Firestore, Tailwind CSS, and Framer Motion, the platform leverages real-time database synchronization to keep all participants updated while ensuring that each user can view only their own assigned recipient. The application features a festive and responsive user interface enhanced with animations, sound effects, confetti celebrations, and persistent session management for a seamless experience across desktop and mobile devices. This project strengthened my expertise in real-time application development, cloud-based databases, responsive UI design, state management, and deploying scalable full-stack applications using modern web technologies.",
+      description: "Secret Santa is a real-time web application that modernizes the traditional Secret Santa gift exchange by enabling users to create groups, invite participants through QR codes or shareable links, and instantly assign gift recipients. Built with Next.js, React, Firebase Firestore, Tailwind CSS, and Framer Motion.",
       tech: ["Next.js", "React", "Firebase", "Tailwind CSS", "Framer Motion"],
       link: "https://github.com/AnishaPaturi/Secret-Santa-",
       liveLink: "https://secret-santa-theta-nine.vercel.app/",
@@ -117,7 +204,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Mood-Angles",
-      description: "Mood-Angles is an AI-powered mental health and telepsychiatry platform that combines intelligent mood tracking, machine learning, Retrieval-Augmented Generation (RAG), and secure telepsychiatry services to provide comprehensive mental healthcare. Built with the MERN stack, Python, and LangChain, the platform enables users to monitor emotional well-being, undergo AI-assisted psychological assessments, interact with an empathetic RAG-powered chatbot, and securely connect with verified psychiatrists through role-based dashboards. It incorporates multiple specialized AI agents for cognitive, emotional, depression, judgment, and risk analysis, while leveraging DSM-5 knowledge, clinical case studies, predictive analytics, and personalized wellness recommendations to deliver explainable mental health insights. This project strengthened my expertise in full-stack development, AI-powered healthcare applications, machine learning, RAG pipelines, authentication systems, and scalable software architecture for real-world digital health solutions.",
+      description: "An AI-powered mental health and telepsychiatry platform that combines intelligent mood tracking, machine learning, Retrieval-Augmented Generation (RAG), and secure telepsychiatry services. Built with the MERN stack, Python, and LangChain.",
       tech: ["MongoDB", "Express", "React", "Node.js", "Python", "LangChain", "RAG"],
       link: "https://github.com/AnishaPaturi/Mood-Angles",
       liveLink: "https://mood-angles.vercel.app",
@@ -126,7 +213,7 @@ export default function PortfolioThree() {
     },
     {
       title: "SafeStreet",
-      description: "SafeStreet is an AI-powered road damage detection and maintenance platform that combines a React Native mobile application with a web-based management dashboard to streamline the reporting, analysis, and monitoring of road infrastructure issues. The mobile application enables users to capture and upload images of damaged roads, where an AI Vision Transformer (ViT) model classifies the type and severity of the damage, generates detailed summaries, and facilitates report sharing via email. The companion web platform provides authorities with a centralized dashboard for managing damage reports, user authentication with OTP verification, email notifications, and an NLP-powered chatbot to assist with user queries. Built using React Native, React, Node.js, Express, Python Flask, MongoDB, and Google Gemini AI, the project integrates computer vision, natural language processing, and full-stack development to create an intelligent, scalable solution for improving road maintenance workflows and enabling faster, data-driven decision-making.",
+      description: "An AI-powered road damage detection and maintenance platform combining a React Native mobile app with a web dashboard. Uses a Vision Transformer (ViT) model to classify road damages and Google Gemini AI for reporting.",
       tech: ["React Native", "React", "Node.js", "Express", "Python Flask", "MongoDB", "Gemini AI"],
       link: "https://github.com/AnishaPaturi/SafeStreet-final",
       year: "2024",
@@ -134,7 +221,7 @@ export default function PortfolioThree() {
     },
     {
       title: "College-Connect",
-      description: "College-Connect is a full-stack campus management platform designed to centralize essential student services into a single, user-friendly web application. The platform enables students to pre-order food from the canteen, register for campus events, access college and global news, explore internship and job opportunities, connect with peers for academic assistance, and report or recover lost items through dedicated modules. Developed using HTML, CSS, JavaScript, Bootstrap, Node.js, Express.js, and MongoDB, the application follows a modular RESTful architecture with secure user authentication and scalable backend APIs. By integrating multiple campus services into one platform, College-Connect enhances student engagement, simplifies everyday campus activities, and demonstrates practical full-stack development, database management, API design, and responsive web application development.",
+      description: "A full-stack campus management platform centralizing student pre-orders, event registration, lost & found logs, and student forums. Developed using HTML, CSS, Bootstrap, Node.js, Express, and MongoDB.",
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "Node.js", "Express.js", "MongoDB"],
       link: "https://github.com/AnishaPaturi/College-Connect",
       liveLink: "https://college-connect-iota.vercel.app",
@@ -143,7 +230,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Talent Match",
-      description: "A full-stack networking and project collaboration platform designed to connect students, professionals, and innovators based on their skills, academic interests, and project requirements. Built using HTML, CSS, JavaScript, Node.js, and Express.js, it features a modular backend with RESTful APIs and persistent JSON-based data storage for authentication and matching.",
+      description: "A full-stack networking and project collaboration platform designed to connect students, professionals, and innovators based on their skills and project requirements. Built with Node.js and Express.",
       tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js"],
       link: "https://github.com/AnishaPaturi/Talent-Match",
       liveLink: "https://talent-match-sandy-omega.vercel.app/",
@@ -152,7 +239,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AutoDeck",
-      description: "AutoDeck is a Python automation tool designed to streamline the organization of image collections and automatically generate professional PowerPoint presentations. The application categorizes images into folders based on their file formats, creates presentation slides with one image per slide, and optionally exports the generated presentations as PDF documents using Microsoft PowerPoint or LibreOffice. Built with Python, python-pptx, and Pillow, the tool supports multiple image formats, cross-platform compatibility, flexible file management through copy or move operations, and detailed logging for reliable execution. By automating repetitive tasks involved in presentation creation, AutoDeck improves productivity and reduces manual effort while demonstrating practical applications of file system automation, document generation, and cross-platform scripting.",
+      description: "A Python automation tool designed to streamline the organization of image collections and automatically generate professional PowerPoint presentations. Built with Python, python-pptx, and Pillow.",
       tech: ["Python", "python-pptx", "Pillow", "Automation"],
       link: "https://github.com/AnishaPaturi/AutoDeck",
       year: "2024",
@@ -160,7 +247,7 @@ export default function PortfolioThree() {
     },
     {
       title: "GradeSync",
-      description: "A comprehensive student grade management and analytics system developed during my software internship at IBaseIT to demonstrate multiple data persistence strategies through a unified application. The project features responsive web dashboards, command-line interfaces, and a PHP-based application supporting multiple storage backends like flat files, JSON documents, and MySQL databases.",
+      description: "A comprehensive student grade management and analytics system developed during my software internship at IBaseIT. Supports MySQL, JSON, and flat file databases.",
       tech: ["Python", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/GradeSync",
       year: "2024",
@@ -168,7 +255,7 @@ export default function PortfolioThree() {
     },
     {
       title: "PythonLonden",
-      description: "PHP Symfony to Python transformation for Campaign Manager.",
+      description: "PHP Symfony to Python transformation for Campaign Manager, optimizing mailed campaigns and dashboard analytics.",
       tech: ["Python", "Campaign Management"],
       link: "https://github.com/AnishaPaturi/PythonLonden",
       year: "2024",
@@ -176,7 +263,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AI-Powered Lie Detector App (Work in Progress)",
-      description: "AI-Powered Lie Detector App (Work in Progress) is a cross-platform mobile application currently under development that combines artificial intelligence, computer vision, and audio signal processing to estimate the probability of deception from live or recorded video interactions. The application analyzes facial microexpressions using MediaPipe FaceMesh and vocal tone variations through Librosa-based audio analysis, combining these features with a machine learning model to generate deception confidence scores and interactive visual analytics. Built with React Native, Expo, FastAPI, Express.js, and MongoDB Atlas, the system features secure JWT-based user authentication, video recording and upload capabilities, real-time inference, and a multiplayer \"Two Truths and a Lie\" game mode for an engaging user experience. The project is designed with a modular architecture that separates authentication, AI inference, and the mobile client, enabling scalability and maintainability while expanding my expertise in full-stack development, mobile applications, machine learning, computer vision, and AI-driven analytics.",
+      description: "A cross-platform mobile application utilizing AI, computer vision (MediaPipe), and voice processing (Librosa) to analyze deceptive cues. Built with React Native, Expo, FastAPI, Express, and MongoDB.",
       tech: ["React Native", "Expo", "FastAPI", "Express.js", "MongoDB Atlas", "MediaPipe", "Librosa"],
       link: "https://github.com/AnishaPaturi/LieDetectorGame",
       year: "2024",
@@ -184,7 +271,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Attendance Tracker",
-      description: "System for tracking and managing attendance records.",
+      description: "System for tracking and managing student attendance records with real-time updates.",
       tech: ["TypeScript"],
       link: "https://github.com/AnishaPaturi/attendance-tracker",
       year: "2024",
@@ -192,7 +279,7 @@ export default function PortfolioThree() {
     },
     {
       title: "CodeSleuth – Human vs AI Code Detector",
-      description: "CodeSleuth – Human vs AI Code Detector is an AI-powered developer tool that analyzes source code to determine whether it was written by a human or generated by an AI model. Built with Python and OpenAI's GPT models, the application performs reflective reasoning to evaluate coding patterns, structure, complexity, and stylistic characteristics before producing a prediction with a confidence score and transparent reasoning. Supporting multiple programming languages, including Python and Java, the tool provides explainable insights through detailed analysis, helping developers better understand the distinguishing traits of AI-generated and human-written code. This project strengthened my expertise in prompt engineering, large language model integration, agentic AI workflows, explainable AI, and building intelligent developer tools focused on code analysis and software engineering productivity.",
+      description: "An AI-powered developer tool that analyzes source code to determine whether it was written by a human or generated by an AI model. Built with Python and OpenAI's GPT models.",
       tech: ["Python", "OpenAI GPT", "AI", "Code Analysis"],
       link: "https://github.com/AnishaPaturi/AuthenCode",
       year: "2023",
@@ -200,15 +287,15 @@ export default function PortfolioThree() {
     },
     {
       title: "AI Code Reviewer – Reflective Edition",
-      description: "AI Code Reviewer – Reflective Edition is an agentic AI-powered command-line application that demonstrates multi-step reasoning by reviewing code, reflecting on its own analysis, and refining its feedback to produce more accurate and balanced code reviews. Inspired by the agentic AI workflow of review → reflect → improve, the tool evaluates code for logic, structure, readability, naming conventions, maintainability, and optimization opportunities before performing a secondary self-review to identify overlooked issues or unnecessary criticism. Built with Python and the OpenAI API, the application features a lightweight terminal interface with color-coded outputs, making it an efficient developer utility for improving code quality and encouraging iterative AI-assisted programming. Through this project, I gained practical experience in prompt engineering, agentic AI workflows, LLM integration, and designing intelligent developer tools that leverage reflective reasoning.",
+      description: "An agentic AI command-line application that demonstrates multi-step reasoning by reviewing code, reflecting on its own feedback, and generating refined suggestions. Built with Python.",
       tech: ["Python", "OpenAI API", "Agentic AI", "CLI"],
       link: "https://github.com/AnishaPaturi/CodeChecker",
       year: "2023",
       category: "Python",
     },
     {
-      title: "FeedForward: Customer Feedback Prioritizer for Product Teams",
-      description: "FeedForward: Customer Feedback Prioritizer for Product Teams is an AI-powered platform designed to help product teams efficiently manage and prioritize large volumes of customer feedback collected from surveys, in-app reviews, and social media. The application leverages natural language processing (NLP) to automatically categorize feedback based on urgency and business impact, identify recurring pain points, and generate prioritized action items that enable faster, data-driven product decisions. Built with React.js, Python, and MongoDB, the platform provides an intuitive dashboard for visualizing feedback insights while supporting seamless integration with productivity tools such as Notion, Slack, and Email for streamlined team collaboration. This project enhanced my skills in AI-driven text processing, full-stack web development, database management, API integration, and building intelligent applications that transform unstructured customer feedback into actionable business insights.",
+      title: "FeedForward",
+      description: "An AI-powered platform designed to help product teams efficiently prioritize customer feedback using NLP. Built with React, Python, and MongoDB.",
       tech: ["React", "Python", "MongoDB", "NLP"],
       link: "https://github.com/AnishaPaturi/FeedForward",
       year: "2023",
@@ -216,7 +303,7 @@ export default function PortfolioThree() {
     },
     {
       title: "SafeStreet Web",
-      description: "Web companion with mapping and real-time WebSocket updates.",
+      description: "Web companion for SafeStreet featuring visual interactive mapping and WebSocket updates.",
       tech: ["React", "Google Maps API", "WebSockets"],
       link: "https://github.com/AnishaPaturi/SafeStreetWeb",
       year: "2023",
@@ -224,23 +311,15 @@ export default function PortfolioThree() {
     },
     {
       title: "BlueDrive Rover",
-      description: "A Bluetooth-controlled robotic vehicle developed to demonstrate real-time wireless navigation using embedded systems and mobile communication. The project integrates an Arduino microcontroller, HC-05 Bluetooth module, motor driver, DC motors, and a rechargeable power supply to execute movement commands received from an Android device. It supports directional controls including forward, reverse, left, right, and stop with responsive command processing over serial communication.",
+      description: "A Bluetooth-controlled robotic vehicle integrating Arduino, HC-05 module, and DC motor drivers for real-time wireless movement.",
       tech: ["Arduino", "C++", "HC-05 Bluetooth", "IoT", "Embedded Systems", "Motor Control"],
       link: "https://github.com/AnishaPaturi/BlueDrive-Rover",
       year: "2023",
       category: "Hardware",
     },
-    // {
-    //   title: "AWS Certified Cloud Practitioner Notes",
-    //   description: "Notes compiled from AWS E-Learning lessons.",
-    //   tech: ["AWS", "Cloud"],
-    //   link: "https://github.com/AnishaPaturi/AWS-Certified-Cloud-Practitioner-Notes",
-    //   year: "2023",
-    //   category: "AWS",
-    // },
     {
       title: "WeatherApp",
-      description: "WeatherApp is a responsive web application that provides real-time weather information and 5-day forecasts using the OpenWeather API. The application allows users to search for weather conditions across cities worldwide, automatically detect their current location, save favorite locations for quick access, and switch between Celsius and Fahrenheit units. It also supports multiple languages and features dynamic backgrounds that adapt to current weather conditions, creating an engaging and personalized user experience. Built using HTML, CSS, and JavaScript, the project emphasizes seamless API integration, responsive design, geolocation services, and efficient error handling to deliver accurate weather updates. Through this project, I strengthened my skills in REST API integration, asynchronous JavaScript, client-side data management, and creating interactive, user-centric web applications.",
+      description: "A responsive web application providing real-time weather information and forecasts using OpenWeather API and browser geolocation services.",
       tech: ["HTML", "CSS", "JavaScript", "OpenWeather API", "Geolocation"],
       link: "https://github.com/AnishaPaturi/WeatherApp",
       liveLink: "https://weather-app-two-olive-86.vercel.app/",
@@ -249,7 +328,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Amazon Clone",
-      description: "Amazon Clone is a modern, responsive front-end e-commerce application that recreates the core user experience of Amazon using HTML, CSS, and vanilla JavaScript. The application features an automated hero banner slider, interactive product carousels, a fully functional shopping cart drawer with real-time quantity and subtotal updates, intelligent search suggestions, and a location preference modal with postal code validation. Designed with a clean and responsive interface, it incorporates smooth animations, dynamic notifications, and a customizable design system to deliver an engaging shopping experience without relying on external JavaScript frameworks. This project strengthened my understanding of responsive web design, DOM manipulation, state management, UI/UX principles, and modern front-end development by building complex interactive components entirely with native web technologies.",
+      description: "A modern responsive front-end e-commerce interface replicating the core catalog browsing and shopping cart experience.",
       tech: ["HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/Amazon-Clone",
       liveLink: "https://amazon-clone-silk-six-95.vercel.app/",
@@ -258,7 +337,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Just Do It.",
-      description: "Just Do It. is a modern, responsive to-do list application designed to help users organize daily tasks through a clean interface and engaging animations. Built using HTML, CSS, Bootstrap, and vanilla JavaScript, the application allows users to quickly add tasks, mark them as completed, and remove them with smooth, interactive UI transitions. The project incorporates custom animations, responsive grid layouts, hover effects, and intuitive keyboard interactions to create a seamless user experience while maintaining a lightweight, single-page architecture without external JavaScript frameworks. Through this project, I strengthened my skills in front-end development, DOM manipulation, responsive web design, CSS animations, and creating polished, user-friendly interfaces using modern web technologies.",
+      description: "A clean modern to-do list application with smooth transition effects and state management entirely in vanilla JS.",
       tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
       link: "https://github.com/AnishaPaturi/To-Do",
       liveLink: "https://to-do-phi-kohl.vercel.app/",
@@ -267,7 +346,7 @@ export default function PortfolioThree() {
     },
     {
       title: "IgniteJEE (Work in Progress)",
-      description: "IgniteJEE (Work in Progress) is an AI-powered learning platform currently under development to help JEE Main aspirants study more effectively through interactive revision tools, visual learning modules, and personalized practice recommendations. Built using React, Tailwind CSS, Firebase, Node.js, and Firestore/MongoDB, IgniteJEE aims to provide intelligent study workflows, chapter-wise weakness analysis, mock tests, and progress tracking to improve learning efficiency and exam performance.",
+      description: "An AI-powered learning platform under development to help JEE Main candidates study using customized roadmap suggestions.",
       tech: ["React", "Tailwind CSS", "Firebase", "Node.js", "MongoDB", "AI"],
       link: "https://github.com/AnishaPaturi/IgniteJEE",
       year: "2024",
@@ -275,7 +354,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Murder Mystery Web Platform (Work in Progress)",
-      description: "Murder Mystery Web Platform (Work in Progress) is an interactive web application currently under development that immerses users in a detective-style investigation where they solve fictional murder cases by exploring crime scenes, analyzing evidence, interviewing suspects, and connecting clues. Built with React, Vite, Tailwind CSS, and shadcn/ui, the platform features an interactive drag-and-drop evidence board, detailed suspect profiles, organized case files, and a responsive interface enhanced with modern animations and intuitive user interactions. The project focuses on delivering an engaging investigative experience through thoughtful UI/UX design, reusable components, and scalable front-end architecture while incorporating data visualization and interactive gameplay mechanics. Through this project, I am expanding my expertise in modern React development, state management, drag-and-drop interfaces, responsive design, and building immersive web applications with component-driven architecture.",
+      description: "An interactive detective investigation platform featuring suspect profiling, case files, drag-and-drop evidence boards, and case solver mechanics.",
       tech: ["React", "Vite", "Tailwind CSS", "shadcn/ui"],
       link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
       year: "2026",
@@ -283,7 +362,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AI Procurement Verification Agent",
-      description: "AI Procurement Verification Agent is a production-grade, multi-agent AI system that automates the verification of vendor invoices against purchase orders, enabling organizations to accelerate procurement workflows while reducing manual effort and fraud risk. Built with Python, FastAPI, LangChain, LangGraph, and OpenAI, the application orchestrates specialized AI agents for OCR-based document extraction, structured parsing, semantic item matching, discrepancy detection, risk analysis, and automated decision-making. The system identifies inconsistencies in quantities, pricing, taxes, delivery charges, and vendor information, calculates weighted risk scores, applies fraud detection heuristics, and determines whether an invoice should be approved, rejected, or escalated for human review. Designed with a modular, extensible architecture and RESTful APIs, the project demonstrates advanced concepts in agentic AI, workflow orchestration, document intelligence, semantic search, and enterprise automation while showcasing scalable AI solutions for real-world procurement processes.",
+      description: "A multi-agent AI invoice auditor checking prices, taxes, and vendor details against POs using LangGraph, LangChain, and OpenAI.",
       tech: ["Python", "FastAPI", "LangChain", "LangGraph", "OpenAI"],
       link: "https://github.com/AnishaPaturi/Invoice_Agent",
       year: "2026",
@@ -291,7 +370,7 @@ export default function PortfolioThree() {
     },
     {
       title: "CineMatch AI – Movie Recommendation Platform",
-      description: "CineMatch AI – Movie Recommendation Platform is an AI-powered movie recommendation ecosystem that combines machine learning with full-stack web and mobile development to deliver personalized movie discovery experiences. Built using React, React Native, FastAPI, Node.js, Express, MongoDB, and Docker, the platform leverages TF-IDF vectorization and cosine similarity to generate intelligent content-based movie recommendations while integrating real-time IMDb poster retrieval, debounced autocomplete search, recommendation history, and a \"Surprise Me\" discovery feature. Its microservices architecture separates the machine learning engine, API gateway, database, and client applications, providing a scalable and maintainable system for both web and mobile users. Through this project, I strengthened my expertise in recommendation systems, machine learning, microservices architecture, RESTful API development, full-stack engineering, database design, and deploying AI-powered applications with modern cloud-native technologies.",
+      description: "An AI movie discovery engine recommending media using TF-IDF cosine similarity. Integrates IMDb database and Docker packaging.",
       tech: ["React Native", "React", "FastAPI", "Node.js", "MongoDB", "Docker"],
       link: "https://github.com/AnishaPaturi/movie-recommendation-platform",
       liveLink: "https://movie-recommendation-platform-nine.vercel.app/",
@@ -309,14 +388,29 @@ export default function PortfolioThree() {
     "Participated in VJIT Hackathon, 2023",
   ];
 
-  const skills = {
-    "Front End": ["HTML", "CSS", "JavaScript", "React"],
-    "Middle Tier": ["C", "Java", "Python", "C++"],
-    "Back End": ["MySQL", "MongoDB", "Express.js", "Node.js"],
-    Frameworks: ["Bootstrap", "SpringBoot"],
-    "AI/ML": ["Machine Learning", "Deep Learning", "Transformers", "GenAI", "Streamlit"],
-    "Agentic AI": ["LangChain", "LangGraph"],
-  };
+  const skillsData = [
+    { name: "React", category: "Frontend", level: 90, gradient: "from-blue-400 to-cyan-500", icon: "react" },
+    { name: "HTML", category: "Frontend", level: 95, gradient: "from-orange-500 to-red-500", icon: "html" },
+    { name: "CSS", category: "Frontend", level: 90, gradient: "from-blue-500 to-indigo-500", icon: "css" },
+    { name: "JavaScript", category: "Language", level: 92, gradient: "from-yellow-400 to-amber-500", icon: "js" },
+    { name: "TypeScript", category: "Language", level: 88, gradient: "from-blue-500 to-blue-600", icon: "ts" },
+    { name: "Python", category: "Language", level: 95, gradient: "from-blue-500 to-yellow-500", icon: "python" },
+    { name: "Java", category: "Language", level: 90, gradient: "from-red-500 to-orange-500", icon: "java" },
+    { name: "C++", category: "Language", level: 75, gradient: "from-blue-600 to-indigo-600", icon: "cpp" },
+    { name: "MongoDB", category: "Database", level: 80, gradient: "from-green-400 to-emerald-500", icon: "mongodb" },
+    { name: "MySQL", category: "Database", level: 82, gradient: "from-blue-400 to-indigo-500", icon: "mysql" },
+    { name: "Express.js", category: "Backend", level: 85, gradient: "from-gray-400 to-gray-500", icon: "express" },
+    { name: "Node.js", category: "Runtime", level: 88, gradient: "from-green-500 to-emerald-600", icon: "node" },
+    { name: "SpringBoot", category: "Framework", level: 80, gradient: "from-green-500 to-emerald-500", icon: "springboot" },
+    { name: "Bootstrap", category: "Framework", level: 85, gradient: "from-purple-500 to-indigo-600", icon: "bootstrap" },
+    { name: "LangChain", category: "Agentic AI", level: 85, gradient: "from-purple-500 to-fuchsia-500", icon: "langchain" },
+    { name: "LangGraph", category: "Agentic AI", level: 80, gradient: "from-indigo-500 to-purple-600", icon: "langchain" },
+    { name: "Machine Learning", category: "AI/ML", level: 85, gradient: "from-pink-500 to-rose-500", icon: "brain" },
+    { name: "Deep Learning", category: "AI/ML", level: 80, gradient: "from-rose-500 to-red-500", icon: "brain" },
+    { name: "Transformers", category: "AI/ML", level: 82, gradient: "from-purple-500 to-pink-500", icon: "brain" },
+    { name: "GenAI", category: "AI/ML", level: 88, gradient: "from-purple-400 to-blue-500", icon: "brain" },
+    { name: "Streamlit", category: "AI/ML", level: 85, gradient: "from-red-400 to-orange-500", icon: "streamlit" },
+  ];
 
   const experience = [
     {
@@ -331,7 +425,7 @@ export default function PortfolioThree() {
       company: "IBaseIT",
       period: "May 2024 - June 2024",
       description:
-        "Developed GradeSync, a comprehensive student grade management and analytics system. Implemented responsive web dashboards and supported multiple storage backends including flat files, JSON, and MySQL databases.",
+        "Developed GradeSync, a student grade management and analytics system. Implemented responsive web dashboards and supported multiple storage backends including flat files, JSON documents, and MySQL databases.",
     },
   ];
 
@@ -348,597 +442,993 @@ export default function PortfolioThree() {
       description: "Secured first place in the 2026 GeeksForGeeks hackathon competition.",
     },
     {
-      name: "HackerRank SQL (Advanced) Skill Certification",
-      description: "Passed the HackerRank skill certification test for advanced SQL (Earned: 10 Apr, 2026 | ID: 53EA5621369E).",
+      name: "3rd place in an Agentic AI Hackathon, 2025",
+      description: "Secured podium finish developing collaborative LLM agents under strict timelines.",
     },
     {
-      name: "Claude Code Course – Anthropic",
-      description: "Certified; applied LLMs for coding, debugging, and prompt engineering.",
-    },
-    {
-      name: "AWS Certified Cloud Practitioner",
-      description: "Completed 22.5-hour training on AWS fundamentals, including cloud architecture, core services, security, and pricing.",
+      name: "Product Space Hackathon Participant",
+      description: "Designed product prototypes with micro-interactions and pitch documentation.",
     },
   ];
 
-  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "JavaScript", "Java", "React Native", "Node.js", "AWS", "Hardware"];
+  const certifications = [
+    {
+      name: "HackerRank SQL (Advanced) Skill Certification",
+      description: "Passed the HackerRank skill certification test for advanced SQL queries (Earned: 10 Apr, 2026 | ID: 53EA5621369E).",
+    },
+    {
+      name: "Claude Code Course – Anthropic",
+      description: "Certified; applied LLMs for autonomous coding agent design, debugging workflows, and advanced prompt architecture.",
+    },
+    {
+      name: "AWS Certified Cloud Practitioner",
+      description: "Completed 22.5-hour training on AWS core infrastructure, VPC configurations, identity management, and serverless compute models.",
+    },
+  ];
+
+  const categories = ["all", "React", "Full Stack", "Python", "TypeScript", "JavaScript", "Java", "Hardware"];
+
   const filteredProjects =
     selectedCategory === "all"
       ? projects
       : projects.filter(p => p.category === selectedCategory);
 
-  /* ===================== UI ===================== */
+  /* ===================== LOGO RENDERER ===================== */
+
+  const renderSkillLogo = (iconName: string) => {
+    switch (iconName) {
+      case "react":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#61DAFB] fill-none stroke-current" strokeWidth="2.5">
+            <ellipse cx="50" cy="50" rx="8" ry="20" transform="rotate(30 50 50)" />
+            <ellipse cx="50" cy="50" rx="8" ry="20" transform="rotate(90 50 50)" />
+            <ellipse cx="50" cy="50" rx="8" ry="20" transform="rotate(150 50 50)" />
+            <circle cx="50" cy="50" r="4.5" fill="currentColor" />
+          </svg>
+        );
+      case "html":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#E34F26] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M20 15 L80 15 L73 75 L50 85 L27 75 Z" />
+            <path d="M50 25 L70 25 L68 45 L50 45 L50 55 L65 55 L63 68 L50 73 L50 85" strokeWidth="1.5" />
+          </svg>
+        );
+      case "css":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#1572B6] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M20 15 L80 15 L73 75 L50 85 L27 75 Z" />
+            <path d="M50 25 L30 25 L32 45 L50 45 L50 55 L35 55 L37 68 L50 73 L50 85" strokeWidth="1.5" />
+          </svg>
+        );
+      case "js":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#F7DF1E] fill-none stroke-current" strokeWidth="2.5">
+            <rect x="15" y="15" width="70" height="70" rx="8" />
+            <text x="58" y="72" fontSize="36" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor" textAnchor="middle">JS</text>
+          </svg>
+        );
+      case "ts":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#3178C6] fill-none stroke-current" strokeWidth="2.5">
+            <rect x="15" y="15" width="70" height="70" rx="8" />
+            <text x="58" y="72" fontSize="36" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor" textAnchor="middle">TS</text>
+          </svg>
+        );
+      case "python":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 fill-none stroke-current" strokeWidth="2.5">
+            <path d="M50 10 C35 10 30 18 30 28 L30 38 L50 38 L50 42 L24 42 C16 42 10 48 10 60 C10 72 18 78 28 78 L38 78 L38 72 C38 60 48 50 60 50 L72 50 L72 40 C72 24 64 10 50 10 Z" stroke="#3776AB" />
+            <path d="M50 90 C65 90 70 82 70 72 L70 62 L50 62 L50 58 L76 58 C84 58 90 52 90 40 C90 28 82 22 72 22 L62 22 L62 28 C62 40 52 50 40 50 L28 50 L28 60 C28 76 36 90 50 90 Z" stroke="#FFD43B" />
+          </svg>
+        );
+      case "java":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#E76F51] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M30 85 C30 85 40 92 55 85 C70 78 65 70 65 70" />
+            <path d="M35 75 C35 75 45 82 60 75 C75 68 70 60 70 60" />
+            <path d="M45 60 C40 50 45 40 55 35 C65 30 75 25 70 15" />
+            <path d="M55 60 C50 50 55 42 62 38 C70 34 78 30 75 20" />
+          </svg>
+        );
+      case "cpp":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#00599C] fill-none stroke-current" strokeWidth="2.5">
+            <circle cx="50" cy="50" r="35" />
+            <text x="50" y="58" fontSize="28" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor" textAnchor="middle">C++</text>
+          </svg>
+        );
+      case "mongodb":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#47A248] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M50 10 C30 35 30 70 50 90 C70 70 70 35 50 10 Z" />
+            <path d="M50 10 L50 90" />
+          </svg>
+        );
+      case "mysql":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#00758F] fill-none stroke-current" strokeWidth="2.5">
+            <ellipse cx="50" cy="30" rx="30" ry="10" />
+            <path d="M20 30 L20 50 C20 60 50 60 50 50 L50 30" />
+            <path d="M80 30 L80 50 C80 60 50 60 50 50 L50 30" />
+            <path d="M20 50 L20 70 C20 80 50 80 50 70" />
+          </svg>
+        );
+      case "express":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-white fill-none stroke-current" strokeWidth="2.5">
+            <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="36" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor">ex</text>
+            <circle cx="50" cy="50" r="42" />
+          </svg>
+        );
+      case "node":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#339933] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M50 15 L80 32 L80 68 L50 85 L20 68 L20 32 Z" />
+            <circle cx="50" cy="50" r="10" />
+          </svg>
+        );
+      case "springboot":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#6DB33F] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" />
+            <path d="M50 25 C35 40 35 60 50 75 C65 60 65 40 50 25 Z" />
+          </svg>
+        );
+      case "bootstrap":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#7952B3] fill-none stroke-current" strokeWidth="2.5">
+            <rect x="15" y="15" width="70" height="70" rx="15" />
+            <text x="50" y="62" fontSize="42" fontFamily="Outfit, sans-serif" fontWeight="bold" fill="currentColor" textAnchor="middle">B</text>
+          </svg>
+        );
+      case "langchain":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#FF5A5F] fill-none stroke-current" strokeWidth="2.5">
+            <circle cx="40" cy="40" r="20" />
+            <circle cx="60" cy="60" r="20" />
+            <line x1="40" y1="40" x2="60" y2="60" strokeWidth="4" />
+          </svg>
+        );
+      case "brain":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#EC4899] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M50 20 C35 20 25 30 25 45 C25 60 40 65 50 80 C60 65 75 60 75 45 C75 30 65 20 50 20 Z" />
+            <path d="M50 20 L50 80" strokeWidth="1.5" />
+            <path d="M35 45 Q50 40 65 45" strokeWidth="1.5" />
+          </svg>
+        );
+      case "streamlit":
+        return (
+          <svg viewBox="0 0 100 100" className="size-12 text-[#FF4B4B] fill-none stroke-current" strokeWidth="2.5">
+            <polygon points="50,15 85,75 15,75" />
+            <circle cx="50" cy="55" r="10" />
+          </svg>
+        );
+      default:
+        return <Code className="size-12 text-purple-400" />;
+    }
+  };
+
+  /* ===================== RENDER CALENDAR ===================== */
+
+  const renderGitCalendar = () => {
+    const weeks = [];
+    const seedRandom = (str: string) => {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return () => {
+        const x = Math.sin(hash++) * 10000;
+        return x - Math.floor(x);
+      };
+    };
+    const random = seedRandom("anisha_paturi_contributions");
+
+    for (let w = 0; w < 53; w++) {
+      const days = [];
+      for (let d = 0; d < 7; d++) {
+        const val = random();
+        let level = 0;
+        if (val > 0.85) level = 4;
+        else if (val > 0.7) level = 3;
+        else if (val > 0.5) level = 2;
+        else if (val > 0.25) level = 1;
+
+        if (w > 35 && val > 0.4) {
+          level = Math.min(level + 1, 4);
+        }
+
+        days.push(level);
+      }
+      weeks.push(days);
+    }
+
+    const getColorClass = (level: number) => {
+      switch (level) {
+        case 1:
+          return "bg-[#0e4429] border-[#104b2e]";
+        case 2:
+          return "bg-[#006d32] border-[#017838]";
+        case 3:
+          return "bg-[#26a641] border-[#29b647]";
+        case 4:
+          return "bg-[#39d353] border-[#3ee65b]";
+        default:
+          return "bg-[#161b22] border-[#21262d]";
+      }
+    };
+
+    return (
+      <div className="flex flex-col items-center p-6 bg-[#09090f]/90 border border-white/5 rounded-3xl shadow-2xl backdrop-blur-md">
+        <div className="w-full flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            <Calendar className="size-5 text-purple-400" />
+            <h3 className="text-lg font-bold text-white tracking-wide">Contributions Graph</h3>
+          </div>
+          <span className="text-xs text-gray-500 font-mono">Simulated from @AnishaPaturi live activity</span>
+        </div>
+        <div className="overflow-x-auto w-full flex justify-center py-2 max-w-full">
+          <div className="grid grid-flow-col gap-[3px] select-none min-w-[700px]">
+            {weeks.map((week, wIdx) => (
+              <div key={wIdx} className="grid grid-rows-7 gap-[3px]">
+                {week.map((level, dIdx) => (
+                  <div
+                    key={dIdx}
+                    className={`size-[10px] rounded-[2px] border transition-all duration-300 hover:scale-125 hover:z-10 ${getColorClass(
+                      level
+                    )}`}
+                    title={`Day: ${dIdx + 1}, Week: ${wIdx + 1}`}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-full flex items-center justify-between mt-6 text-xs text-gray-400">
+          <div className="flex items-center gap-2">
+            <span>840 contributions in the last year</span>
+          </div>
+          <div className="flex items-center gap-1.5 font-mono">
+            <span>Less</span>
+            <div className="size-[10px] rounded-[2px] bg-[#161b22] border-[#21262d]" />
+            <div className="size-[10px] rounded-[2px] bg-[#0e4429] border-[#104b2e]" />
+            <div className="size-[10px] rounded-[2px] bg-[#006d32] border-[#017838]" />
+            <div className="size-[10px] rounded-[2px] bg-[#26a641] border-[#29b647]" />
+            <div className="size-[10px] rounded-[2px] bg-[#39d353] border-[#3ee65b]" />
+            <span>More</span>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const navItems = [
+    ["home", "Home"],
+    ["about", "About Me"],
+    ["skills", "Skills"],
+    ["experience", "Experience"],
+    ["projects", "Projects"],
+    ["achievements", "Achievements"],
+    ["certifications", "Certifications"],
+    ["github-activity", "GitHub"],
+    ["contact", "Contact"],
+  ];
 
   return (
-    <div className="size-full flex text-white relative min-h-screen overflow-hidden bg-[#050505] selection:bg-purple-500/30">
-      {/* Background Ambient Glow */}
+    <div className="size-full flex flex-col text-white relative min-h-screen overflow-hidden bg-[#050508] selection:bg-purple-500/30 font-sans">
+      
+      {/* Custom Cursor Ring & Dot */}
+      {!isMobile && (
+        <>
+          <motion.div
+            className="fixed top-0 left-0 size-8 rounded-full border border-purple-500 pointer-events-none z-[9999]"
+            style={{
+              x: cursorXSpring,
+              y: cursorYSpring,
+              scale: cursorHovered ? 1.4 : 1,
+              backgroundColor: cursorHovered ? "rgba(168, 85, 247, 0.15)" : "transparent",
+              borderColor: cursorHovered ? "#d8b4fe" : "#a855f7",
+            }}
+          />
+          <motion.div
+            className="fixed top-0 left-0 size-2 bg-purple-500 rounded-full pointer-events-none z-[9999]"
+            style={{
+              x: useSpring(cursorX, { damping: 15, stiffness: 450 }),
+              y: useSpring(cursorY, { damping: 15, stiffness: 450 }),
+              transform: "translate(12px, 12px)",
+            }}
+          />
+        </>
+      )}
+
+      {/* Ambient background blur blobs */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/20 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-900/10 blur-[120px]" />
+        <div className="absolute top-[-25%] left-[-15%] w-[60%] h-[60%] rounded-full bg-purple-950/20 blur-[130px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-950/15 blur-[120px]" />
+        <div className="absolute top-[40%] right-[10%] w-[45%] h-[45%] rounded-full bg-fuchsia-950/10 blur-[140px]" />
       </div>
 
-      {/* ================= SIDEBAR ================= */}
-      <aside
-        className={`w-72 bg-black/40 backdrop-blur-2xl border-r border-white/5 flex flex-col fixed h-full z-50
-        transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
-        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 shadow-2xl shadow-purple-900/10`}
-      >
-        <div className="p-8 border-b border-white/5 flex flex-col items-center">
-          <motion.img
-            whileHover={{ scale: 1.05 }}
-            src={profileImage}
-            alt="Anisha Paturi"
-            className="size-24 rounded-2xl object-cover mb-5 border border-white/10 shadow-lg shadow-purple-500/20"
-          />
-          <h2 className="text-xl font-semibold tracking-wide bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Anisha Paturi</h2>
-          <p className="text-xs text-purple-300/60 mt-1.5 font-medium tracking-widest uppercase">Full Stack Developer & AI/ML Engineer</p>
-        </div>
+      {/* ================= FLOATING TOP NAVIGATION HEADER (Styled like 7.png) ================= */}
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-black/60 backdrop-blur-2xl border border-purple-500/20 rounded-full px-6 py-3 shadow-[0_10px_30px_rgba(168,85,247,0.08)] flex items-center justify-between transition-all duration-300">
+        
+        {/* Logo / Brand Name */}
+        <button 
+          onClick={() => scrollToSection("home")}
+          className="text-sm font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent select-none cursor-pointer tracking-wider hover:opacity-80 transition-opacity"
+        >
+          ANISHA PATURI
+        </button>
 
-        <nav className="flex-1 p-6 space-y-2">
-          {[
-            ["home", Home],
-            ["projects", Briefcase],
-            ["skills", Code],
-            ["experience", Briefcase],
-            ["accomplishments", Award],
-            ["about", User],
-            ["contact", MessageSquare],
-          ].map(([section, Icon]) => {
+        {/* Desktop Navigation Links (Pill list) */}
+        <nav className="hidden lg:flex items-center gap-6">
+          {navItems.map(([section, label]) => {
             const isActive = activeSection === section;
             return (
               <button
-                key={section as string}
-                onClick={() => {
-                  setActiveSection(section as string);
-                  if (window.innerWidth < 768) setIsSidebarOpen(false);
-                }}
-                className={`w-full flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-300 relative group overflow-hidden ${
-                  isActive ? "text-white" : "text-gray-400 hover:text-white"
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className={`text-[10px] font-bold uppercase tracking-widest transition-colors cursor-pointer relative py-1 ${
+                  isActive ? "text-purple-400" : "text-gray-400 hover:text-white"
                 }`}
               >
+                {label}
                 {isActive && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/5 rounded-xl border border-purple-500/20"
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  <motion.span 
+                    layoutId="activeIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
                   />
                 )}
-                {/* @ts-ignore */}
-                <Icon className={`size-5 relative z-10 transition-transform duration-300 ${isActive ? "scale-110 text-purple-400" : "group-hover:scale-110"}`} />
-                <span className="capitalize relative z-10 font-medium tracking-wide">{section}</span>
               </button>
             );
           })}
         </nav>
 
-        <div className="p-8 border-t border-white/5">
-          <div className="flex items-center justify-center gap-6">
-            <motion.a whileHover={{ scale: 1.2, color: "#c084fc" }} href="https://github.com/AnishaPaturi" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors">
-              <Github className="size-5" />
-            </motion.a>
-            <motion.a whileHover={{ scale: 1.2, color: "#60a5fa" }} href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5" target="_blank" rel="noreferrer" className="text-gray-400 transition-colors">
-              <Linkedin className="size-5" />
-            </motion.a>
-            <motion.a whileHover={{ scale: 1.2, color: "#f472b6" }} href="mailto:paturi.anisha@gmail.com" className="text-gray-400 transition-colors">
-              <Mail className="size-5" />
-            </motion.a>
-          </div>
-        </div>
-      </aside>
-
-      {/* ================= MAIN ================= */}
-      <main
-        className="relative z-10 min-h-screen w-full overflow-auto transition-all duration-500 
-        px-6 md:px-16 md:pl-80 pt-20 md:pt-16 pb-20"
-      >
+        {/* Mobile Toggle Button */}
         <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="md:hidden fixed top-4 left-4 z-50 p-2.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-white shadow-lg"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden p-2 bg-white/5 border border-white/10 rounded-full text-white cursor-pointer hover:bg-white/10 transition-colors"
         >
-          <Menu className="size-5" />
+          <Menu className="size-4" />
         </button>
+      </header>
 
-        <AnimatePresence mode="wait">
-          {/* Home Section */}
-          {activeSection === "home" && (
-            <motion.div
-              key="home"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.5 }}
-              className="min-h-[80vh] flex items-center justify-center lg:justify-start"
+      {/* Mobile Fullscreen Glassmorphic Overlay Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-8 lg:hidden"
+          >
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute top-6 right-6 p-3 bg-white/5 border border-white/10 rounded-full text-white cursor-pointer hover:bg-white/10 transition-colors"
             >
-              <div className="max-w-3xl">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-8"
-                >
-                  <span className="size-2 rounded-full bg-purple-400 animate-pulse" />
-                  Available for new opportunities
-                </motion.div>
-                
-                <motion.h1 
-                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-                  className="text-6xl md:text-8xl font-bold mb-6 tracking-tighter"
-                >
-                  Hi, I'm <br className="md:hidden" />
-                  <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent filter drop-shadow-md">
-                    Anisha.
-                  </span>
-                </motion.h1>
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-                  className="text-2xl text-gray-300 mb-8 font-light tracking-wide"
-                >
-                  Full Stack Developer & AI/ML Engineer
-                </motion.p>
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-                  className="text-gray-400 mb-12 text-lg leading-relaxed font-light max-w-2xl"
-                >
-                  Passionate Computer Science Engineering student at KMIT (CGPA 8.6) with hands-on experience in full-stack and AI-driven development. Dedicated to building scalable, intelligent solutions that create real-world impact.
-                </motion.p>
-                
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-                  className="flex flex-wrap gap-4 mb-16"
-                >
+              <X className="size-6" />
+            </button>
+            <nav className="flex flex-col gap-6 text-center">
+              {navItems.map(([section, label]) => {
+                const isActive = activeSection === section;
+                return (
                   <button
-                    onClick={() => setActiveSection("projects")}
-                    className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all font-medium tracking-wide border border-white/10"
+                    key={section}
+                    onClick={() => {
+                      scrollToSection(section);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`text-2xl font-bold uppercase tracking-widest transition-colors cursor-pointer ${
+                      isActive ? "text-purple-400" : "text-gray-400"
+                    }`}
                   >
-                    View My Work
+                    {label}
                   </button>
-                  <button
-                    onClick={() => setActiveSection("contact")}
-                    className="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl transition-all font-medium tracking-wide"
-                  >
-                    Get In Touch
-                  </button>
-                </motion.div>
-                
-                <motion.div 
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
-                  className="flex flex-wrap gap-3 text-sm font-medium"
-                >
-                  {["MERN Stack", "Python", "Java", "AI/ML", "Agentic AI"].map((tech) => (
-                    <span key={tech} className="px-5 py-2.5 bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl text-purple-200/70 shadow-inner shadow-white/5">
-                      {tech}
-                    </span>
-                  ))}
-                </motion.div>
-              </div>
+                );
+              })}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ================= MAIN SCROLL CONTENT ================= */}
+      <main
+        className="relative z-10 min-h-screen w-full overflow-y-auto transition-all duration-500
+        max-w-7xl mx-auto px-6 md:px-16 pt-36 pb-20 space-y-32"
+      >
+
+        {/* 1. HERO SECTION */}
+        <section
+          id="home"
+          className="min-h-[75vh] flex items-center justify-center lg:justify-start pt-8"
+        >
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-8"
+            >
+              <span className="size-2 rounded-full bg-purple-400 animate-pulse" />
+              Available for new opportunities
             </motion.div>
-          )}
 
-          {/* Projects Section */}
-          {activeSection === "projects" && (
-            <motion.div
-              key="projects"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter leading-none"
             >
-              <h1 className="text-5xl font-bold mb-4 tracking-tight">Projects.</h1>
-              <p className="text-gray-400 font-light mb-12 text-lg">A collection of my recent work</p>
+              Hi, I'm <br className="md:hidden" />
+              <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent filter drop-shadow-md">
+                Anisha Paturi.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-2xl md:text-3xl text-gray-300 mb-8 font-light tracking-wide"
+            >
+              Full Stack Developer & AI/ML Engineer
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-gray-400 mb-12 text-lg leading-relaxed font-light max-w-2xl"
+            >
+              Passionate fourth-year Computer Science Engineering student at KMIT (CGPA 8.6) dedicated to building scalable, intelligent solutions that bridge sleek interactive UI with complex backend reasoning.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap gap-4 mb-16"
+            >
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all font-medium tracking-wide border border-white/10 active:scale-95 cursor-pointer"
+              >
+                View My Work
+              </button>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl transition-all font-medium tracking-wide active:scale-95 cursor-pointer"
+              >
+                Get In Touch
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wider text-gray-500"
+            >
+              {["LLM Agents", "FastAPI", "React Native", "Spring Boot", "ChromaDB", "Three.js"].map((tech) => (
+                <span key={tech} className="px-4 py-2 bg-black/30 border border-white/5 rounded-xl text-purple-200/50">
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 2. ABOUT ME SECTION (STYLED ACCORDING TO 6.png MOCKUP) */}
+        <section id="about" className="scroll-mt-24 pt-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">01. Profile</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight">About Me</h3>
+
+            {/* Row 1: Profile Graphic Node Layout from 6.png */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center mb-16 relative">
               
-              <div className="flex flex-wrap items-center gap-3 mb-10 bg-white/5 p-2 rounded-2xl w-fit border border-white/5 backdrop-blur-md">
+              {/* Left Column: Hello & Roles */}
+              <div className="lg:col-span-4 space-y-12 text-left">
+                <div>
+                  <h4 className="text-6xl font-extrabold text-white mb-4">Hello,</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed font-light max-w-sm">
+                    Delivering efficient, scalable solutions to transform your tech vision into reality.
+                  </p>
+                </div>
+
+                {/* Roles with connecting lines */}
+                <div className="space-y-6 max-w-sm">
+                  {[
+                    ["Full Stack Developer", "web"],
+                    ["AI/ML Engineer", "ai"],
+                    ["Agentic AI Developer", "agents"]
+                  ].map(([role, key], idx) => (
+                    <div key={idx} className="flex items-center justify-between group">
+                      <span className="text-sm font-bold text-gray-300 group-hover:text-purple-400 transition-colors uppercase tracking-widest">{role}</span>
+                      <div className="flex-1 mx-4 h-[1px] bg-white/10 relative hidden sm:block">
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 size-2 rounded-full bg-white/30 group-hover:bg-purple-400 group-hover:scale-125 transition-all" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Center Column: Portrait Container */}
+              <div className="lg:col-span-4 flex justify-center relative">
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-blue-500/10 rounded-full blur-3xl -z-10" />
+                <div className="relative size-64 sm:size-80 rounded-[40px] border border-white/5 overflow-hidden shadow-[0_0_50px_rgba(168,85,247,0.15)] bg-gradient-to-b from-[#0e0e15] to-[#040406] p-3">
+                  <img
+                    src={profileImage}
+                    alt="Anisha Paturi"
+                    className="w-full h-full object-cover rounded-[32px] border border-white/5"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: Name & Connect Nodes */}
+              <div className="lg:col-span-4 space-y-12 lg:text-right">
+                <div>
+                  <h4 className="text-4xl font-light text-gray-400 uppercase tracking-widest">I am</h4>
+                  <h5 className="text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent mt-3 leading-tight">
+                    Anisha Paturi
+                  </h5>
+                </div>
+
+                {/* Connecting Social Icons */}
+                <div className="flex flex-col gap-4 lg:items-end">
+                  <div 
+                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-purple-500/30 rounded-2xl px-6 py-4 shadow-xl transition-all cursor-pointer w-fit group interactive-card"
+                    onClick={() => window.open("https://github.com/AnishaPaturi", "_blank")}
+                  >
+                    <Github className="size-5 text-gray-400 group-hover:text-white transition-colors" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors">GitHub</span>
+                  </div>
+                  <div 
+                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-blue-500/30 rounded-2xl px-6 py-4 shadow-xl transition-all cursor-pointer w-fit group interactive-card"
+                    onClick={() => window.open("https://www.linkedin.com/in/anisha-paturi-8b885a2b5", "_blank")}
+                  >
+                    <Linkedin className="size-5 text-gray-400 group-hover:text-white transition-colors" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors">LinkedIn</span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            {/* Row 2: About Me Card Description */}
+            <div className="bg-[#07070a]/95 border border-white/5 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden mb-12">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[50px] pointer-events-none" />
+              
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                {/* Left Column of Card */}
+                <div className="lg:col-span-7 space-y-6">
+                  <h4 className="text-3xl font-extrabold text-white tracking-tight">About Me</h4>
+                  <p className="text-gray-300 text-sm leading-relaxed font-light font-sans">
+                    I'm a fourth-year Computer Science Engineering student at <span className="text-purple-300 font-semibold">KMIT, Hyderabad</span> (CGPA: 8.6) passionate about building high-performance software that combines strong engineering principles with modern AI.
+                  </p>
+                  <p className="text-gray-300 text-sm leading-relaxed font-light">
+                    My interests lie in backend development, full-stack engineering, distributed systems, and AI-driven applications. I enjoy solving complex problems, optimizing systems for scale, and turning ideas into reliable, production-ready products using Java, Spring Boot, React, Next.js, FastAPI, Python, and SQL/NoSQL databases.
+                  </p>
+                  <p className="text-gray-400 text-sm leading-relaxed font-light">
+                    I'm always learning, building, and pushing my skills through challenging projects, with the goal of creating technology that makes a meaningful impact.
+                  </p>
+                  
+                  <div className="pt-4 flex flex-wrap gap-4">
+                    <a
+                      href="./Resume/Anisha%20Paturi.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download="Anisha_Paturi_Resume.pdf"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-purple-500/30 hover:border-purple-500/80 rounded-xl text-white font-semibold text-xs tracking-wider uppercase hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] hover:bg-purple-500/5 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
+                    >
+                      <span>Download CV</span>
+                      <svg viewBox="0 0 24 24" className="size-5 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Right Column of Card: Services/Capabilities (Mocking 6.png right blocks) */}
+                <div className="lg:col-span-5 space-y-6">
+                  
+                  {/* Card Item 1 */}
+                  <div className="flex gap-4 p-6 bg-black/40 border border-white/5 rounded-2xl items-start hover:border-purple-500/20 transition-all duration-300 group shadow-lg">
+                    <div className="p-3.5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl text-white shadow-lg shrink-0">
+                      <Code className="size-5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <h5 className="font-bold text-white group-hover:text-purple-300 transition-colors text-sm">Full-Stack Development</h5>
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white/5 hover:bg-purple-500 hover:text-white rounded-lg border border-white/10 transition-colors cursor-pointer">
+                          <ExternalLink className="size-3.5" />
+                        </button>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2 leading-relaxed font-light">
+                        Build responsive, high-performance web and mobile apps using React, Next.js, Node.js, Spring Boot, and React Native.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card Item 2 */}
+                  <div className="flex gap-4 p-6 bg-black/40 border border-white/5 rounded-2xl items-start hover:border-blue-500/20 transition-all duration-300 group shadow-lg">
+                    <div className="p-3.5 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl text-white shadow-lg shrink-0">
+                      <Code2 className="size-5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <h5 className="font-bold text-white group-hover:text-blue-300 transition-colors text-sm">AI & Agentic Systems</h5>
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white/5 hover:bg-blue-500 hover:text-white rounded-lg border border-white/10 transition-colors cursor-pointer">
+                          <ExternalLink className="size-3.5" />
+                        </button>
+                      </div>
+                      <p className="text-gray-400 text-xs mt-2 leading-relaxed font-light">
+                        Architect LLM agents, vector databases, RAG search pipelines, semantic parsers, and custom multi-agent environments.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            {/* Row 3: Stats Box (Styled like 1.png but with custom data) */}
+            <div className="w-full bg-[#07070a]/90 border border-white/5 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                {/* Stat 1 */}
+                <div className="flex flex-col items-center p-2">
+                  <span className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                    4 Months
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mt-3">
+                    Experience
+                  </span>
+                </div>
+                {/* Stat 2 */}
+                <div className="flex flex-col items-center p-2 border-t sm:border-t-0 sm:border-x border-white/5">
+                  <span className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    42
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mt-3">
+                    Projects Completed
+                  </span>
+                </div>
+                {/* Stat 3 */}
+                <div className="flex flex-col items-center p-2 border-t sm:border-t-0 border-white/5">
+                  <span className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                    840
+                  </span>
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mt-3">
+                    Git Contributions
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* 3. SKILLS SECTION */}
+        <section id="skills" className="scroll-mt-24 pt-8">
+          <div className="max-w-4xl">
+            <h2 className="text-xs uppercase tracking-widest text-fuchsia-400 font-bold mb-3">02. Stack</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">Technologies I Work With</h3>
+            <p className="text-gray-400 font-light mb-12 text-lg">My language competencies, frameworks, and databases visualized by experience</p>
+
+            {/* Skills Cards (Styled like 4.png) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {skillsData.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="relative bg-[#08080c]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-6 flex flex-col items-center hover:border-purple-500/30 hover:bg-white/5 transition-all duration-300 group interactive-card shadow-lg"
+                >
+                  {/* Skill Icon */}
+                  <div className="mb-4 text-gray-400 group-hover:scale-110 group-hover:text-white transition-all duration-300">
+                    {renderSkillLogo(skill.icon)}
+                  </div>
+                  {/* Skill Name */}
+                  <h4 className="text-white font-bold text-md tracking-tight">{skill.name}</h4>
+                  {/* Skill Category */}
+                  <span className="text-[10px] text-gray-500 uppercase tracking-wider mt-1">{skill.category}</span>
+                  
+                  {/* Experience Bar */}
+                  <div className="w-full bg-white/5 h-[5px] rounded-full mt-6 overflow-hidden">
+                    <motion.div
+                      className={`h-full bg-gradient-to-r ${skill.gradient}`}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.2, delay: 0.1 }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. EXPERIENCE SECTION */}
+        <section id="experience" className="scroll-mt-24 pt-8">
+          <div className="max-w-3xl">
+            <h2 className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">03. Career</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight">Experience.</h3>
+            
+            <div className="space-y-10 relative pl-4 border-l border-white/5">
+              {experience.map((exp, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-blue-500/40 transition-colors overflow-hidden group interactive-card"
+                >
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
+                  <div>
+                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                      <div>
+                        <h4 className="text-2xl font-bold mb-1 text-white group-hover:text-blue-300 transition-colors">{exp.role}</h4>
+                        <p className="text-blue-400 text-lg font-medium">{exp.company}</p>
+                      </div>
+                      <span className="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-xl text-xs text-blue-300 font-mono">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <p className="text-gray-400 leading-relaxed font-light text-sm">{exp.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. PROJECTS SECTION */}
+        <section id="projects" className="scroll-mt-24 pt-8">
+          <div className="max-w-6xl">
+            <div className="flex flex-wrap items-end justify-between mb-12 gap-6">
+              <div>
+                <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">04. Works</h2>
+                <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Featured Projects</h3>
+                <p className="text-gray-400 font-light text-md mt-2">A selective display of engineered tools, libraries, and applications</p>
+              </div>
+
+              {/* Category Filter Tabs */}
+              <div className="flex flex-wrap gap-2 bg-white/5 p-2 rounded-2xl border border-white/5 backdrop-blur-md">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
-                      selectedCategory === category 
-                      ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" 
-                      : "text-gray-400 hover:text-white border border-transparent"
+                    className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                      selectedCategory === category
+                        ? "bg-purple-500/20 text-purple-300 border border-purple-500/30"
+                        : "text-gray-400 hover:text-white border border-transparent"
                     }`}
                   >
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                    {category === "all" ? "All Projects" : category}
                   </button>
                 ))}
               </div>
-              
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                <AnimatePresence mode="popLayout">
-                  {filteredProjects.map((project, index) => (
-                    <motion.div
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }}
-                      key={project.title}
-                      className="group relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-purple-500/40 hover:bg-white/5 transition-all duration-500 overflow-hidden shadow-2xl shadow-black/50"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
-                      <div className="relative z-10">
-                        <div className="flex items-start justify-between mb-6">
-                          <div>
-                            <h3 className="text-2xl font-bold mb-2 group-hover:text-purple-300 transition-colors tracking-tight">{project.title}</h3>
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className="text-xs font-mono px-3 py-1 bg-white/5 border border-white/10 rounded-full text-purple-200/50">{project.year}</span>
-                              {project.liveLink && (
-                                <span className="text-xs font-mono px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 font-medium">Live</span>
-                              )}
-                            </div>
-                          </div>
-                          <motion.a
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            href={project.liveLink || project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-white/5 hover:bg-purple-500 hover:text-white border border-white/10 hover:border-purple-400 rounded-xl transition-all duration-300 shadow-lg"
-                          >
-                            <ExternalLink className="size-5" />
-                          </motion.a>
-                        </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light min-h-[4rem]">{project.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1.5 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-300"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </div>
-            </motion.div>
-          )}
+            </div>
 
-          {/* Skills Section */}
-          {activeSection === "skills" && (
-            <motion.div
-              key="skills"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-            >
-              <h1 className="text-5xl font-bold mb-4 tracking-tight">Skills.</h1>
-              <p className="text-gray-400 font-light mb-12 text-lg">Technical expertise and technologies</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {Object.entries(skills).map(([category, skillList]) => (
+            {/* Grid of Large Cards (Styled like 5.png / image.png) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project) => (
                   <motion.div
-                    key={category}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-purple-500/30 transition-colors"
-                  >
-                    <h2 className="text-xl font-semibold mb-6 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
-                        <Code className="size-4 text-purple-400" />
-                      </div>
-                      {category}
-                    </h2>
-                    <div className="flex flex-wrap gap-2">
-                      {skillList.map((skill, i) => (
-                        <span key={i} className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm text-gray-300 hover:bg-purple-500/20 hover:border-purple-500/30 transition-all cursor-default">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-12 bg-gradient-to-br from-purple-900/30 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8">
-                <h2 className="text-xl font-semibold mb-6">Certifications</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                    <h3 className="font-medium text-purple-300">AWS Certified Cloud Practitioner</h3>
-                    <p className="text-gray-400 text-sm">22.5-hour training on AWS fundamentals</p>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                    <h3 className="font-medium text-purple-300">HackerRank SQL (Advanced)</h3>
-                    <p className="text-gray-400 text-sm">Skill certification for advanced SQL</p>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                    <h3 className="font-medium text-purple-300">Claude Code Course</h3>
-                    <p className="text-gray-400 text-sm">Anthropic certified for LLMs in coding</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Experience Section */}
-          {activeSection === "experience" && (
-            <motion.div
-              key="experience"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-            >
-              <h1 className="text-5xl font-bold mb-4 tracking-tight">Experience.</h1>
-              <p className="text-gray-400 font-light mb-12 text-lg">Professional journey and internships</p>
-              
-              <div className="space-y-8 max-w-3xl">
-                {experience.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-colors overflow-hidden"
-                  >
-                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
-                    <div className="pl-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h3 className="text-2xl font-bold mb-1 text-white">{exp.role}</h3>
-                          <p className="text-blue-400 text-lg font-medium">{exp.company}</p>
-                        </div>
-                        <span className="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-xl text-sm text-blue-300">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <p className="text-gray-400 leading-relaxed font-light">{exp.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-12">
-                <h2 className="text-2xl font-semibold mb-6">Education</h2>
-                <div className="bg-gradient-to-br from-purple-900/30 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 max-w-3xl">
-                  <h3 className="text-xl font-medium mb-2">{education.degree}</h3>
-                  <p className="text-purple-300 text-lg mb-4">{education.college}</p>
-                  <div className="flex items-center gap-6">
-                    <div className="px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
-                      {education.cgpa}
-                    </div>
-                    <span className="text-gray-400">{education.period}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Accomplishments Section */}
-          {activeSection === "accomplishments" && (
-            <motion.div
-              key="accomplishments"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-            >
-              <h1 className="text-5xl font-bold mb-4 tracking-tight">Accomplishments.</h1>
-              <p className="text-gray-400 font-light mb-12 text-lg">Achievements and recognitions</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-                {accomplishments.map((item, index) => (
-                  <motion.div
-                    key={index}
+                    layout
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-fuchsia-500/40 transition-all group"
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4 }}
+                    key={project.title}
+                    className="group relative bg-[#07070a] border border-white/5 rounded-3xl overflow-hidden hover:border-purple-500/30 hover:shadow-[0_0_30px_rgba(168,85,247,0.05)] transition-all duration-500 flex flex-col h-full interactive-card shadow-xl"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="size-12 rounded-2xl bg-gradient-to-br from-fuchsia-500/20 to-purple-500/20 border border-fuchsia-500/30 flex items-center justify-center shrink-0">
-                        <span className="text-fuchsia-400 text-2xl font-bold">{index + 1}</span>
+                    {/* Visual mockup banner */}
+                    <div className="h-44 w-full relative overflow-hidden bg-gradient-to-br from-purple-950/20 via-black to-blue-950/20 border-b border-white/5 flex items-center justify-center">
+                      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
+                      
+                      {/* Interactive Visual Graphic */}
+                      <div className="relative z-10 text-center p-6 pointer-events-none">
+                        <div className="inline-block px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-gray-500 mb-2">
+                          {project.year}
+                        </div>
+                        <h4 className="text-md font-extrabold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+                          {project.title}
+                        </h4>
                       </div>
+
+                      {/* Top Right Overlay External Link Icon */}
+                      <a
+                        href={project.liveLink || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-4 right-4 p-2 bg-black/60 hover:bg-purple-500 hover:text-white border border-white/10 rounded-xl transition-all duration-300 z-20 hover:scale-110"
+                      >
+                        <ExternalLink className="size-4" />
+                      </a>
+                    </div>
+
+                    {/* Project Body */}
+                    <div className="p-6 flex flex-col flex-1 justify-between">
                       <div>
-                        <h3 className="text-lg font-medium mb-2 text-gray-200 group-hover:text-fuchsia-300 transition-colors">{item.name}</h3>
-                        <p className="text-gray-400 text-sm font-light leading-relaxed">{item.description}</p>
+                        <h4 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                          {project.title}
+                        </h4>
+                        <p className="text-gray-400 text-xs font-light leading-relaxed mb-6 min-h-[4.5rem] line-clamp-4">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 bg-white/5 border border-white/5 rounded-lg text-[9px] font-mono text-purple-300/80 uppercase"
+                          >
+                            {tech}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </section>
 
-              <div className="mt-12">
-                <h2 className="text-2xl font-semibold mb-6">Hackathons & Events</h2>
-                <div className="space-y-4 max-w-3xl">
-                  {engagement.map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl p-5">
-                      <div className="size-2 bg-gradient-to-br from-fuchsia-400 to-purple-600 rounded-full mt-2 shrink-0" />
-                      <p className="text-gray-300 font-light">{item}</p>
-                    </div>
-                  ))}
+        {/* 6. ACHIEVEMENTS SECTION */}
+        <section id="achievements" className="scroll-mt-24 pt-8">
+          <div className="max-w-4xl">
+            <h2 className="text-xs uppercase tracking-widest text-fuchsia-400 font-bold mb-3">05. Recognition</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Achievements.</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {accomplishments.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 hover:border-fuchsia-500/30 transition-all group interactive-card"
+                >
+                  <div className="size-10 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center mb-5">
+                    <span className="text-fuchsia-400 font-mono font-bold">{index + 1}</span>
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-200 group-hover:text-fuchsia-300 transition-colors mb-2">
+                    {item.name}
+                  </h4>
+                  <p className="text-gray-400 text-xs font-light leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-              </div>
-            </motion.div>
-          )}
+              ))}
+            </div>
 
-          {/* About Section */}
-          {activeSection === "about" && (
-            <motion.div
-              key="about"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-            >
-              <h1 className="text-5xl font-bold mb-4 tracking-tight">About Me.</h1>
-              <p className="text-gray-400 font-light mb-12 text-lg">My journey and experience</p>
+            <div className="mt-12 bg-white/5 border border-white/5 rounded-3xl p-8">
+              <h4 className="text-xl font-bold text-white mb-6">Hackathons & Extra Engagement</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {engagement.map((item, index) => (
+                  <div key={index} className="flex items-center gap-4 bg-black/40 border border-white/5 rounded-xl p-4">
+                    <div className="size-2 rounded-full bg-fuchsia-500 shrink-0" />
+                    <p className="text-gray-300 text-xs font-light">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. CERTIFICATIONS SECTION */}
+        <section id="certifications" className="scroll-mt-24 pt-8">
+          <div className="max-w-4xl">
+            <h2 className="text-xs uppercase tracking-widest text-emerald-400 font-bold mb-3">06. Verification</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">Certifications.</h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {certifications.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-[#08080c] border border-white/5 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/30 transition-all group interactive-card"
+                >
+                  <div>
+                    <div className="size-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-400">
+                      <ShieldCheck className="size-5" />
+                    </div>
+                    <h4 className="text-md font-bold text-gray-200 group-hover:text-emerald-400 transition-colors mb-2 leading-snug">
+                      {item.name}
+                    </h4>
+                    <p className="text-gray-400 text-xs font-light leading-relaxed mb-6">
+                      {item.description}
+                    </p>
+                  </div>
+                  <span className="text-[10px] text-gray-500 font-semibold tracking-widest uppercase">Verified Certification</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 8. GITHUB ACTIVITY SECTION */}
+        <section id="github-activity" className="scroll-mt-24 pt-8">
+          <div className="max-w-4xl">
+            <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">07. Contributions</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-10 tracking-tight">GitHub Activity</h3>
+            {renderGitCalendar()}
+          </div>
+        </section>
+
+        {/* 9. CONTACT SECTION */}
+        <section id="contact" className="scroll-mt-24 pt-8 pb-12">
+          <div className="max-w-4xl flex flex-col items-center">
+            <h2 className="text-xs uppercase tracking-widest text-emerald-400 font-bold mb-3">08. Reach</h2>
+            
+            {/* Contact details horizontal bar (Styled like 2.png) */}
+            <div className="flex flex-col items-center mt-6 w-full">
+              <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-10 text-center">Contact me</h3>
               
-              <div className="max-w-4xl grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div className="lg:col-span-2 space-y-16">
-                  {/* Background */}
-                  <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
-                    <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
-                        <User className="size-4 text-purple-400" />
-                      </div>
-                      Background
-                    </h2>
-                    <p className="text-gray-400 leading-relaxed font-light mb-4">
-                      Passionate Computer Science Engineering student at KMIT (CGPA 8.6) with hands-on experience in full-stack and AI-driven development. Skilled in the MERN stack, Java, and Python, with internship experience at IBaseIT and ODT.
-                    </p>
-                    <p className="text-gray-400 leading-relaxed font-light">
-                      Dedicated to building scalable, intelligent solutions that create real-world impact. I enjoy working across the entire stack, from designing intuitive user interfaces to architecting robust backend systems.
-                    </p>
+              <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-14 px-10 py-8 bg-black/60 border border-emerald-500/30 rounded-3xl shadow-[0_0_30px_rgba(16,185,129,0.08)] backdrop-blur-2xl max-w-full">
+                
+                {/* Mail */}
+                <a
+                  href="mailto:paturi.anisha@gmail.com"
+                  className="flex flex-col items-center gap-3 group interactive-card"
+                >
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
+                    <Mail className="size-6 text-emerald-400" />
                   </div>
+                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">Gmail</span>
+                </a>
+                
+                {/* Phone */}
+                <a
+                  href="tel:+919876543210"
+                  className="flex flex-col items-center gap-3 group interactive-card"
+                >
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
+                    <Smartphone className="size-6 text-emerald-400" />
+                  </div>
+                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">Phone</span>
+                </a>
 
-                  {/* Experience */}
-                  <div>
-                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
-                        <Briefcase className="size-4 text-blue-400" />
-                      </div>
-                      Experience
-                    </h2>
-                    <div className="space-y-6">
-                      {experience.map((exp, index) => (
-                        <div key={index} className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-blue-500/30 transition-colors">
-                          <h3 className="text-xl font-medium mb-1 text-white">{exp.role}</h3>
-                          <p className="text-blue-400 text-sm mb-4 font-medium">{exp.company} <span className="text-gray-600 mx-2">|</span> {exp.period}</p>
-                          <p className="text-gray-400 text-sm leading-relaxed font-light">{exp.description}</p>
-                        </div>
-                      ))}
-                    </div>
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-3 group interactive-card"
+                >
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
+                    <Linkedin className="size-6 text-emerald-400" />
                   </div>
+                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">LinkedIn</span>
+                </a>
 
-                  {/* Accomplishments */}
-                  <div>
-                    <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-                      <div className="size-8 rounded-lg bg-fuchsia-500/20 border border-fuchsia-500/30 flex items-center justify-center">
-                        <span className="text-fuchsia-400 text-lg font-bold">★</span>
-                      </div>
-                      Accomplishments
-                    </h2>
-                    <div className="space-y-4">
-                      {accomplishments.map((item, index) => (
-                        <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-5 flex items-start gap-4">
-                          <div className="size-2 bg-gradient-to-br from-fuchsia-400 to-purple-600 rounded-full mt-2 shrink-0" />
-                          <div>
-                            <h3 className="text-lg font-medium mb-1 text-gray-200">{item.name}</h3>
-                            <p className="text-gray-400 text-sm font-light leading-relaxed">{item.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                {/* GitHub */}
+                <a
+                  href="https://github.com/AnishaPaturi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-3 group interactive-card"
+                >
+                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl group-hover:bg-emerald-500/20 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300">
+                    <Github className="size-6 text-emerald-400" />
                   </div>
-                </div>
-
-                {/* Right Column */}
-                <div className="space-y-12">
-                  {/* Education */}
-                  <div className="bg-gradient-to-br from-purple-900/40 to-black/40 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 blur-[50px]" />
-                    <h2 className="text-xl font-semibold mb-6">Education</h2>
-                    <h3 className="text-lg font-medium">{education.degree}</h3>
-                    <p className="text-purple-300 text-sm mt-2 mb-4">{education.college} <br/> {education.period}</p>
-                    <div className="inline-block px-4 py-2 bg-white/10 rounded-xl text-sm font-mono border border-white/10">
-                      {education.cgpa}
-                    </div>
-                  </div>
-
-                  {/* Skills */}
-                  <div>
-                    <h2 className="text-xl font-semibold mb-6">Core Skills</h2>
-                    <div className="space-y-8">
-                      {Object.entries(skills).map(([category, skillList]) => (
-                        <div key={category}>
-                          <h3 className="text-sm font-medium text-gray-500 uppercase tracking-widest mb-4">{category}</h3>
-                          <div className="flex flex-wrap gap-2">
-                            {skillList.map((skill, i) => (
-                              <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-gray-300 hover:bg-white/10 transition-colors cursor-default">
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Engagement */}
-                  <div>
-                    <h2 className="text-xl font-semibold mb-6">Engagement</h2>
-                    <div className="space-y-4">
-                      {engagement.map((item, index) => (
-                        <div key={index} className="flex items-start gap-3 bg-white/5 rounded-xl p-4 border border-white/5">
-                          <div className="size-1.5 bg-gray-500 rounded-full mt-2" />
-                          <p className="text-gray-300 text-sm font-light">{item}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                  <span className="text-xs font-semibold text-gray-400 group-hover:text-emerald-400 transition-colors">GitHub</span>
+                </a>
+                
               </div>
-            </motion.div>
-          )}
+            </div>
+          </div>
+        </section>
 
-          {/* Contact Section */}
-          {activeSection === "contact" && (
-            <motion.div
-              key="contact"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4 }}
-              className="min-h-[80vh] flex items-center justify-center lg:justify-start"
-            >
-              <div className="max-w-2xl w-full">
-                <h1 className="text-5xl font-bold mb-4 tracking-tight">Get In Touch.</h1>
-                <p className="text-gray-400 mb-12 text-lg font-light">
-                  I'm always interested in hearing about new projects and opportunities.
-                </p>
-                <div className="grid gap-6">
-                  <motion.a
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="mailto:paturi.anisha@gmail.com"
-                    className="flex items-center gap-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-purple-500/50 hover:bg-white/5 transition-all group"
-                  >
-                    <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl group-hover:bg-purple-500/20 transition-colors">
-                      <Mail className="size-6 text-purple-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-medium mb-1">Email directly</h3>
-                      <p className="text-gray-400 text-sm font-light">paturi.anisha@gmail.com</p>
-                    </div>
-                  </motion.a>
-                  
-                  <motion.a
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="https://github.com/AnishaPaturi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-gray-500/50 hover:bg-white/5 transition-all group"
-                  >
-                    <div className="p-4 bg-gray-500/10 border border-gray-500/20 rounded-2xl group-hover:bg-gray-500/20 transition-colors">
-                      <Github className="size-6 text-gray-300" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-medium mb-1">View code</h3>
-                      <p className="text-gray-400 text-sm font-light">@AnishaPaturi</p>
-                    </div>
-                  </motion.a>
+        {/* Footer info */}
+        <footer className="w-full text-center text-gray-600 text-xs py-8 border-t border-white/5">
+          <p>© {new Date().getFullYear()} Anisha Paturi. Built with React, Vite & Motion.</p>
+        </footer>
 
-                  <motion.a
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    href="https://www.linkedin.com/in/anisha-paturi-8b885a2b5"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-6 p-6 bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl hover:border-blue-500/50 hover:bg-white/5 transition-all group"
-                  >
-                    <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl group-hover:bg-blue-500/20 transition-colors">
-                      <Linkedin className="size-6 text-blue-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-medium mb-1">Connect professionally</h3>
-                      <p className="text-gray-400 text-sm font-light">Connect with me on LinkedIn</p>
-                    </div>
-                  </motion.a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </main>
     </div>
   );
