@@ -871,37 +871,31 @@ export default function PortfolioThree() {
   return (
     <div className="size-full flex flex-col text-slate-800 relative min-h-screen overflow-hidden bg-[#f4f3f9] selection:bg-purple-500/20 font-sans">
       
-      {/* Custom Cursor Ring & Dot (Morphs text View/Open/PDF/GitHub/LinkedIn/Mail) */}
+      {/* Signature Morphing Cursor (No generic tutorial ring: simple dot that morphs into wayfinding pill) */}
       {!isMobile && (
-        <>
-          <motion.div
-            className="fixed top-0 left-0 rounded-full border border-purple-600 pointer-events-none z-[9999] flex items-center justify-center text-[9px] font-black uppercase tracking-widest text-purple-700 bg-purple-50/20 shadow-sm"
-            style={{
-              x: cursorXSpring,
-              y: cursorYSpring,
-              width: cursorHovered ? (cursorText ? 56 : 40) : 32,
-              height: cursorHovered ? (cursorText ? 56 : 40) : 32,
-              backgroundColor: cursorHovered ? "rgba(124, 58, 237, 0.08)" : "transparent",
-              borderColor: cursorHovered ? "#8b5cf6" : "#7c3aed",
-            }}
-          >
-            {cursorHovered && cursorText}
-          </motion.div>
-          <motion.div
-            className="fixed top-0 left-0 size-2 bg-purple-600 rounded-full pointer-events-none z-[9999]"
-            style={{
-              x: useSpring(cursorX, { damping: 15, stiffness: 450 }),
-              y: useSpring(cursorY, { damping: 15, stiffness: 450 }),
-              transform: cursorHovered ? "translate(24px, 24px)" : "translate(12px, 12px)",
-            }}
-          />
-        </>
+        <motion.div
+          className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center font-sans font-bold uppercase tracking-widest shadow-md select-none text-white border border-purple-500/10"
+          style={{
+            x: useSpring(cursorX, { damping: 22, stiffness: 400 }),
+            y: useSpring(cursorY, { damping: 22, stiffness: 400 }),
+            width: cursorHovered && cursorText ? "auto" : (cursorHovered ? 14 : 8),
+            height: cursorHovered && cursorText ? "auto" : (cursorHovered ? 14 : 8),
+            borderRadius: "9999px",
+            backgroundColor: "#7c3aed",
+            padding: cursorHovered && cursorText ? "6px 14px" : "0px",
+            fontSize: "9px",
+            transform: cursorHovered && cursorText ? "translate(-20px, -20px)" : "translate(12px, 12px)",
+          }}
+        >
+          {cursorHovered && cursorText}
+        </motion.div>
       )}
 
-      {/* Signature background decorations: ONLY 2 subtle background blobs behind hero/about, not floating elsewhere */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[45%] h-[45%] rounded-full bg-rose-200/20 blur-[130px]" />
-        <div className="absolute top-[15%] left-[-10%] w-[45%] h-[45%] rounded-full bg-purple-200/20 blur-[140px]" />
+      {/* Page Background: Faint Static Dot-Grid Pattern + Faint Static Hero Blurs Only */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#f4f3f9] bg-[radial-gradient(#e2e8f0_1.5px,transparent_1.5px)] [background-size:24px_24px]">
+        {/* Faint static color blurs behind the hero section only */}
+        <div className="absolute top-[-10%] right-[-5%] w-[45%] h-[45%] rounded-full bg-rose-200/25 blur-[120px]" />
+        <div className="absolute top-[10%] left-[-15%] w-[45%] h-[45%] rounded-full bg-purple-200/20 blur-[130px]" />
       </div>
 
       {/* ================= FLOATING TOP NAVIGATION HEADER (Light Theme version of 7.png) ================= */}
