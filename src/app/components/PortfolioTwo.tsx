@@ -157,7 +157,7 @@ export default function PortfolioTwo() {
               </div>
               <h1 className="text-5xl mb-4">Anisha Paturi</h1>
               <p className="text-xl text-gray-600 mb-6">
-                Full Stack Developer passionate about building impactful applications
+                Full Stack Developer & AI/ML Engineer passionate about building impactful applications
               </p>
               <div className="flex items-center gap-4 mb-8">
                 <a

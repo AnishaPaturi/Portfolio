@@ -391,7 +391,7 @@ export default function PortfolioThree() {
             className="size-24 rounded-2xl object-cover mb-5 border border-white/10 shadow-lg shadow-purple-500/20"
           />
           <h2 className="text-xl font-semibold tracking-wide bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Anisha Paturi</h2>
-          <p className="text-xs text-purple-300/60 mt-1.5 font-medium tracking-widest uppercase">Full Stack Developer</p>
+          <p className="text-xs text-purple-300/60 mt-1.5 font-medium tracking-widest uppercase">Full Stack Developer & AI/ML Engineer</p>
         </div>
 
         <nav className="flex-1 p-6 space-y-2">
@@ -488,7 +488,7 @@ export default function PortfolioThree() {
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
                   className="text-2xl text-gray-300 mb-8 font-light tracking-wide"
                 >
-                  Full Stack & AI-Driven Developer
+                  Full Stack Developer & AI/ML Engineer
                 </motion.p>
                 <motion.p 
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}

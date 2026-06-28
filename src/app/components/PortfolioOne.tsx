@@ -108,7 +108,7 @@ export default function PortfolioOne() {
             Anisha Paturi
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Full Stack Developer & Problem Solver
+            Full Stack Developer & AI/ML Engineer
           </p>
           <p className="text-gray-500 mb-12 max-w-xl mx-auto">
             Passionate about creating innovative solutions that make a difference. 
