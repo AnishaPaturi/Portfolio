@@ -813,13 +813,12 @@ export default function PortfolioThree() {
     };
 
     return (
-      <div className="flex flex-col items-center p-6 bg-white border border-slate-200/60 rounded-3xl shadow-md">
-        <div className="w-full flex items-center justify-between mb-6">
+      <div className="flex flex-col items-center p-6 bg-white border border-slate-200/60 rounded-3xl shadow-sm">
+        <div className="w-full flex items-center mb-6">
           <div className="flex items-center gap-3">
             <Calendar className="size-5 text-purple-600" />
             <h3 className="text-lg font-bold text-slate-800 tracking-wide font-display">Contributions Graph</h3>
           </div>
-          <span className="text-xs text-slate-400 font-mono">Simulated from @AnishaPaturi live activity</span>
         </div>
         <div className="overflow-x-auto w-full flex justify-center py-2 max-w-full">
           <div className="grid grid-flow-col gap-[3px] select-none min-w-[700px]">
@@ -873,7 +872,7 @@ export default function PortfolioThree() {
       {/* Signature Morphing Cursor (No generic tutorial ring: simple dot that morphs into wayfinding pill) */}
       {!isMobile && (
         <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center font-sans font-bold uppercase tracking-widest shadow-md select-none text-white border border-purple-500/10"
+          className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center font-sans font-bold uppercase tracking-widest shadow-sm select-none text-white border border-purple-500/10"
           style={{
             x: useSpring(cursorX, { damping: 22, stiffness: 400 }),
             y: useSpring(cursorY, { damping: 22, stiffness: 400 }),
@@ -898,7 +897,7 @@ export default function PortfolioThree() {
       </div>
 
       {/* ================= FLOATING TOP NAVIGATION HEADER (Light Theme version of 7.png) ================= */}
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/70 backdrop-blur-2xl border border-slate-200/60 rounded-full px-6 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex items-center justify-between transition-all duration-300">
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/70 backdrop-blur-2xl border border-slate-200/60 rounded-full px-6 py-3 shadow-sm flex items-center justify-between transition-all duration-300">
         
         {/* Brand Logo Symbol + Text */}
         <button 
@@ -1042,7 +1041,7 @@ export default function PortfolioThree() {
               {/* Center Column: Portrait Container */}
               <div className="lg:col-span-4 flex justify-center relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-purple-300/10 to-blue-300/10 rounded-full blur-3xl -z-10" />
-                <div className="relative size-64 sm:size-80 rounded-[40px] border border-slate-200 overflow-hidden shadow-xl bg-white p-3">
+                <div className="relative size-64 sm:size-80 rounded-[40px] border border-slate-200 overflow-hidden shadow-sm bg-white p-3">
                   <img
                     src={profileImage}
                     alt="Anisha Paturi"
@@ -1063,7 +1062,7 @@ export default function PortfolioThree() {
                 {/* Connecting Social Icons */}
                 <div className="flex flex-col gap-4 lg:items-end w-full sm:w-auto">
                   <div 
-                    className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-purple-500/30 rounded-2xl px-6 py-3.5 shadow-md hover:shadow-lg transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
+                    className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-purple-500/30 rounded-xl px-6 py-3.5 shadow-sm hover:shadow-md transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://github.com/AnishaPaturi", "_blank")}
                     onMouseEnter={() => setCursorText("Open")}
                     onMouseLeave={() => setCursorText("")}
@@ -1072,7 +1071,7 @@ export default function PortfolioThree() {
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-slate-900 transition-colors">GitHub</span>
                   </div>
                   <div 
-                    className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-blue-500/30 rounded-2xl px-6 py-3.5 shadow-md hover:shadow-lg transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
+                    className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-blue-500/30 rounded-xl px-6 py-3.5 shadow-sm hover:shadow-md transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://www.linkedin.com/in/anisha-paturi-8b885a2b5", "_blank")}
                     onMouseEnter={() => setCursorText("Open")}
                     onMouseLeave={() => setCursorText("")}
@@ -1086,13 +1085,13 @@ export default function PortfolioThree() {
                 <div className="flex flex-wrap gap-3 w-full justify-center lg:justify-end pt-2">
                   <button
                     onClick={() => scrollToSection("projects")}
-                    className="px-6 py-3 bg-slate-955 hover:bg-purple-700 text-white rounded-2xl shadow-md transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer interactive-card"
+                    className="px-6 py-3 bg-slate-955 hover:bg-purple-700 text-white rounded-xl shadow-sm transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer interactive-card"
                   >
                     View My Work
                   </button>
                   <button
                     onClick={() => scrollToSection("contact")}
-                    className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md rounded-2xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer interactive-card"
+                    className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-sm rounded-xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer interactive-card"
                   >
                     Get In Touch
                   </button>
@@ -1102,7 +1101,7 @@ export default function PortfolioThree() {
             </div>
 
             {/* Row 2: About Me Card Description */}
-            <div className="bg-white/80 border border-slate-200/60 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden mb-12 backdrop-blur-md">
+            <div className="bg-white/80 border border-slate-200/60 rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden mb-12 backdrop-blur-md">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 blur-[50px] pointer-events-none" />
               
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -1126,7 +1125,7 @@ export default function PortfolioThree() {
                       target="_blank"
                       rel="noopener noreferrer"
                       download="Anisha_Paturi_Resume.pdf"
-                      className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-purple-500/30 hover:border-purple-600 rounded-2xl text-purple-700 font-bold text-xs tracking-wider uppercase shadow-md hover:shadow-purple-500/10 hover:bg-purple-50/30 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-purple-500/30 hover:border-purple-600 rounded-xl text-purple-700 font-bold text-xs tracking-wider uppercase shadow-sm hover:shadow-purple-500/10 hover:bg-purple-50/30 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
                       onMouseEnter={() => setCursorText("PDF")}
                       onMouseLeave={() => setCursorText("")}
                     >
@@ -1144,14 +1143,14 @@ export default function PortfolioThree() {
                 <div className="lg:col-span-5 space-y-6">
                   
                   {/* Card Item 1 */}
-                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-md">
+                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-3xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-sm">
                     <div className="p-3.5 bg-slate-100 border border-slate-200 text-slate-800 rounded-xl shadow-sm shrink-0">
                       <Code className="size-5" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <h5 className="font-bold text-slate-850 group-hover:text-purple-600 transition-colors text-sm">Full-Stack Development</h5>
-                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-xl border border-slate-200 text-slate-600 transition-colors cursor-pointer">
                           <ExternalLink className="size-3.5" />
                         </button>
                       </div>
@@ -1162,19 +1161,19 @@ export default function PortfolioThree() {
                   </div>
 
                   {/* Card Item 2 */}
-                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-md">
+                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-3xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-sm">
                     <div className="p-3.5 bg-slate-100 border border-slate-200 text-slate-800 rounded-xl shadow-sm shrink-0">
                       <Code2 className="size-5" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <h5 className="font-bold text-slate-850 group-hover:text-purple-600 transition-colors text-sm">AI & Agentic Systems</h5>
-                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-xl border border-slate-200 text-slate-600 transition-colors cursor-pointer">
                           <ExternalLink className="size-3.5" />
                         </button>
                       </div>
                       <p className="text-slate-500 text-xs mt-2 leading-relaxed font-normal">
-                        Architect LLM agents, vector databases, RAG search pipelines, semantic parsers, and custom multi-agent environments.
+                        Architect LLM agents, vector databases, RAG search pipelines, semantic parses, and custom multi-agent environments.
                       </p>
                     </div>
                   </div>
@@ -1185,7 +1184,7 @@ export default function PortfolioThree() {
             </div>
 
             {/* Row 3: Stats Box (Solid slate colors for contrast instead of gradients) */}
-            <div className="w-full bg-white border border-slate-200/60 rounded-3xl p-8 shadow-xl backdrop-blur-md">
+            <div className="w-full bg-white border border-slate-200/60 rounded-3xl p-8 shadow-sm backdrop-blur-md">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                 {/* Stat 1 */}
                 <div className="flex flex-col items-center p-2">
@@ -1237,7 +1236,7 @@ export default function PortfolioThree() {
                     {list.map((skill) => (
                       <div
                         key={skill.name}
-                        className="relative w-[45%] sm:w-[170px] bg-white border border-slate-200/60 rounded-2xl p-5 flex flex-col items-center hover:border-purple-500/30 hover:bg-slate-50/50 hover:shadow-lg transition-all duration-300 group interactive-card shadow-sm"
+                        className="relative w-[45%] sm:w-[170px] bg-white border border-slate-200/60 rounded-3xl p-5 flex flex-col items-center hover:border-purple-500/30 hover:bg-slate-50/50 hover:shadow-lg transition-all duration-300 group interactive-card shadow-sm"
                       >
                         {/* Skill Icon */}
                         <div className="mb-3 text-slate-655 group-hover:scale-110 transition-all duration-300">
@@ -1279,7 +1278,7 @@ export default function PortfolioThree() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative bg-white border border-slate-200/60 rounded-3xl p-8 hover:border-purple-300 transition-colors shadow-md overflow-hidden group interactive-card"
+                  className="relative bg-white border border-slate-200/60 rounded-3xl p-8 hover:border-purple-300 transition-colors shadow-sm overflow-hidden group interactive-card"
                 >
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-600 rounded-full" />
                   <div>
@@ -1311,7 +1310,7 @@ export default function PortfolioThree() {
               </div>
 
               {/* Category Filter Tabs */}
-              <div className="flex flex-wrap gap-2 bg-slate-100 p-2 rounded-2xl border border-slate-200/60 backdrop-blur-md">
+              <div className="flex flex-wrap gap-2 bg-slate-100 p-2 rounded-xl border border-slate-200/60 backdrop-blur-md">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -1339,12 +1338,12 @@ export default function PortfolioThree() {
                       return (
                         <motion.div
                           layout
-                          initial={{ opacity: 0, scale: 0.98 }}
+                          initial={{ opacity: 0, scale: 0.95 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.98 }}
-                          transition={{ duration: 0.45, delay: idx * 0.08 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.4, delay: idx * 0.05 }}
                           key={project.title}
-                          className={`${spanClass} group relative bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-purple-400 hover:shadow-lg transition-all duration-500 flex flex-col justify-between interactive-card shadow-md`}
+                          className={`${spanClass} group relative bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-purple-400 hover:shadow-md transition-all duration-500 flex flex-col justify-between interactive-card`}
                           onMouseEnter={() => setCursorText("View")}
                           onMouseLeave={() => setCursorText("")}
                         >
@@ -1366,7 +1365,7 @@ export default function PortfolioThree() {
                               href={project.liveLink || project.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="absolute top-6 right-6 p-3 bg-white hover:bg-purple-600 text-slate-655 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-md transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
+                              className="absolute top-6 right-6 p-3 bg-white hover:bg-purple-600 text-slate-655 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-sm transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
                             >
                               <ExternalLink className="size-5" />
                             </a>
@@ -1381,7 +1380,7 @@ export default function PortfolioThree() {
                             </div>
 
                             <div className="flex flex-wrap gap-2 pt-2">
-                              {project.tech.map((tech) => (
+                              {project.tech.slice(0, 4).map((tech) => (
                                 <span
                                   key={tech}
                                   className="px-3 py-1.5 bg-slate-100 border border-slate-200/60 rounded-xl text-[11px] font-mono text-purple-600 font-bold uppercase"
@@ -1389,6 +1388,11 @@ export default function PortfolioThree() {
                                   {tech}
                                 </span>
                               ))}
+                              {project.tech.length > 4 && (
+                                <span className="px-3 py-1.5 bg-purple-50 border border-purple-200/60 rounded-xl text-[11px] font-mono text-purple-700 font-bold uppercase">
+                                  +{project.tech.length - 4} more
+                                </span>
+                              )}
                             </div>
                           </div>
                         </motion.div>
@@ -1406,12 +1410,12 @@ export default function PortfolioThree() {
                     {remainingProjects.map((project, idx) => (
                       <motion.div
                         layout
-                        initial={{ opacity: 0, scale: 0.96 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.96 }}
-                        transition={{ duration: 0.4, delay: Math.min(idx * 0.04, 0.4) }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.4, delay: idx * 0.05 }}
                         key={project.title}
-                        className="group relative bg-white/80 border border-slate-200/60 rounded-2xl p-6 flex flex-col justify-between hover:border-purple-300 shadow-sm hover:shadow-md transition-all duration-300 interactive-card"
+                        className="group relative bg-white/80 border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:border-purple-300 hover:shadow-md transition-all duration-300 interactive-card"
                         onMouseEnter={() => setCursorText("Open")}
                         onMouseLeave={() => setCursorText("")}
                       >
@@ -1422,7 +1426,7 @@ export default function PortfolioThree() {
                               href={project.liveLink || project.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-1.5 bg-slate-50 hover:bg-purple-600 text-slate-500 hover:text-white border border-slate-200 hover:border-purple-600 rounded-lg transition-colors cursor-pointer"
+                              className="p-1.5 bg-slate-50 hover:bg-purple-600 text-slate-500 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl transition-colors cursor-pointer"
                             >
                               <ExternalLink className="size-3.5" />
                             </a>
@@ -1437,14 +1441,19 @@ export default function PortfolioThree() {
                         </div>
 
                         <div className="flex flex-wrap gap-1.5 pt-2">
-                          {project.tech.map((tech) => (
+                          {project.tech.slice(0, 4).map((tech) => (
                             <span
                               key={tech}
-                              className="px-2 py-0.5 bg-slate-50 border border-slate-200/40 rounded text-[11px] font-mono text-slate-650 uppercase"
+                              className="px-2 py-0.5 bg-slate-50 border border-slate-200/40 rounded-xl text-[11px] font-mono text-slate-655 uppercase"
                             >
                               {tech}
                             </span>
                           ))}
+                          {project.tech.length > 4 && (
+                            <span className="px-2 py-0.5 bg-purple-50 border border-purple-200/40 rounded-xl text-[11px] font-mono text-purple-700 uppercase">
+                              +{project.tech.length - 4} more
+                            </span>
+                          )}
                         </div>
                       </motion.div>
                     ))}
@@ -1476,7 +1485,7 @@ export default function PortfolioThree() {
                   className="py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="size-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                    <div className="size-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
                       <Trophy className="size-4" />
                     </div>
                     <h4 className="text-md font-bold text-slate-800 group-hover:text-purple-600 transition-colors">
@@ -1518,7 +1527,7 @@ export default function PortfolioThree() {
                   className="py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="size-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="size-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
                       <ShieldCheck className="size-4.5" />
                     </div>
                     <div>
@@ -1531,7 +1540,7 @@ export default function PortfolioThree() {
                     </div>
                   </div>
                   
-                  <span className="px-3.5 py-1.5 bg-blue-50 border border-blue-200 text-[9px] font-bold tracking-widest uppercase text-blue-700 rounded-lg whitespace-nowrap self-start sm:self-center">
+                  <span className="px-3.5 py-1.5 bg-blue-50 border border-blue-200 text-[9px] font-bold tracking-widest uppercase text-blue-700 rounded-xl whitespace-nowrap self-start sm:self-center">
                     Verified Certification
                   </span>
                 </div>
@@ -1556,15 +1565,14 @@ export default function PortfolioThree() {
               <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-10 text-center font-display">Contact me</h3>
               
               <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-14 px-10 py-8 bg-white border border-slate-200/80 rounded-3xl shadow-xl max-w-full">
-                
-                {/* Mail */}
+                  {/* Mail */}
                 <a
                   href="mailto:paturi.anisha@gmail.com"
                   className="flex flex-col items-center gap-3 group interactive-card"
                   onMouseEnter={() => setCursorText("Mail")}
                   onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
                     <Mail className="size-6" />
                   </div>
                   <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">Gmail</span>
@@ -1577,7 +1585,7 @@ export default function PortfolioThree() {
                   onMouseEnter={() => setCursorText("Call")}
                   onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
                     <Smartphone className="size-6" />
                   </div>
                   <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">Phone</span>
@@ -1592,7 +1600,7 @@ export default function PortfolioThree() {
                   onMouseEnter={() => setCursorText("Open")}
                   onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
                     <Linkedin className="size-6" />
                   </div>
                   <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">LinkedIn</span>
@@ -1607,7 +1615,7 @@ export default function PortfolioThree() {
                   onMouseEnter={() => setCursorText("Open")}
                   onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-sm transition-all duration-300">
                     <Github className="size-6" />
                   </div>
                   <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">GitHub</span>
