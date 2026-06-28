@@ -15,6 +15,7 @@ import {
   Code2,
   Calendar,
   X,
+  Trophy,
 } from "lucide-react";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
 import profileImage from "../../assets/profile.png";
@@ -32,6 +33,7 @@ export default function PortfolioThree() {
   const cursorXSpring = useSpring(cursorX, cursorSpringConfig);
   const cursorYSpring = useSpring(cursorY, cursorSpringConfig);
   const [cursorHovered, setCursorHovered] = useState(false);
+  const [cursorText, setCursorText] = useState("");
 
   useEffect(() => {
     const checkMobile = () => {
@@ -122,6 +124,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/HomeVerse",
       year: "2026",
       category: "Full Stack",
+      featured: true,
     },
     {
       title: "AI CareerOS (CareerPilot-AI)",
@@ -131,6 +134,7 @@ export default function PortfolioThree() {
       liveLink: "https://career-pilot-ai-delta.vercel.app",
       year: "2026",
       category: "Full Stack",
+      featured: true,
     },
     {
       title: "ResumeIQ",
@@ -139,6 +143,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/ResumeIQ",
       year: "2026",
       category: "Full Stack",
+      featured: true,
     },
     {
       title: "SentinelX",
@@ -148,6 +153,7 @@ export default function PortfolioThree() {
       liveLink: "https://sentinel-x-beta-pink.vercel.app/",
       year: "2026",
       category: "Java",
+      featured: false,
     },
     {
       title: "DocuMind – AI PDF Chatbot",
@@ -157,6 +163,7 @@ export default function PortfolioThree() {
       liveLink: "https://ai-pdf-chatbot-weld.vercel.app",
       year: "2026",
       category: "TypeScript",
+      featured: false,
     },
     {
       title: "AI-Interview",
@@ -165,6 +172,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/AI-Interview",
       year: "2026",
       category: "TypeScript",
+      featured: false,
     },
     {
       title: "FactForge",
@@ -174,6 +182,7 @@ export default function PortfolioThree() {
       liveLink: "https://fact-forge.vercel.app",
       year: "2026",
       category: "Full Stack",
+      featured: false,
     },
     {
       title: "Ctrl+S of Shame",
@@ -182,6 +191,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/CtrlSofShame",
       year: "2026",
       category: "TypeScript",
+      featured: false,
     },
     {
       title: "VizTalk – Conversational BI Dashboard",
@@ -190,6 +200,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/VizTalk",
       year: "2025",
       category: "Python",
+      featured: false,
     },
     {
       title: "Secret Santa",
@@ -199,6 +210,7 @@ export default function PortfolioThree() {
       liveLink: "https://secret-santa-theta-nine.vercel.app/",
       year: "2024",
       category: "Full Stack",
+      featured: false,
     },
     {
       title: "Mood-Angles",
@@ -208,6 +220,7 @@ export default function PortfolioThree() {
       liveLink: "https://mood-angles.vercel.app",
       year: "2024",
       category: "Full Stack",
+      featured: true,
     },
     {
       title: "SafeStreet",
@@ -216,6 +229,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/SafeStreet-final",
       year: "2024",
       category: "Full Stack",
+      featured: false,
     },
     {
       title: "College-Connect",
@@ -225,6 +239,7 @@ export default function PortfolioThree() {
       liveLink: "https://college-connect-iota.vercel.app",
       year: "2024",
       category: "Full Stack",
+      featured: false,
     },
     {
       title: "Talent Match",
@@ -234,6 +249,7 @@ export default function PortfolioThree() {
       liveLink: "https://talent-match-sandy-omega.vercel.app/",
       year: "2024",
       category: "Full Stack",
+      featured: false,
     },
     {
       title: "AutoDeck",
@@ -242,6 +258,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/AutoDeck",
       year: "2024",
       category: "Python",
+      featured: false,
     },
     {
       title: "GradeSync",
@@ -250,6 +267,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/GradeSync",
       year: "2024",
       category: "Python",
+      featured: false,
     },
     {
       title: "PythonLonden",
@@ -258,6 +276,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/PythonLonden",
       year: "2024",
       category: "Python",
+      featured: false,
     },
     {
       title: "AI-Powered Lie Detector App (Work in Progress)",
@@ -266,6 +285,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/LieDetectorGame",
       year: "2024",
       category: "React Native",
+      featured: false,
     },
     {
       title: "Attendance Tracker",
@@ -274,6 +294,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/attendance-tracker",
       year: "2024",
       category: "TypeScript",
+      featured: false,
     },
     {
       title: "CodeSleuth – Human vs AI Code Detector",
@@ -282,6 +303,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/AuthenCode",
       year: "2023",
       category: "Python",
+      featured: false,
     },
     {
       title: "AI Code Reviewer – Reflective Edition",
@@ -290,6 +312,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/CodeChecker",
       year: "2023",
       category: "Python",
+      featured: false,
     },
     {
       title: "FeedForward",
@@ -298,6 +321,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/FeedForward",
       year: "2023",
       category: "React",
+      featured: false,
     },
     {
       title: "SafeStreet Web",
@@ -306,6 +330,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/SafeStreetWeb",
       year: "2023",
       category: "React",
+      featured: false,
     },
     {
       title: "BlueDrive Rover",
@@ -314,6 +339,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/BlueDrive-Rover",
       year: "2023",
       category: "Hardware",
+      featured: false,
     },
     {
       title: "WeatherApp",
@@ -323,6 +349,7 @@ export default function PortfolioThree() {
       liveLink: "https://weather-app-two-olive-86.vercel.app/",
       year: "2022",
       category: "JavaScript",
+      featured: false,
     },
     {
       title: "Amazon Clone",
@@ -332,6 +359,7 @@ export default function PortfolioThree() {
       liveLink: "https://amazon-clone-silk-six-95.vercel.app/",
       year: "2022",
       category: "JavaScript",
+      featured: false,
     },
     {
       title: "Just Do It.",
@@ -341,6 +369,7 @@ export default function PortfolioThree() {
       liveLink: "https://to-do-phi-kohl.vercel.app/",
       year: "2022",
       category: "JavaScript",
+      featured: false,
     },
     {
       title: "IgniteJEE (Work in Progress)",
@@ -349,6 +378,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/IgniteJEE",
       year: "2024",
       category: "React",
+      featured: false,
     },
     {
       title: "Murder Mystery Web Platform (Work in Progress)",
@@ -357,6 +387,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/Murder_Mystery_Web_Platform",
       year: "2026",
       category: "React",
+      featured: false,
     },
     {
       title: "AI Procurement Verification Agent",
@@ -365,6 +396,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/Invoice_Agent",
       year: "2026",
       category: "Python",
+      featured: false,
     },
     {
       title: "CineMatch AI – Movie Recommendation Platform",
@@ -374,6 +406,7 @@ export default function PortfolioThree() {
       liveLink: "https://movie-recommendation-platform-nine.vercel.app/",
       year: "2025",
       category: "React Native",
+      featured: false,
     }
   ];
 
@@ -514,6 +547,10 @@ export default function PortfolioThree() {
 
   // Sort projects descending by year (timeline order)
   const sortedProjects = [...filteredProjects].sort((a, b) => Number(b.year) - Number(a.year));
+
+  // Split sorted projects into Featured and Remaining catalog
+  const featuredProjects = sortedProjects.filter(p => p.featured);
+  const remainingProjects = sortedProjects.filter(p => !p.featured);
 
   /* ===================== LOGO RENDERER ===================== */
 
@@ -777,11 +814,11 @@ export default function PortfolioThree() {
     };
 
     return (
-      <div className="flex flex-col items-center p-6 bg-white border border-slate-200/60 rounded-3xl shadow-xl backdrop-blur-md">
+      <div className="flex flex-col items-center p-6 bg-white border border-slate-200/60 rounded-3xl shadow-md">
         <div className="w-full flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <Calendar className="size-5 text-purple-600" />
-            <h3 className="text-lg font-bold text-slate-800 tracking-wide">Contributions Graph</h3>
+            <h3 className="text-lg font-bold text-slate-800 tracking-wide font-display">Contributions Graph</h3>
           </div>
           <span className="text-xs text-slate-400 font-mono">Simulated from @AnishaPaturi live activity</span>
         </div>
@@ -834,71 +871,41 @@ export default function PortfolioThree() {
   return (
     <div className="size-full flex flex-col text-slate-800 relative min-h-screen overflow-hidden bg-[#f4f3f9] selection:bg-purple-500/20 font-sans">
       
-      {/* Custom Cursor Ring & Dot (Themed Light) */}
+      {/* Custom Cursor Ring & Dot (Morphs text View/Open/PDF/GitHub/LinkedIn/Mail) */}
       {!isMobile && (
         <>
           <motion.div
-            className="fixed top-0 left-0 size-8 rounded-full border border-purple-600 pointer-events-none z-[9999]"
+            className="fixed top-0 left-0 rounded-full border border-purple-600 pointer-events-none z-[9999] flex items-center justify-center text-[9px] font-black uppercase tracking-widest text-purple-700 bg-purple-50/20 shadow-sm"
             style={{
               x: cursorXSpring,
               y: cursorYSpring,
-              scale: cursorHovered ? 1.4 : 1,
-              backgroundColor: cursorHovered ? "rgba(147, 51, 234, 0.08)" : "transparent",
-              borderColor: cursorHovered ? "#a855f7" : "#7c3aed",
+              width: cursorHovered ? (cursorText ? 56 : 40) : 32,
+              height: cursorHovered ? (cursorText ? 56 : 40) : 32,
+              backgroundColor: cursorHovered ? "rgba(124, 58, 237, 0.08)" : "transparent",
+              borderColor: cursorHovered ? "#8b5cf6" : "#7c3aed",
             }}
-          />
+          >
+            {cursorHovered && cursorText}
+          </motion.div>
           <motion.div
             className="fixed top-0 left-0 size-2 bg-purple-600 rounded-full pointer-events-none z-[9999]"
             style={{
               x: useSpring(cursorX, { damping: 15, stiffness: 450 }),
               y: useSpring(cursorY, { damping: 15, stiffness: 450 }),
-              transform: "translate(12px, 12px)",
+              transform: cursorHovered ? "translate(24px, 24px)" : "translate(12px, 12px)",
             }}
           />
         </>
       )}
 
-      {/* Soft Ambient Theme Blobs matching the light peach/lavender of 1.png */}
+      {/* Signature background decorations: ONLY 2 subtle background blobs behind hero/about, not floating elsewhere */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-rose-200/40 blur-[120px]" />
-        <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-200/30 blur-[130px]" />
-        <div className="absolute bottom-[-15%] right-[10%] w-[45%] h-[45%] rounded-full bg-blue-100/40 blur-[140px]" />
-        
-        {/* Subtle floating background bubbles */}
-        {[
-          { size: "w-48 h-48", color: "bg-purple-400/18", top: "15%", left: "10%", duration: 25, delay: 0 },
-          { size: "w-64 h-64", color: "bg-rose-400/22", top: "45%", left: "80%", duration: 32, delay: 1 },
-          { size: "w-36 h-36", color: "bg-blue-400/18", top: "70%", left: "15%", duration: 20, delay: 2 },
-          { size: "w-56 h-56", color: "bg-fuchsia-400/20", top: "85%", left: "75%", duration: 28, delay: 0.5 },
-          { size: "w-44 h-44", color: "bg-pink-400/22", top: "5%", left: "55%", duration: 22, delay: 3 },
-          { size: "w-72 h-72", color: "bg-indigo-400/15", top: "60%", left: "45%", duration: 35, delay: 1.5 },
-          { size: "w-48 h-48", color: "bg-purple-400/18", top: "30%", left: "5%", duration: 27, delay: 4 },
-          { size: "w-60 h-60", color: "bg-rose-400/18", top: "80%", left: "35%", duration: 30, delay: 2.5 }
-        ].map((bubble, i) => (
-          <motion.div
-            key={i}
-            className={`absolute rounded-full blur-[25px] ${bubble.size} ${bubble.color}`}
-            style={{
-              top: bubble.top,
-              left: bubble.left,
-            }}
-            animate={{
-              x: [0, 50, -30, 20, 0],
-              y: [0, -70, 40, -30, 0],
-              scale: [1, 1.08, 0.96, 1.04, 1],
-            }}
-            transition={{
-              duration: bubble.duration,
-              delay: bubble.delay,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        <div className="absolute top-[-10%] right-[-5%] w-[45%] h-[45%] rounded-full bg-rose-200/20 blur-[130px]" />
+        <div className="absolute top-[15%] left-[-10%] w-[45%] h-[45%] rounded-full bg-purple-200/20 blur-[140px]" />
       </div>
 
       {/* ================= FLOATING TOP NAVIGATION HEADER (Light Theme version of 7.png) ================= */}
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/70 backdrop-blur-2xl border border-slate-200/60 rounded-full px-6 py-3 shadow-[0_10px_35px_rgba(0,0,0,0.04)] flex items-center justify-between transition-all duration-300">
+      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-white/70 backdrop-blur-2xl border border-slate-200/60 rounded-full px-6 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex items-center justify-between transition-all duration-300">
         
         {/* Brand Logo Symbol + Text */}
         <button 
@@ -909,7 +916,7 @@ export default function PortfolioThree() {
           <div className="size-6 bg-slate-900 rounded-full flex items-center justify-center text-white text-[11px] font-black tracking-tighter">
             E
           </div>
-          <span className="text-xs font-black tracking-widest uppercase">ANISHA PATURI</span>
+          <span className="text-xs font-black tracking-widest uppercase font-sans">ANISHA PATURI</span>
         </button>
 
         {/* Desktop Navigation Links */}
@@ -928,7 +935,7 @@ export default function PortfolioThree() {
                 {isActive && (
                   <motion.span 
                     layoutId="activeIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-purple-600 rounded-full"
                   />
                 )}
               </button>
@@ -989,7 +996,7 @@ export default function PortfolioThree() {
         max-w-7xl mx-auto px-6 md:px-16 pt-36 pb-20 space-y-32"
       >
 
-        {/* 1. ABOUT ME SECTION (COMBINED HERO & ABOUT ME - LIGHT THEME) */}
+        {/* 1. ABOUT ME SECTION (COMBINED HERO & ABOUT ME) */}
         <section id="about" className="scroll-mt-24 pt-8">
           <div className="max-w-6xl mx-auto">
             
@@ -998,20 +1005,20 @@ export default function PortfolioThree() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-100 border border-purple-200 text-purple-700 text-xs font-bold tracking-wider uppercase"
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold tracking-wider uppercase"
               >
-                <span className="size-2 rounded-full bg-purple-500 animate-pulse" />
+                <span className="size-2 rounded-full bg-blue-600 animate-pulse" />
                 Available for new opportunities
               </motion.div>
             </div>
 
-            {/* Row 1: Profile Graphic Node Layout (Light Mode matching 6.png structure) */}
+            {/* Row 1: Profile Graphic Node Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center mb-16 relative">
               
               {/* Left Column: Hello & Roles */}
               <div className="lg:col-span-4 space-y-12 text-left">
                 <div>
-                  <h4 className="text-6xl font-black text-slate-900 mb-4">Hello,</h4>
+                  <h4 className="text-6xl font-extrabold text-slate-900 mb-4 font-display">Hello,</h4>
                   <p className="text-slate-500 text-sm leading-relaxed font-normal max-w-sm">
                     Delivering efficient, scalable solutions to transform your tech vision into reality.
                   </p>
@@ -1034,9 +1041,9 @@ export default function PortfolioThree() {
                 </div>
               </div>
 
-              {/* Center Column: Portrait Container (Light Theme) */}
+              {/* Center Column: Portrait Container */}
               <div className="lg:col-span-4 flex justify-center relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-300/20 to-blue-300/20 rounded-full blur-3xl -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-300/10 to-blue-300/10 rounded-full blur-3xl -z-10" />
                 <div className="relative size-64 sm:size-80 rounded-[40px] border border-slate-200 overflow-hidden shadow-xl bg-white p-3">
                   <img
                     src={profileImage}
@@ -1049,8 +1056,9 @@ export default function PortfolioThree() {
               {/* Right Column: Name & Connect Nodes */}
               <div className="lg:col-span-4 space-y-10 lg:text-right flex flex-col lg:items-end">
                 <div>
-                  <h4 className="text-4xl font-light text-slate-400 uppercase tracking-widest">I am</h4>
-                  <h5 className="text-5xl font-black bg-gradient-to-r from-purple-600 via-fuchsia-600 to-blue-600 bg-clip-text text-transparent mt-3 leading-tight">
+                  <h4 className="text-4xl font-light text-slate-400 uppercase tracking-widest font-sans">I am</h4>
+                  {/* ONLY text gradient on the entire page: The name in the Hero */}
+                  <h5 className="text-5xl font-black bg-gradient-to-r from-purple-600 via-fuchsia-600 to-blue-600 bg-clip-text text-transparent mt-3 leading-tight font-display">
                     Anisha Paturi
                   </h5>
                 </div>
@@ -1060,6 +1068,8 @@ export default function PortfolioThree() {
                   <div 
                     className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-purple-500/30 rounded-2xl px-6 py-3.5 shadow-md hover:shadow-lg transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://github.com/AnishaPaturi", "_blank")}
+                    onMouseEnter={() => setCursorText("Open")}
+                    onMouseLeave={() => setCursorText("")}
                   >
                     <Github className="size-5 text-slate-500 group-hover:text-slate-900 transition-colors" />
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-slate-900 transition-colors">GitHub</span>
@@ -1067,23 +1077,25 @@ export default function PortfolioThree() {
                   <div 
                     className="flex items-center gap-4 bg-white border border-slate-200/80 hover:border-blue-500/30 rounded-2xl px-6 py-3.5 shadow-md hover:shadow-lg transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://www.linkedin.com/in/anisha-paturi-8b885a2b5", "_blank")}
+                    onMouseEnter={() => setCursorText("Open")}
+                    onMouseLeave={() => setCursorText("")}
                   >
                     <Linkedin className="size-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-700 group-hover:text-blue-600 transition-colors">LinkedIn</span>
                   </div>
                 </div>
 
-                {/* Action CTA Buttons (Styled matching solid black button from 1.png) */}
+                {/* Action CTA Buttons */}
                 <div className="flex flex-wrap gap-3 w-full justify-center lg:justify-end pt-2">
                   <button
                     onClick={() => scrollToSection("projects")}
-                    className="px-6 py-3 bg-slate-950 hover:bg-slate-800 text-white rounded-xl shadow-md transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer"
+                    className="px-6 py-3 bg-slate-955 hover:bg-purple-700 text-white rounded-xl shadow-md transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer interactive-card"
                   >
                     View My Work
                   </button>
                   <button
                     onClick={() => scrollToSection("contact")}
-                    className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md rounded-xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer"
+                    className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md rounded-xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer interactive-card"
                   >
                     Get In Touch
                   </button>
@@ -1092,7 +1104,7 @@ export default function PortfolioThree() {
               
             </div>
 
-            {/* Row 2: About Me Card Description (Light Mode) */}
+            {/* Row 2: About Me Card Description */}
             <div className="bg-white/80 border border-slate-200/60 rounded-3xl p-8 md:p-12 shadow-xl relative overflow-hidden mb-12 backdrop-blur-md">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 blur-[50px] pointer-events-none" />
               
@@ -1100,7 +1112,7 @@ export default function PortfolioThree() {
                 
                 {/* Left Column of Card */}
                 <div className="lg:col-span-7 space-y-6">
-                  <h4 className="text-3xl font-black text-slate-900 tracking-tight">About Me</h4>
+                  <h4 className="text-3xl font-bold text-slate-900 tracking-tight font-display">About Me</h4>
                   <p className="text-slate-700 text-sm leading-relaxed font-normal font-sans">
                     I'm a fourth-year Computer Science Engineering student at <span className="text-purple-600 font-bold">KMIT, Hyderabad</span> (CGPA: 8.6) passionate about building high-performance software that combines strong engineering principles with modern AI.
                   </p>
@@ -1117,7 +1129,9 @@ export default function PortfolioThree() {
                       target="_blank"
                       rel="noopener noreferrer"
                       download="Anisha_Paturi_Resume.pdf"
-                      className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-purple-500/30 hover:border-purple-600/80 rounded-xl text-purple-700 font-bold text-xs tracking-wider uppercase shadow-md hover:shadow-purple-500/10 hover:bg-purple-50/30 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-white border border-purple-500/30 hover:border-purple-600 rounded-xl text-purple-700 font-bold text-xs tracking-wider uppercase shadow-md hover:shadow-purple-500/10 hover:bg-purple-50/30 transition-all duration-300 active:scale-95 cursor-pointer interactive-card"
+                      onMouseEnter={() => setCursorText("PDF")}
+                      onMouseLeave={() => setCursorText("")}
                     >
                       <span>Download CV</span>
                       <svg viewBox="0 0 24 24" className="size-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -1134,12 +1148,12 @@ export default function PortfolioThree() {
                   
                   {/* Card Item 1 */}
                   <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-md">
-                    <div className="p-3.5 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl text-white shadow-lg shrink-0">
+                    <div className="p-3.5 bg-slate-100 border border-slate-200 text-slate-800 rounded-xl shadow-sm shrink-0">
                       <Code className="size-5" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <h5 className="font-extrabold text-slate-800 group-hover:text-purple-600 transition-colors text-sm">Full-Stack Development</h5>
+                        <h5 className="font-bold text-slate-850 group-hover:text-purple-600 transition-colors text-sm">Full-Stack Development</h5>
                         <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
                           <ExternalLink className="size-3.5" />
                         </button>
@@ -1151,14 +1165,14 @@ export default function PortfolioThree() {
                   </div>
 
                   {/* Card Item 2 */}
-                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-blue-300 hover:bg-white transition-all duration-300 group shadow-md">
-                    <div className="p-3.5 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl text-white shadow-lg shrink-0">
+                  <div className="flex gap-4 p-6 bg-slate-50/50 border border-slate-200/80 rounded-2xl items-start hover:border-purple-300 hover:bg-white transition-all duration-300 group shadow-md">
+                    <div className="p-3.5 bg-slate-100 border border-slate-200 text-slate-800 rounded-xl shadow-sm shrink-0">
                       <Code2 className="size-5" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
-                        <h5 className="font-extrabold text-slate-800 group-hover:text-blue-600 transition-colors text-sm">AI & Agentic Systems</h5>
-                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-blue-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
+                        <h5 className="font-bold text-slate-850 group-hover:text-purple-600 transition-colors text-sm">AI & Agentic Systems</h5>
+                        <button onClick={() => scrollToSection("projects")} className="p-1.5 bg-white hover:bg-purple-600 hover:text-white rounded-lg border border-slate-200 text-slate-600 transition-colors cursor-pointer">
                           <ExternalLink className="size-3.5" />
                         </button>
                       </div>
@@ -1173,12 +1187,12 @@ export default function PortfolioThree() {
               </div>
             </div>
 
-            {/* Row 3: Stats Box (Styled like 1.png but with light colors and custom data) */}
+            {/* Row 3: Stats Box (Solid slate colors for contrast instead of gradients) */}
             <div className="w-full bg-white border border-slate-200/60 rounded-3xl p-8 shadow-xl backdrop-blur-md">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                 {/* Stat 1 */}
                 <div className="flex flex-col items-center p-2">
-                  <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
+                  <span className="text-4xl md:text-5xl font-black text-slate-900">
                     4 Months
                   </span>
                   <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mt-3">
@@ -1187,7 +1201,7 @@ export default function PortfolioThree() {
                 </div>
                 {/* Stat 2 */}
                 <div className="flex flex-col items-center p-2 border-t sm:border-t-0 sm:border-x border-slate-100">
-                  <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <span className="text-4xl md:text-5xl font-black text-slate-900">
                     42
                   </span>
                   <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mt-3">
@@ -1196,7 +1210,7 @@ export default function PortfolioThree() {
                 </div>
                 {/* Stat 3 */}
                 <div className="flex flex-col items-center p-2 border-t sm:border-t-0 border-slate-100">
-                  <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  <span className="text-4xl md:text-5xl font-black text-slate-900">
                     840
                   </span>
                   <span className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mt-3">
@@ -1209,11 +1223,10 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 2. SKILLS SECTION (Light Theme) */}
+        {/* 2. SKILLS SECTION (Light Theme - Eyebrow removed) */}
         <section id="skills" className="scroll-mt-24 pt-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xs uppercase tracking-widest text-fuchsia-600 font-bold mb-3">02. Stack</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Technologies I Work With</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-display">Technologies I Work With</h3>
             <p className="text-slate-500 font-normal mb-12 text-lg">My language competencies, frameworks, and databases visualized by experience</p>
 
             {/* Skills Cards (Centered flex layout with 5 cards per row on large screens) */}
@@ -1232,10 +1245,10 @@ export default function PortfolioThree() {
                   {/* Skill Category */}
                   <span className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">{skill.category}</span>
                   
-                  {/* Experience Bar */}
+                  {/* Experience Bar (Solid purple accent instead of gradient) */}
                   <div className="w-full bg-slate-100 h-[5px] rounded-full mt-6 overflow-hidden">
                     <motion.div
-                      className={`h-full bg-gradient-to-r ${skill.gradient}`}
+                      className="h-full bg-purple-600"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
@@ -1248,11 +1261,11 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 3. EXPERIENCE SECTION (Light Theme) */}
+        {/* 3. EXPERIENCE SECTION (Chronological eyebrow) */}
         <section id="experience" className="scroll-mt-24 pt-8">
           <div className="max-w-3xl">
-            <h2 className="text-xs uppercase tracking-widest text-blue-600 font-bold mb-3">03. Career</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 tracking-tight">Experience.</h3>
+            <h2 className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3 font-sans">2024 — Present</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight font-display">Experience.</h3>
             
             <div className="space-y-10 relative pl-4 border-l border-slate-200">
               {experience.map((exp, index) => (
@@ -1262,16 +1275,16 @@ export default function PortfolioThree() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative bg-white border border-slate-200/60 rounded-3xl p-8 hover:border-blue-500/40 transition-colors shadow-md overflow-hidden group interactive-card"
+                  className="relative bg-white border border-slate-200/60 rounded-3xl p-8 hover:border-purple-300 transition-colors shadow-md overflow-hidden group interactive-card"
                 >
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full" />
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-purple-600 rounded-full" />
                   <div>
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
-                        <h4 className="text-2xl font-bold mb-1 text-slate-800 group-hover:text-blue-600 transition-colors">{exp.role}</h4>
+                        <h4 className="text-2xl font-bold mb-1 text-slate-800 group-hover:text-purple-600 transition-colors">{exp.role}</h4>
                         <p className="text-blue-600 text-lg font-semibold">{exp.company}</p>
                       </div>
-                      <span className="px-4 py-2 bg-blue-50 border border-blue-200/60 rounded-xl text-xs text-blue-700 font-mono font-semibold">
+                      <span className="px-4 py-2 bg-blue-50 border border-blue-200 text-xs text-blue-750 font-mono font-semibold rounded-xl">
                         {exp.period}
                       </span>
                     </div>
@@ -1283,17 +1296,17 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 4. PROJECTS SECTION (Light Theme matching large card mockups in 5.png) */}
+        {/* 4. PROJECTS SECTION (Featured projects scale hierarchy + remaining catalog grid) */}
         <section id="projects" className="scroll-mt-24 pt-8">
           <div className="max-w-6xl">
             <div className="flex flex-wrap items-end justify-between mb-12 gap-6">
               <div>
-                <h2 className="text-xs uppercase tracking-widest text-purple-600 font-bold mb-3">04. Works</h2>
-                <h3 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Featured Projects</h3>
+                <h2 className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3 font-sans">2022 — 2026</h2>
+                <h3 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight font-display">Featured Projects</h3>
                 <p className="text-slate-500 font-normal text-md mt-2">A selective display of engineered tools, libraries, and applications</p>
               </div>
 
-              {/* Category Filter Tabs (Light themed) */}
+              {/* Category Filter Tabs */}
               <div className="flex flex-wrap gap-2 bg-slate-100 p-2 rounded-2xl border border-slate-200/60 backdrop-blur-md">
                 {categories.map((category) => (
                   <button
@@ -1311,106 +1324,169 @@ export default function PortfolioThree() {
               </div>
             </div>
 
-            {/* Grid of Large Cards (Light version of 5.png mockup, sorted descending by year) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              <AnimatePresence mode="popLayout">
-                {sortedProjects.map((project) => (
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4 }}
-                    key={project.title}
-                    className="group relative bg-white border border-slate-200/60 rounded-3xl overflow-hidden hover:border-purple-300 hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col h-full interactive-card shadow-md"
-                  >
-                    {/* Visual mockup banner (Light theme grid) */}
-                    <div className="h-44 w-full relative overflow-hidden bg-gradient-to-br from-purple-50/40 via-slate-50 to-blue-50/40 border-b border-slate-150 flex items-center justify-center">
-                      <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
-                      
-                      {/* Interactive Visual Graphic */}
-                      <div className="relative z-10 text-center p-6 pointer-events-none">
-                        <div className="inline-block px-3 py-1 bg-slate-200/60 border border-slate-300 rounded-full text-[10px] font-mono text-slate-600 mb-2">
-                          {project.year}
-                        </div>
-                        <h4 className="text-md font-extrabold text-slate-800 group-hover:scale-105 transition-transform duration-300">
-                          {project.title}
-                        </h4>
-                      </div>
+            {/* Hierarchical layout: Featured Projects display as larger visual cards */}
+            <div className="space-y-16">
+              {featuredProjects.length > 0 && (
+                <div className="space-y-8">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 font-sans">Core Innovations</h4>
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    {featuredProjects.map((project) => {
+                      // Grid span logic: Symmetrical two-column grid for featured cards
+                      const spanClass = "lg:col-span-6";
+                      return (
+                        <motion.div
+                          layout
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          key={project.title}
+                          className={`${spanClass} group relative bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-purple-400 hover:shadow-lg transition-all duration-500 flex flex-col justify-between interactive-card shadow-md`}
+                          onMouseEnter={() => setCursorText("View")}
+                          onMouseLeave={() => setCursorText("")}
+                        >
+                          {/* Visual mockup banner */}
+                          <div className="h-56 w-full relative overflow-hidden bg-gradient-to-br from-purple-50/50 via-slate-50 to-blue-50/30 border-b border-slate-150 flex items-center justify-center">
+                            <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
+                            
+                            <div className="relative z-10 text-center p-8 pointer-events-none">
+                              <div className="inline-block px-3 py-1 bg-blue-50 border border-blue-200 text-blue-700 rounded-full text-[10px] font-mono mb-3">
+                                {project.year} • Featured
+                              </div>
+                              <h4 className="text-2xl font-bold text-slate-800 font-display">
+                                {project.title}
+                              </h4>
+                            </div>
 
-                      {/* Top Right Overlay External Link Icon */}
-                      <a
-                        href={project.liveLink || project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute top-4 right-4 p-2 bg-white hover:bg-purple-600 text-slate-600 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-sm transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
+                            <a
+                              href={project.liveLink || project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="absolute top-6 right-6 p-3 bg-white hover:bg-purple-600 text-slate-650 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-md transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
+                            >
+                              <ExternalLink className="size-5" />
+                            </a>
+                          </div>
+
+                          {/* Body details */}
+                          <div className="p-8 flex flex-col flex-grow justify-between">
+                            <div>
+                              <p className="text-slate-600 text-sm leading-relaxed mb-6 font-normal">
+                                {project.description}
+                              </p>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2 pt-2">
+                              {project.tech.map((tech) => (
+                                <span
+                                  key={tech}
+                                  className="px-3 py-1.5 bg-slate-100 border border-slate-200/60 rounded-xl text-[10px] font-mono text-purple-600 font-bold uppercase"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Remaining catalogue: Rendered in a clean, compact catalog grid (lower visual weight) */}
+              {remainingProjects.length > 0 && (
+                <div className="space-y-8 pt-8">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 font-sans">Project Catalogue</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {remainingProjects.map((project) => (
+                      <motion.div
+                        layout
+                        initial={{ opacity: 0, scale: 0.96 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.96 }}
+                        key={project.title}
+                        className="group relative bg-white/80 border border-slate-200/60 rounded-2xl p-6 flex flex-col justify-between hover:border-purple-300 shadow-sm hover:shadow-md transition-all duration-300 interactive-card"
+                        onMouseEnter={() => setCursorText("Open")}
+                        onMouseLeave={() => setCursorText("")}
                       >
-                        <ExternalLink className="size-4" />
-                      </a>
-                    </div>
+                        <div>
+                          <div className="flex items-center justify-between gap-4 mb-3">
+                            <span className="text-[10px] font-mono text-slate-400">{project.year}</span>
+                            
+                            <a
+                              href={project.liveLink || project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-1.5 bg-slate-50 hover:bg-purple-600 text-slate-500 hover:text-white border border-slate-200 hover:border-purple-600 rounded-lg transition-colors cursor-pointer"
+                            >
+                              <ExternalLink className="size-3.5" />
+                            </a>
+                          </div>
 
-                    {/* Project Body */}
-                    <div className="p-6 flex flex-col flex-1 justify-between">
-                      <div>
-                        <h4 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
-                          {project.title}
-                        </h4>
-                        <p className="text-slate-500 text-xs font-normal leading-relaxed mb-6 min-h-[4.5rem] line-clamp-4">
-                          {project.description}
-                        </p>
-                      </div>
+                          <h5 className="text-md font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">
+                            {project.title}
+                          </h5>
+                          <p className="text-slate-500 text-xs font-normal leading-relaxed mb-4 line-clamp-3">
+                            {project.description}
+                          </p>
+                        </div>
 
-                      <div className="flex flex-wrap gap-1.5 mt-auto">
-                        {project.tech.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2.5 py-1 bg-slate-100 border border-slate-200/60 rounded-lg text-[9px] font-mono text-purple-600 uppercase font-semibold"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+                        <div className="flex flex-wrap gap-1.5 pt-2">
+                          {project.tech.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-0.5 bg-slate-50 border border-slate-200/40 rounded text-[9px] font-mono text-slate-600 uppercase"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
+
           </div>
         </section>
 
-        {/* 5. ACHIEVEMENTS SECTION (Light Theme) */}
+        {/* 5. ACHIEVEMENTS SECTION (Simplified to clean list layout instead of cards) */}
         <section id="achievements" className="scroll-mt-24 pt-8">
           <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-fuchsia-600 font-bold mb-3">05. Recognition</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight">Achievements.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">Achievements.</h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Minimalist vertical list */}
+            <div className="border-t border-slate-200 divide-y divide-slate-200 mb-12">
               {accomplishments.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white border border-slate-200/60 rounded-3xl p-6 hover:border-fuchsia-300 shadow-md hover:shadow-lg transition-all group interactive-card"
+                  className="py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 group"
                 >
-                  <div className="size-10 rounded-xl bg-fuchsia-50 border border-fuchsia-200 text-fuchsia-600 flex items-center justify-center mb-5">
-                    <span className="font-mono font-bold text-sm">{index + 1}</span>
+                  <div className="flex items-center gap-4">
+                    <div className="size-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                      <Trophy className="size-4" />
+                    </div>
+                    <h4 className="text-md font-bold text-slate-800 group-hover:text-purple-600 transition-colors">
+                      {item.name}
+                    </h4>
                   </div>
-                  <h4 className="text-lg font-bold text-slate-800 group-hover:text-fuchsia-600 transition-colors mb-2">
-                    {item.name}
-                  </h4>
-                  <p className="text-slate-500 text-xs font-normal leading-relaxed">
+                  <p className="text-slate-500 text-xs font-normal max-w-md sm:text-right">
                     {item.description}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 bg-white border border-slate-200/60 rounded-3xl p-8 shadow-md">
-              <h4 className="text-xl font-bold text-slate-800 mb-6">Hackathons & Extra Engagement</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Extra Engagement List (Simplified list) */}
+            <div className="pt-4 border-t border-slate-200">
+              <h4 className="text-lg font-bold text-slate-800 mb-6 font-display">Hackathons & Extra Engagement</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
                 {engagement.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 bg-slate-50/50 border border-slate-200/60 rounded-xl p-4">
-                    <div className="size-2 rounded-full bg-fuchsia-600 shrink-0" />
-                    <p className="text-slate-700 text-xs font-normal">{item}</p>
+                  <div key={index} className="flex items-center gap-3 py-1.5">
+                    <div className="size-1.5 rounded-full bg-purple-500 shrink-0" />
+                    <p className="text-slate-600 text-xs font-normal">{item}</p>
                   </div>
                 ))}
               </div>
@@ -1418,53 +1494,55 @@ export default function PortfolioThree() {
           </div>
         </section>
 
-        {/* 6. CERTIFICATIONS SECTION (Light Theme) */}
+        {/* 6. CERTIFICATIONS SECTION (Simplified to clean list layout instead of cards) */}
         <section id="certifications" className="scroll-mt-24 pt-8">
           <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-emerald-600 font-bold mb-3">06. Verification</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight">Certifications.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">Certifications.</h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Minimalist vertical list */}
+            <div className="border-t border-slate-200 divide-y divide-slate-200">
               {certifications.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-300 shadow-md hover:shadow-lg transition-all group interactive-card"
+                  className="py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 group"
                 >
-                  <div>
-                    <div className="size-10 rounded-xl bg-emerald-50 border border-emerald-250 flex items-center justify-center mb-5 text-emerald-600">
-                      <ShieldCheck className="size-5" />
+                  <div className="flex items-start gap-4">
+                    <div className="size-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                      <ShieldCheck className="size-4.5" />
                     </div>
-                    <h4 className="text-md font-bold text-slate-800 group-hover:text-emerald-600 transition-colors mb-2 leading-snug">
-                      {item.name}
-                    </h4>
-                    <p className="text-slate-500 text-xs font-normal leading-relaxed mb-6">
-                      {item.description}
-                    </p>
+                    <div>
+                      <h4 className="text-md font-bold text-slate-800 group-hover:text-purple-600 transition-colors leading-snug">
+                        {item.name}
+                      </h4>
+                      <p className="text-slate-500 text-xs font-normal mt-1 leading-relaxed max-w-xl">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Verified Certification</span>
+                  
+                  <span className="px-3.5 py-1.5 bg-blue-50 border border-blue-200 text-[9px] font-bold tracking-widest uppercase text-blue-700 rounded-lg whitespace-nowrap self-start sm:self-center">
+                    Verified Certification
+                  </span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 7. GITHUB ACTIVITY SECTION (Light Theme) */}
+        {/* 7. GITHUB ACTIVITY SECTION */}
         <section id="github-activity" className="scroll-mt-24 pt-8">
           <div className="max-w-4xl">
-            <h2 className="text-xs uppercase tracking-widest text-purple-600 font-bold mb-3">07. Contributions</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-10 tracking-tight">GitHub Activity</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">GitHub Activity</h3>
             {renderGitCalendar()}
           </div>
         </section>
 
-        {/* 8. CONTACT SECTION (Light version of 2.png) */}
+        {/* 8. CONTACT SECTION (Light theme 2.png styled) */}
         <section id="contact" className="scroll-mt-24 pt-8 pb-12">
           <div className="max-w-4xl flex flex-col items-center">
-            <h2 className="text-xs uppercase tracking-widest text-emerald-600 font-bold mb-3">08. Reach</h2>
             
-            {/* Contact details horizontal bar */}
             <div className="flex flex-col items-center mt-6 w-full">
-              <h3 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-10 text-center">Contact me</h3>
+              <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-10 text-center font-display">Contact me</h3>
               
               <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-14 px-10 py-8 bg-white border border-slate-200/80 rounded-3xl shadow-xl max-w-full">
                 
@@ -1472,22 +1550,26 @@ export default function PortfolioThree() {
                 <a
                   href="mailto:paturi.anisha@gmail.com"
                   className="flex flex-col items-center gap-3 group interactive-card"
+                  onMouseEnter={() => setCursorText("Mail")}
+                  onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
-                    <Mail className="size-6 text-emerald-600" />
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Mail className="size-6" />
                   </div>
-                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">Gmail</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">Gmail</span>
                 </a>
                 
                 {/* Phone */}
                 <a
                   href="tel:+919876543210"
                   className="flex flex-col items-center gap-3 group interactive-card"
+                  onMouseEnter={() => setCursorText("Call")}
+                  onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
-                    <Smartphone className="size-6 text-emerald-600" />
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Smartphone className="size-6" />
                   </div>
-                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">Phone</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">Phone</span>
                 </a>
 
                 {/* LinkedIn */}
@@ -1496,11 +1578,13 @@ export default function PortfolioThree() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-3 group interactive-card"
+                  onMouseEnter={() => setCursorText("Open")}
+                  onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
-                    <Linkedin className="size-6 text-emerald-600" />
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Linkedin className="size-6" />
                   </div>
-                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">LinkedIn</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">LinkedIn</span>
                 </a>
 
                 {/* GitHub */}
@@ -1509,11 +1593,13 @@ export default function PortfolioThree() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-3 group interactive-card"
+                  onMouseEnter={() => setCursorText("Open")}
+                  onMouseLeave={() => setCursorText("")}
                 >
-                  <div className="p-4 bg-emerald-50 border border-emerald-200/60 rounded-2xl group-hover:bg-emerald-100 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
-                    <Github className="size-6 text-emerald-600" />
+                  <div className="p-4 bg-blue-50 border border-blue-200 text-blue-600 rounded-2xl group-hover:bg-purple-50 group-hover:text-purple-600 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <Github className="size-6" />
                   </div>
-                  <span className="text-xs font-bold text-slate-500 group-hover:text-emerald-600 transition-colors">GitHub</span>
+                  <span className="text-xs font-bold text-slate-500 group-hover:text-purple-600 transition-colors">GitHub</span>
                 </a>
                 
               </div>
