@@ -512,15 +512,8 @@ export default function PortfolioThree() {
       ? projects
       : projects.filter(p => p.category === selectedCategory);
 
-  // Group filtered projects by year for timeline rendering
-  const groupedProjects = filteredProjects.reduce((acc, project) => {
-    const year = project.year;
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(project);
-    return acc;
-  }, {} as Record<string, typeof projects>);
+  // Sort projects descending by year (timeline order)
+  const sortedProjects = [...filteredProjects].sort((a, b) => Number(b.year) - Number(a.year));
 
   /* ===================== LOGO RENDERER ===================== */
 
@@ -1286,97 +1279,69 @@ export default function PortfolioThree() {
               </div>
             </div>
 
-            {/* Vertical timeline containing project card grids grouped by year */}
-            <div className="relative pl-6 sm:pl-10 border-l-2 border-slate-200 space-y-16 mt-8">
+            {/* Grid of Large Cards (Light version of 5.png mockup, sorted descending by year) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
               <AnimatePresence mode="popLayout">
-                {Object.entries(groupedProjects)
-                  .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
-                  .map(([year, yearProjects]) => (
-                    <motion.div
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      key={year}
-                      className="relative space-y-8"
-                    >
-                      {/* Timeline Dot Indicator */}
-                      <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 flex items-center justify-center">
-                        <div className="size-4 sm:size-5 bg-[#f4f3f9] border-4 border-purple-600 rounded-full z-10 shadow-sm" />
+                {sortedProjects.map((project) => (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4 }}
+                    key={project.title}
+                    className="group relative bg-white border border-slate-200/60 rounded-3xl overflow-hidden hover:border-purple-300 hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col h-full interactive-card shadow-md"
+                  >
+                    {/* Visual mockup banner (Light theme grid) */}
+                    <div className="h-44 w-full relative overflow-hidden bg-gradient-to-br from-purple-50/40 via-slate-50 to-blue-50/40 border-b border-slate-150 flex items-center justify-center">
+                      <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
+                      
+                      {/* Interactive Visual Graphic */}
+                      <div className="relative z-10 text-center p-6 pointer-events-none">
+                        <div className="inline-block px-3 py-1 bg-slate-200/60 border border-slate-300 rounded-full text-[10px] font-mono text-slate-600 mb-2">
+                          {project.year}
+                        </div>
+                        <h4 className="text-md font-extrabold text-slate-800 group-hover:scale-105 transition-transform duration-300">
+                          {project.title}
+                        </h4>
                       </div>
 
-                      {/* Year Header badge */}
-                      <div className="flex items-center gap-4">
-                        <span className="text-3xl font-black bg-gradient-to-r from-purple-600 to-blue-650 bg-clip-text text-transparent">
-                          {year}
-                        </span>
-                        <span className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-[10px] font-mono text-slate-500">
-                          {yearProjects.length} {yearProjects.length === 1 ? "Project" : "Projects"}
-                        </span>
+                      {/* Top Right Overlay External Link Icon */}
+                      <a
+                        href={project.liveLink || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-4 right-4 p-2 bg-white hover:bg-purple-600 text-slate-600 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-sm transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
+                      >
+                        <ExternalLink className="size-4" />
+                      </a>
+                    </div>
+
+                    {/* Project Body */}
+                    <div className="p-6 flex flex-col flex-1 justify-between">
+                      <div>
+                        <h4 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
+                          {project.title}
+                        </h4>
+                        <p className="text-slate-500 text-xs font-normal leading-relaxed mb-6 min-h-[4.5rem] line-clamp-4">
+                          {project.description}
+                        </p>
                       </div>
 
-                      {/* Cards Grid for this specific year */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {yearProjects.map((project) => (
-                          <motion.div
-                            layout
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.4 }}
-                            key={project.title}
-                            className="group relative bg-white border border-slate-200/60 rounded-3xl overflow-hidden hover:border-purple-300 hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col h-full interactive-card shadow-md"
+                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 bg-slate-100 border border-slate-200/60 rounded-lg text-[9px] font-mono text-purple-600 uppercase font-semibold"
                           >
-                            {/* Visual mockup banner (Light theme grid) */}
-                            <div className="h-44 w-full relative overflow-hidden bg-gradient-to-br from-purple-50/40 via-slate-50 to-blue-50/40 border-b border-slate-150 flex items-center justify-center">
-                              <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
-                              
-                              {/* Interactive Visual Graphic */}
-                              <div className="relative z-10 text-center p-6 pointer-events-none">
-                                <h4 className="text-md font-extrabold text-slate-800 group-hover:scale-105 transition-transform duration-300">
-                                  {project.title}
-                                </h4>
-                              </div>
-
-                              {/* Top Right Overlay External Link Icon */}
-                              <a
-                                href={project.liveLink || project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="absolute top-4 right-4 p-2 bg-white hover:bg-purple-600 text-slate-600 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-sm transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
-                              >
-                                <ExternalLink className="size-4" />
-                              </a>
-                            </div>
-
-                            {/* Project Body */}
-                            <div className="p-6 flex flex-col flex-1 justify-between">
-                              <div>
-                                <h4 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-purple-600 transition-colors">
-                                  {project.title}
-                                </h4>
-                                <p className="text-slate-500 text-xs font-normal leading-relaxed mb-6 min-h-[4.5rem] line-clamp-4">
-                                  {project.description}
-                                </p>
-                              </div>
-
-                              <div className="flex flex-wrap gap-1.5 mt-auto">
-                                {project.tech.map((tech) => (
-                                  <span
-                                    key={tech}
-                                    className="px-2.5 py-1 bg-slate-100 border border-slate-200/60 rounded-lg text-[9px] font-mono text-purple-600 uppercase font-semibold"
-                                  >
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          </motion.div>
+                            {tech}
+                          </span>
                         ))}
                       </div>
-                    </motion.div>
-                  ))}
+                    </div>
+                  </motion.div>
+                ))}
               </AnimatePresence>
             </div>
           </div>
