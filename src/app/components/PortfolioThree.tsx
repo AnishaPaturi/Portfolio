@@ -74,7 +74,6 @@ export default function PortfolioThree() {
   // Intersection Observer for scroll highlighting
   useEffect(() => {
     const sections = [
-      "home",
       "about",
       "skills",
       "experience",
@@ -704,7 +703,6 @@ export default function PortfolioThree() {
   };
 
   const navItems = [
-    ["home", "Home"],
     ["about", "About Me"],
     ["skills", "Skills"],
     ["experience", "Experience"],
@@ -837,92 +835,21 @@ export default function PortfolioThree() {
         max-w-7xl mx-auto px-6 md:px-16 pt-36 pb-20 space-y-32"
       >
 
-        {/* 1. HERO SECTION */}
-        <section
-          id="home"
-          className="min-h-[75vh] flex items-center justify-center lg:justify-start pt-8"
-        >
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-8"
-            >
-              <span className="size-2 rounded-full bg-purple-400 animate-pulse" />
-              Available for new opportunities
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-5xl md:text-8xl font-bold mb-6 tracking-tighter leading-none"
-            >
-              Hi, I'm <br className="md:hidden" />
-              <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent filter drop-shadow-md">
-                Anisha Paturi.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-2xl md:text-3xl text-gray-300 mb-8 font-light tracking-wide"
-            >
-              Full Stack Developer & AI/ML Engineer
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-gray-400 mb-12 text-lg leading-relaxed font-light max-w-2xl"
-            >
-              Passionate fourth-year Computer Science Engineering student at KMIT (CGPA 8.6) dedicated to building scalable, intelligent solutions that bridge sleek interactive UI with complex backend reasoning.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-4 mb-16"
-            >
-              <button
-                onClick={() => scrollToSection("projects")}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all font-medium tracking-wide border border-white/10 active:scale-95 cursor-pointer"
-              >
-                View My Work
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl transition-all font-medium tracking-wide active:scale-95 cursor-pointer"
-              >
-                Get In Touch
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wider text-gray-500"
-            >
-              {["LLM Agents", "FastAPI", "React Native", "Spring Boot", "ChromaDB", "Three.js"].map((tech) => (
-                <span key={tech} className="px-4 py-2 bg-black/30 border border-white/5 rounded-xl text-purple-200/50">
-                  {tech}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* 2. ABOUT ME SECTION (STYLED ACCORDING TO 6.png MOCKUP) */}
+        {/* 1. ABOUT ME SECTION (COMBINED HERO & ABOUT ME) */}
         <section id="about" className="scroll-mt-24 pt-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">01. Profile</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-white mb-12 tracking-tight">About Me</h3>
+            
+            {/* Available badge centered at top of Profile Section */}
+            <div className="flex justify-start mb-12">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold tracking-wider uppercase"
+              >
+                <span className="size-2 rounded-full bg-purple-400 animate-pulse" />
+                Available for new opportunities
+              </motion.div>
+            </div>
 
             {/* Row 1: Profile Graphic Node Layout from 6.png */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-center mb-16 relative">
@@ -966,7 +893,7 @@ export default function PortfolioThree() {
               </div>
 
               {/* Right Column: Name & Connect Nodes */}
-              <div className="lg:col-span-4 space-y-12 lg:text-right">
+              <div className="lg:col-span-4 space-y-10 lg:text-right flex flex-col lg:items-end">
                 <div>
                   <h4 className="text-4xl font-light text-gray-400 uppercase tracking-widest">I am</h4>
                   <h5 className="text-5xl font-extrabold bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent mt-3 leading-tight">
@@ -975,21 +902,37 @@ export default function PortfolioThree() {
                 </div>
 
                 {/* Connecting Social Icons */}
-                <div className="flex flex-col gap-4 lg:items-end">
+                <div className="flex flex-col gap-4 lg:items-end w-full sm:w-auto">
                   <div 
-                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-purple-500/30 rounded-2xl px-6 py-4 shadow-xl transition-all cursor-pointer w-fit group interactive-card"
+                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-purple-500/30 rounded-2xl px-6 py-3.5 shadow-xl transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://github.com/AnishaPaturi", "_blank")}
                   >
                     <Github className="size-5 text-gray-400 group-hover:text-white transition-colors" />
                     <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors">GitHub</span>
                   </div>
                   <div 
-                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-blue-500/30 rounded-2xl px-6 py-4 shadow-xl transition-all cursor-pointer w-fit group interactive-card"
+                    className="flex items-center gap-4 bg-white/5 border border-white/5 hover:border-blue-500/30 rounded-2xl px-6 py-3.5 shadow-xl transition-all cursor-pointer w-full sm:w-fit group interactive-card justify-center lg:justify-end"
                     onClick={() => window.open("https://www.linkedin.com/in/anisha-paturi-8b885a2b5", "_blank")}
                   >
                     <Linkedin className="size-5 text-gray-400 group-hover:text-white transition-colors" />
                     <span className="text-xs font-bold uppercase tracking-wider text-gray-300 group-hover:text-white transition-colors">LinkedIn</span>
                   </div>
+                </div>
+
+                {/* Action CTA Buttons (from Hero Section) */}
+                <div className="flex flex-wrap gap-3 w-full justify-center lg:justify-end pt-2">
+                  <button
+                    onClick={() => scrollToSection("projects")}
+                    className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all text-xs font-bold uppercase tracking-wider border border-white/10 active:scale-95 cursor-pointer shadow-md"
+                  >
+                    View My Work
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("contact")}
+                    className="px-6 py-3 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 rounded-xl transition-all text-xs font-bold uppercase tracking-wider active:scale-95 cursor-pointer"
+                  >
+                    Get In Touch
+                  </button>
                 </div>
               </div>
               
@@ -1007,10 +950,10 @@ export default function PortfolioThree() {
                   <p className="text-gray-300 text-sm leading-relaxed font-light font-sans">
                     I'm a fourth-year Computer Science Engineering student at <span className="text-purple-300 font-semibold">KMIT, Hyderabad</span> (CGPA: 8.6) passionate about building high-performance software that combines strong engineering principles with modern AI.
                   </p>
-                  <p className="text-gray-300 text-sm leading-relaxed font-light">
+                  <p className="text-gray-300 text-sm leading-relaxed font-light font-sans">
                     My interests lie in backend development, full-stack engineering, distributed systems, and AI-driven applications. I enjoy solving complex problems, optimizing systems for scale, and turning ideas into reliable, production-ready products using Java, Spring Boot, React, Next.js, FastAPI, Python, and SQL/NoSQL databases.
                   </p>
-                  <p className="text-gray-400 text-sm leading-relaxed font-light">
+                  <p className="text-gray-400 text-sm leading-relaxed font-light font-sans">
                     I'm always learning, building, and pushing my skills through challenging projects, with the goal of creating technology that makes a meaningful impact.
                   </p>
                   
