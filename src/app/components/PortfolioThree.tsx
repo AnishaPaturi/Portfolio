@@ -116,7 +116,7 @@ export default function PortfolioThree() {
   const projects = [
     {
       title: "HomeVerse (Work in Progress)",
-      description: "An AI-powered interior design platform currently under development that transforms ordinary room photos into fully customizable 3D living spaces using computer vision, generative AI, and interactive design tools. Built with Next.js, FastAPI, Three.js, React Three Fiber, PostgreSQL, and modern AI models, the platform analyzes uploaded room images through object detection and segmentation, generates interior design variations, and converts them into editable 3D workspaces.",
+      description: "An AI-powered interior design platform currently under development that transforms ordinary room photos into fully customizable 3D living spaces using computer vision, generative AI, and interactive design tools. The system performs object detection and segmentation on uploaded images, generates design variants, and renders editable 3D workspaces.",
       tech: ["Next.js", "Three.js", "FastAPI", "PostgreSQL", "React Three Fiber", "AI"],
       link: "https://github.com/AnishaPaturi/HomeVerse",
       year: "2026",
@@ -125,7 +125,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AI CareerOS (CareerPilot-AI)",
-      description: "AI CareerOS (CareerPilot-AI) is a unified AI-powered career preparation and placement ecosystem that brings together placement management, AI-driven resume analysis, mock interview simulation, DSA planning, and document-based Retrieval-Augmented Generation (RAG) into a single intelligent platform. Built using a microservices architecture with Spring Boot, FastAPI, React, MySQL, ChromaDB, and LangChain.",
+      description: "A unified AI career preparation and placement ecosystem integrating placement management, resume analysis, mock interview simulation, DSA roadmap planning, and document RAG search into a single platform.",
       tech: ["Spring Boot", "FastAPI", "React", "MySQL", "ChromaDB", "LangChain", "Microservices"],
       link: "https://github.com/AnishaPaturi/CareerPilot-AI",
       liveLink: "https://career-pilot-ai-delta.vercel.app",
@@ -154,7 +154,7 @@ export default function PortfolioThree() {
     },
     {
       title: "DocuMind – AI PDF Chatbot",
-      description: "An enterprise-grade Retrieval-Augmented Generation (RAG) platform that enables users to upload PDF documents and interact with them through intelligent, context-aware conversations. Built with Next.js, FastAPI, LangChain, ChromaDB, SQLite, and OpenRouter.",
+      description: "An enterprise-grade Retrieval-Augmented Generation (RAG) platform that enables users to upload PDF documents and interact with them through intelligent, context-aware conversations.",
       tech: ["Next.js", "FastAPI", "LangChain", "ChromaDB", "SQLite", "OpenRouter", "RAG"],
       link: "https://github.com/AnishaPaturi/AI-pdf-chatbot",
       liveLink: "https://ai-pdf-chatbot-weld.vercel.app",
@@ -173,7 +173,7 @@ export default function PortfolioThree() {
     },
     {
       title: "FactForge",
-      description: "An AI-powered fact and claim verification platform designed to combat misinformation by automatically analyzing text, extracting verifiable claims, retrieving supporting evidence, and generating explainable verification results. Built with React, FastAPI, Tailwind CSS, and SQLite.",
+      description: "An AI-powered fact and claim verification platform designed to combat misinformation by automatically analyzing text, extracting verifiable claims, and retrieving supporting evidence.",
       tech: ["React", "FastAPI", "SQLite", "OpenRouter", "Tavily", "AI", "NLP"],
       link: "https://github.com/AnishaPaturi/FactForge",
       liveLink: "https://fact-forge.vercel.app",
@@ -192,7 +192,7 @@ export default function PortfolioThree() {
     },
     {
       title: "VizTalk – Conversational BI Dashboard",
-      description: "An AI-powered business intelligence platform that enables users to generate interactive dashboards and data visualizations using natural language queries. Built with Streamlit, FastAPI, SQLite, Plotly, OpenRouter, and DeepSeek.",
+      description: "An AI-powered conversational business intelligence dashboard enabling users to generate interactive data visualizations and run queries on SQL databases using natural language.",
       tech: ["Streamlit", "FastAPI", "SQLite", "Plotly", "OpenRouter", "DeepSeek", "AI"],
       link: "https://github.com/AnishaPaturi/VizTalk",
       year: "2025",
@@ -201,7 +201,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Secret Santa",
-      description: "Secret Santa is a real-time web application that modernizes the traditional Secret Santa gift exchange by enabling users to create groups, invite participants through QR codes or shareable links, and instantly assign gift recipients. Built with Next.js, React, Firebase Firestore, Tailwind CSS, and Framer Motion.",
+      description: "A real-time web application that modernizes gift exchanges by enabling users to create groups, invite participants through QR codes or links, and instantly assign recipients.",
       tech: ["Next.js", "React", "Firebase", "Tailwind CSS", "Framer Motion"],
       link: "https://github.com/AnishaPaturi/Secret-Santa-",
       liveLink: "https://secret-santa-theta-nine.vercel.app/",
@@ -211,7 +211,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Mood-Angles",
-      description: "An AI-powered mental health and telepsychiatry platform that combines intelligent mood tracking, machine learning, Retrieval-Augmented Generation (RAG), and secure telepsychiatry services. Built with the MERN stack, Python, and LangChain.",
+      description: "An AI mental health and telepsychiatry platform combining intelligent mood tracking, machine learning diagnostics, Retrieval-Augmented Generation (RAG) assistance, and secure conferencing.",
       tech: ["MongoDB", "Express", "React", "Node.js", "Python", "LangChain", "RAG"],
       link: "https://github.com/AnishaPaturi/Mood-Angles",
       liveLink: "https://mood-angles.vercel.app",
@@ -221,7 +221,7 @@ export default function PortfolioThree() {
     },
     {
       title: "SafeStreet",
-      description: "An AI-powered road damage detection and maintenance platform combining a React Native mobile app with a web dashboard. Uses a Vision Transformer (ViT) model to classify road damages and Google Gemini AI for reporting.",
+      description: "An AI-powered road damage detection and municipal maintenance platform combining a mobile application for reporting with a central dashboard for repair dispatching.",
       tech: ["React Native", "React", "Node.js", "Express", "Python Flask", "MongoDB", "Gemini AI"],
       link: "https://github.com/AnishaPaturi/SafeStreet-final",
       year: "2024",
@@ -230,7 +230,7 @@ export default function PortfolioThree() {
     },
     {
       title: "College-Connect",
-      description: "A full-stack campus management platform centralizing student pre-orders, event registration, lost & found logs, and student forums. Developed using HTML, CSS, Bootstrap, Node.js, Express, and MongoDB.",
+      description: "A campus management platform centralizing student pre-orders, event registration, lost & found logs, and student discussion forums.",
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "Node.js", "Express.js", "MongoDB"],
       link: "https://github.com/AnishaPaturi/College-Connect",
       liveLink: "https://college-connect-iota.vercel.app",
@@ -240,7 +240,7 @@ export default function PortfolioThree() {
     },
     {
       title: "Talent Match",
-      description: "A full-stack networking and project collaboration platform designed to connect students, professionals, and innovators based on their skills and project requirements. Built with Node.js and Express.",
+      description: "A networking and project collaboration platform designed to connect students, professionals, and innovators based on skills and project requirements.",
       tech: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js"],
       link: "https://github.com/AnishaPaturi/Talent-Match",
       liveLink: "https://talent-match-sandy-omega.vercel.app/",
@@ -250,7 +250,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AutoDeck",
-      description: "A Python automation tool designed to streamline the organization of image collections and automatically generate professional PowerPoint presentations. Built with Python, python-pptx, and Pillow.",
+      description: "A Python automation utility that streamlines the organization of image collections and automatically generates professional presentation decks.",
       tech: ["Python", "python-pptx", "Pillow", "Automation"],
       link: "https://github.com/AnishaPaturi/AutoDeck",
       year: "2024",
@@ -259,7 +259,7 @@ export default function PortfolioThree() {
     },
     {
       title: "GradeSync",
-      description: "A comprehensive student grade management and analytics system developed during my software internship at IBaseIT. Supports MySQL, JSON, and flat file databases.",
+      description: "A student grade management and academic analytics database supporting multiple storage backends, search indexing, and class performance reporting.",
       tech: ["Python", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
       link: "https://github.com/AnishaPaturi/GradeSync",
       year: "2024",
@@ -268,7 +268,7 @@ export default function PortfolioThree() {
     },
     {
       title: "PythonLonden",
-      description: "PHP Symfony to Python transformation for Campaign Manager, optimizing mailed campaigns and dashboard analytics.",
+      description: "Modernization of a campaign manager from PHP Symfony to Python, optimizing campaign dispatch systems, response tracking, and data visualization dashboards.",
       tech: ["Python", "Campaign Management"],
       link: "https://github.com/AnishaPaturi/PythonLonden",
       year: "2024",
@@ -277,7 +277,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AI-Powered Lie Detector App (Work in Progress)",
-      description: "A cross-platform mobile application utilizing AI, computer vision (MediaPipe), and voice processing (Librosa) to analyze deceptive cues. Built with React Native, Expo, FastAPI, Express, and MongoDB.",
+      description: "A mobile application utilizing computer vision (MediaPipe) and voice analysis (Librosa) to analyze cues for deception in real time.",
       tech: ["React Native", "Expo", "FastAPI", "Express.js", "MongoDB Atlas", "MediaPipe", "Librosa"],
       link: "https://github.com/AnishaPaturi/LieDetectorGame",
       year: "2024",
@@ -295,7 +295,7 @@ export default function PortfolioThree() {
     },
     {
       title: "CodeSleuth – Human vs AI Code Detector",
-      description: "An AI-powered developer tool that analyzes source code to determine whether it was written by a human or generated by an AI model. Built with Python and OpenAI's GPT models.",
+      description: "An AI code detector analyzing source code syntax patterns to determine whether code was human-written or model-generated.",
       tech: ["Python", "OpenAI GPT", "AI", "Code Analysis"],
       link: "https://github.com/AnishaPaturi/AuthenCode",
       year: "2023",
@@ -304,7 +304,7 @@ export default function PortfolioThree() {
     },
     {
       title: "AI Code Reviewer – Reflective Edition",
-      description: "An agentic AI command-line application that demonstrates multi-step reasoning by reviewing code, reflecting on its own feedback, and generating refined suggestions. Built with Python.",
+      description: "An agentic AI command-line application that demonstrates multi-step reasoning by reviewing code, reflecting on its own feedback, and generating refined suggestions.",
       tech: ["Python", "OpenAI API", "Agentic AI", "CLI"],
       link: "https://github.com/AnishaPaturi/CodeChecker",
       year: "2023",
@@ -313,7 +313,7 @@ export default function PortfolioThree() {
     },
     {
       title: "FeedForward",
-      description: "An AI-powered platform designed to help product teams efficiently prioritize customer feedback using NLP. Built with React, Python, and MongoDB.",
+      description: "An AI feedback analysis platform designed to help product teams aggregate, classify, and prioritize customer feedback using NLP.",
       tech: ["React", "Python", "MongoDB", "NLP"],
       link: "https://github.com/AnishaPaturi/FeedForward",
       year: "2023",
@@ -998,7 +998,7 @@ export default function PortfolioThree() {
               Building high-performance software at the intersection of engineering and AI.
             </h1>
 
-            {/* Available badge */}
+            {/* Opportunities Specific Badge */}
             <div className="flex justify-start mb-12">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -1006,7 +1006,7 @@ export default function PortfolioThree() {
                 className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold tracking-wider uppercase"
               >
                 <span className="size-2 rounded-full bg-blue-600 animate-pulse" />
-                Available for new opportunities
+                Open to Grad Roles & SDE Internships
               </motion.div>
             </div>
 
@@ -1054,9 +1054,8 @@ export default function PortfolioThree() {
               {/* Right Column: Name & Connect Nodes */}
               <div className="lg:col-span-4 space-y-10 lg:text-right flex flex-col lg:items-end">
                 <div>
-                  <h4 className="text-4xl font-light text-slate-400 uppercase tracking-widest font-sans">I am</h4>
-                  {/* ONLY text gradient on the entire page: The name in the Hero */}
-                  <h5 className="text-5xl font-black bg-gradient-to-r from-purple-600 via-fuchsia-600 to-blue-600 bg-clip-text text-transparent mt-3 leading-tight font-display">
+                  {/* Clean standalone name layout (Filler "I am" removed) */}
+                  <h5 className="text-5.5xl font-black bg-gradient-to-r from-purple-600 via-fuchsia-600 to-blue-600 bg-clip-text text-transparent leading-tight font-display">
                     Anisha Paturi
                   </h5>
                 </div>
@@ -1175,7 +1174,7 @@ export default function PortfolioThree() {
                         </button>
                       </div>
                       <p className="text-slate-500 text-xs mt-2 leading-relaxed font-normal">
-                        Architect LLM agents, vector databases, RAG search pipelines, semantic parses, and custom multi-agent environments.
+                        Architect LLM agents, vector databases, RAG search pipelines, semantic parsers, and custom multi-agent environments.
                       </p>
                     </div>
                   </div>
@@ -1270,7 +1269,7 @@ export default function PortfolioThree() {
         <section id="experience" className="scroll-mt-24 pt-8 mb-36">
           <div className="max-w-3xl">
             <h2 className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3 font-sans">2024 — Present</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight font-display">Experience.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight font-display">Experience</h3>
             
             <div className="space-y-10 relative pl-4 border-l border-slate-200">
               {experience.map((exp, index) => (
@@ -1367,7 +1366,7 @@ export default function PortfolioThree() {
                               href={project.liveLink || project.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="absolute top-6 right-6 p-3 bg-white hover:bg-purple-600 text-slate-650 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-md transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
+                              className="absolute top-6 right-6 p-3 bg-white hover:bg-purple-600 text-slate-655 hover:text-white border border-slate-200 hover:border-purple-600 rounded-xl shadow-md transition-all duration-300 z-20 hover:scale-110 cursor-pointer"
                             >
                               <ExternalLink className="size-5" />
                             </a>
@@ -1385,7 +1384,7 @@ export default function PortfolioThree() {
                               {project.tech.map((tech) => (
                                 <span
                                   key={tech}
-                                  className="px-3 py-1.5 bg-slate-100 border border-slate-200/60 rounded-xl text-[10px] font-mono text-purple-600 font-bold uppercase"
+                                  className="px-3 py-1.5 bg-slate-100 border border-slate-200/60 rounded-xl text-[11px] font-mono text-purple-600 font-bold uppercase"
                                 >
                                   {tech}
                                 </span>
@@ -1442,7 +1441,7 @@ export default function PortfolioThree() {
                           {project.tech.map((tech) => (
                             <span
                               key={tech}
-                              className="px-2 py-0.5 bg-slate-50 border border-slate-200/40 rounded text-[9px] font-mono text-slate-650 uppercase"
+                              className="px-2 py-0.5 bg-slate-50 border border-slate-200/40 rounded text-[11px] font-mono text-slate-650 uppercase"
                             >
                               {tech}
                             </span>
@@ -1453,6 +1452,13 @@ export default function PortfolioThree() {
                   </div>
                 </div>
               )}
+
+              {/* Designed empty state when filteredProjects is empty */}
+              {filteredProjects.length === 0 && (
+                <div className="w-full text-center py-16 bg-white border border-slate-200/60 rounded-3xl p-8 shadow-sm">
+                  <p className="text-slate-400 font-sans text-sm">No projects found in the "{selectedCategory}" category.</p>
+                </div>
+              )}
             </div>
 
           </div>
@@ -1461,7 +1467,7 @@ export default function PortfolioThree() {
         {/* 5. ACHIEVEMENTS SECTION (Simplified to clean list layout instead of cards) */}
         <section id="achievements" className="scroll-mt-24 pt-8 mb-20">
           <div className="max-w-4xl">
-            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">Achievements.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">Achievements</h3>
             
             {/* Minimalist vertical list */}
             <div className="border-t border-slate-200 divide-y divide-slate-200 mb-12">
@@ -1503,7 +1509,7 @@ export default function PortfolioThree() {
         {/* 6. CERTIFICATIONS SECTION (Simplified list, breathing gap mb-28) */}
         <section id="certifications" className="scroll-mt-24 pt-8 mb-28">
           <div className="max-w-4xl">
-            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">Certifications.</h3>
+            <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10 tracking-tight font-display">Certifications</h3>
 
             {/* Minimalist vertical list */}
             <div className="border-t border-slate-200 divide-y divide-slate-200">
