@@ -140,7 +140,7 @@ export default function PortfolioThree() {
       link: "https://github.com/AnishaPaturi/ResumeIQ",
       year: "2026",
       category: "Full Stack",
-      featured: true,
+      featured: false,
     },
     {
       title: "SentinelX",
@@ -150,7 +150,7 @@ export default function PortfolioThree() {
       liveLink: "https://sentinel-x-beta-pink.vercel.app/",
       year: "2026",
       category: "Java",
-      featured: false,
+      featured: true,
     },
     {
       title: "DocuMind – AI PDF Chatbot",
