@@ -423,11 +423,14 @@ export default function PortfolioThree() {
     // Agentic AI
     { name: "LangChain", category: "Agentic AI", level: 88, gradient: "from-purple-600 to-fuchsia-600", icon: "langchain" },
     { name: "LangGraph", category: "Agentic AI", level: 85, gradient: "from-indigo-600 to-purple-600", icon: "langchain" },
+    { name: "LangSmith", category: "Agentic AI", level: 80, gradient: "from-blue-600 to-indigo-600", icon: "langchain" },
     
     // Cloud & DevOps
     { name: "AWS", category: "Cloud & DevOps", level: 80, gradient: "from-yellow-500 to-orange-500", icon: "aws" },
     { name: "Docker", category: "Cloud & DevOps", level: 85, gradient: "from-blue-400 to-blue-500", icon: "docker" },
     { name: "Kubernetes", category: "Cloud & DevOps", level: 75, gradient: "from-blue-600 to-indigo-600", icon: "kubernetes" },
+    { name: "Maven", category: "Cloud & DevOps", level: 82, gradient: "from-red-500 to-orange-500", icon: "maven" },
+    { name: "Jenkins", category: "Cloud & DevOps", level: 78, gradient: "from-blue-500 to-slate-500", icon: "jenkins" },
     
     // CS Fundamentals
     { name: "Data Structures & Algorithms (DSA)", category: "Computer Science Fundamentals", level: 90, gradient: "from-purple-600 to-indigo-600", icon: "dsa" },
@@ -691,6 +694,20 @@ export default function PortfolioThree() {
             <rect x="14" y="12" width="7" height="9" rx="1" />
             <rect x="3" y="16" width="7" height="5" rx="1" />
             <path d="M7 7h7M10 18h4" />
+          </svg>
+        );
+      case "maven":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-[#C71A36] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        );
+      case "jenkins":
+        return (
+          <svg viewBox="0 0 24 24" className="size-12 text-[#D24939] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
           </svg>
         );
       case "backend":
