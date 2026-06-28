@@ -859,10 +859,42 @@ export default function PortfolioThree() {
       )}
 
       {/* Soft Ambient Theme Blobs matching the light peach/lavender of 1.png */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full bg-rose-200/40 blur-[120px]" />
         <div className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-200/30 blur-[130px]" />
         <div className="absolute bottom-[-15%] right-[10%] w-[45%] h-[45%] rounded-full bg-blue-100/40 blur-[140px]" />
+        
+        {/* Subtle floating background bubbles */}
+        {[
+          { size: "w-32 h-32", color: "bg-purple-400/5", top: "15%", left: "10%", duration: 25, delay: 0 },
+          { size: "w-44 h-44", color: "bg-rose-400/5", top: "45%", left: "80%", duration: 32, delay: 1 },
+          { size: "w-28 h-28", color: "bg-blue-400/5", top: "70%", left: "15%", duration: 20, delay: 2 },
+          { size: "w-40 h-40", color: "bg-fuchsia-400/5", top: "85%", left: "75%", duration: 28, delay: 0.5 },
+          { size: "w-36 h-36", color: "bg-pink-400/5", top: "5%", left: "55%", duration: 22, delay: 3 },
+          { size: "w-48 h-48", color: "bg-indigo-400/5", top: "60%", left: "45%", duration: 35, delay: 1.5 },
+          { size: "w-32 h-32", color: "bg-purple-400/5", top: "30%", left: "5%", duration: 27, delay: 4 },
+          { size: "w-40 h-40", color: "bg-rose-400/5", top: "80%", left: "35%", duration: 30, delay: 2.5 }
+        ].map((bubble, i) => (
+          <motion.div
+            key={i}
+            className={`absolute rounded-full blur-[30px] ${bubble.size} ${bubble.color}`}
+            style={{
+              top: bubble.top,
+              left: bubble.left,
+            }}
+            animate={{
+              x: [0, 50, -30, 20, 0],
+              y: [0, -70, 40, -30, 0],
+              scale: [1, 1.08, 0.96, 1.04, 1],
+            }}
+            transition={{
+              duration: bubble.duration,
+              delay: bubble.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
 
       {/* ================= FLOATING TOP NAVIGATION HEADER (Light Theme version of 7.png) ================= */}
