@@ -29,6 +29,8 @@ export default function PortfolioThree() {
   // Custom cursor variables
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
+  const springX = useSpring(cursorX, { damping: 22, stiffness: 400 });
+  const springY = useSpring(cursorY, { damping: 22, stiffness: 400 });
   const [cursorHovered, setCursorHovered] = useState(false);
   const [cursorText, setCursorText] = useState("");
 
@@ -917,8 +919,8 @@ export default function PortfolioThree() {
         <motion.div
           className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center font-sans font-bold uppercase tracking-widest shadow-sm select-none text-white border border-purple-500/10"
           style={{
-            x: useSpring(cursorX, { damping: 22, stiffness: 400 }),
-            y: useSpring(cursorY, { damping: 22, stiffness: 400 }),
+            x: springX,
+            y: springY,
             width: cursorHovered && cursorText ? "auto" : (cursorHovered ? 14 : 8),
             height: cursorHovered && cursorText ? "auto" : (cursorHovered ? 14 : 8),
             borderRadius: "9999px",
