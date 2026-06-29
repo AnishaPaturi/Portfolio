@@ -418,67 +418,100 @@ export default function PortfolioThree() {
 
   const skillsData = [
     // Front End
-    { name: "React", category: "Front End", level: 90, icon: "react" },
-    { name: "HTML", category: "Front End", level: 95, icon: "html" },
-    { name: "CSS", category: "Front End", level: 90, icon: "css" },
-    { name: "JavaScript", category: "Front End", level: 92, icon: "js" },
+    { name: "HTML5", category: "Front End", level: 95, icon: "html" },
+    { name: "CSS3", category: "Front End", level: 90, icon: "css" },
+    { name: "JavaScript (ES6+)", category: "Front End", level: 92, icon: "js" },
+    { name: "React.js", category: "Front End", level: 90, icon: "react" },
+    { name: "Bootstrap", category: "Front End", level: 85, icon: "bootstrap" },
+    { name: "Responsive Web Design", category: "Front End", level: 88, icon: "default" },
     
-    // Middle Tier
-    { name: "C", category: "Middle Tier", level: 78, icon: "cpp" },
-    { name: "Java", category: "Middle Tier", level: 90, icon: "java" },
-    { name: "Python", category: "Middle Tier", level: 95, icon: "python" },
-    { name: "C++", category: "Middle Tier", level: 82, icon: "cpp" },
+    // Programming Languages
+    { name: "C", category: "Programming Languages", level: 78, icon: "cpp" },
+    { name: "C++", category: "Programming Languages", level: 82, icon: "cpp" },
+    { name: "Java", category: "Programming Languages", level: 90, icon: "java" },
+    { name: "Python", category: "Programming Languages", level: 95, icon: "python" },
+    { name: "JavaScript", category: "Programming Languages", level: 92, icon: "js" },
+    { name: "SQL", category: "Programming Languages", level: 85, icon: "mysql" },
     
     // Back End
-    { name: "MySQL", category: "Back End", level: 85, icon: "mysql" },
-    { name: "MongoDB", category: "Back End", level: 82, icon: "mongodb" },
-    { name: "Express.js", category: "Back End", level: 85, icon: "express" },
     { name: "Node.js", category: "Back End", level: 88, icon: "node" },
+    { name: "Express.js", category: "Back End", level: 85, icon: "express" },
+    { name: "Spring Boot (Basics)", category: "Back End", level: 80, icon: "springboot" },
+    { name: "REST APIs", category: "Back End", level: 90, icon: "backend" },
+    { name: "MVC Architecture", category: "Back End", level: 85, icon: "backend" },
+    { name: "Authentication & Authorization (JWT Basics)", category: "Back End", level: 84, icon: "shield" },
+    { name: "API Versioning", category: "Back End", level: 80, icon: "backend" },
     
-    // Frameworks
-    { name: "Bootstrap", category: "Frame Works", level: 85, icon: "bootstrap" },
-    { name: "SpringBoot (Basics)", category: "Frame Works", level: 80, icon: "springboot" },
+    // Databases
+    { name: "MySQL", category: "Databases", level: 85, icon: "mysql" },
+    { name: "MongoDB", category: "Databases", level: 82, icon: "mongodb" },
+    { name: "Redis (Basics)", category: "Databases", level: 80, icon: "redis" },
     
     // AI/ML
     { name: "Machine Learning", category: "AI/ML", level: 88, icon: "brain" },
     { name: "Deep Learning", category: "AI/ML", level: 85, icon: "brain" },
-    { name: "Transformers", category: "AI/ML", level: 84, icon: "brain" },
-    { name: "GenAI", category: "AI/ML", level: 90, icon: "brain" },
-    { name: "Streamlit", category: "AI/ML", level: 85, icon: "streamlit" },
+    { name: "Generative AI (GenAI)", category: "AI/ML", level: 90, icon: "brain" },
     { name: "TensorFlow", category: "AI/ML", level: 82, icon: "brain" },
-    { name: "Keras", category: "AI/ML", level: 80, icon: "brain" },
     { name: "PyTorch", category: "AI/ML", level: 84, icon: "brain" },
+    { name: "Keras", category: "AI/ML", level: 80, icon: "brain" },
+    { name: "Hugging Face Transformers", category: "AI/ML", level: 84, icon: "brain" },
     { name: "Vision Transformer (ViT)", category: "AI/ML", level: 82, icon: "brain" },
+    { name: "Streamlit", category: "AI/ML", level: 85, icon: "streamlit" },
+    { name: "Prompt Engineering", category: "AI/ML", level: 88, icon: "brain" },
     
     // Agentic AI
     { name: "LangChain", category: "Agentic AI", level: 88, icon: "langchain" },
     { name: "LangGraph", category: "Agentic AI", level: 85, icon: "langchain" },
     { name: "LangSmith", category: "Agentic AI", level: 80, icon: "langchain" },
+    { name: "Retrieval-Augmented Generation (RAG)", category: "Agentic AI", level: 86, icon: "langchain" },
+    { name: "AI Agents", category: "Agentic AI", level: 85, icon: "langchain" },
+    { name: "Vector Databases (FAISS, ChromaDB)", category: "Agentic AI", level: 84, icon: "langchain" },
+    { name: "Model Context Protocol (MCP)", category: "Agentic AI", level: 82, icon: "langchain" },
     
     // Cloud & DevOps
-    { name: "AWS", category: "Cloud & DevOps", level: 80, icon: "aws" },
+    { name: "AWS (EC2, S3, IAM Basics)", category: "Cloud & DevOps", level: 80, icon: "aws" },
     { name: "Docker", category: "Cloud & DevOps", level: 85, icon: "docker" },
-    { name: "Kubernetes", category: "Cloud & DevOps", level: 75, icon: "kubernetes" },
+    { name: "Kubernetes (Basics)", category: "Cloud & DevOps", level: 75, icon: "kubernetes" },
     { name: "Maven", category: "Cloud & DevOps", level: 82, icon: "maven" },
     { name: "Jenkins", category: "Cloud & DevOps", level: 78, icon: "jenkins" },
+    { name: "GitHub Actions", category: "Cloud & DevOps", level: 82, icon: "github" },
+    { name: "CI/CD", category: "Cloud & DevOps", level: 80, icon: "default" },
     
-    // CS Fundamentals
+    // Computer Science Fundamentals
     { name: "Data Structures & Algorithms (DSA)", category: "Computer Science Fundamentals", level: 90, icon: "dsa" },
     { name: "Algorithm Analysis", category: "Computer Science Fundamentals", level: 88, icon: "dsa" },
     { name: "Problem Solving", category: "Computer Science Fundamentals", level: 92, icon: "dsa" },
     { name: "Competitive Programming", category: "Computer Science Fundamentals", level: 85, icon: "dsa" },
+    { name: "Object-Oriented Programming (OOP)", category: "Computer Science Fundamentals", level: 88, icon: "dsa" },
+    { name: "Operating Systems", category: "Computer Science Fundamentals", level: 82, icon: "dsa" },
+    { name: "Database Management Systems (DBMS)", category: "Computer Science Fundamentals", level: 85, icon: "dsa" },
+    { name: "Computer Networks", category: "Computer Science Fundamentals", level: 80, icon: "dsa" },
+    { name: "Software Engineering", category: "Computer Science Fundamentals", level: 84, icon: "dsa" },
+    { name: "System Design (Basics)", category: "Computer Science Fundamentals", level: 80, icon: "dsa" },
+    { name: "Design Patterns (Basics)", category: "Computer Science Fundamentals", level: 78, icon: "dsa" },
+    { name: "Cyber Security", category: "Computer Science Fundamentals", level: 75, icon: "shield" },
     
     // Backend Concepts
+    { name: "RESTful API Design", category: "Backend Concepts", level: 90, icon: "backend" },
     { name: "Pagination", category: "Backend Concepts", level: 88, icon: "backend" },
+    { name: "Authentication & Authorization", category: "Backend Concepts", level: 86, icon: "shield" },
+    { name: "Sessions & Cookies", category: "Backend Concepts", level: 82, icon: "backend" },
     { name: "Idempotency", category: "Backend Concepts", level: 85, icon: "backend" },
     { name: "Caching (Redis Basics)", category: "Backend Concepts", level: 84, icon: "backend" },
+    { name: "Rate Limiting", category: "Backend Concepts", level: 82, icon: "backend" },
     { name: "RabbitMQ", category: "Backend Concepts", level: 80, icon: "backend" },
     { name: "Prometheus", category: "Backend Concepts", level: 78, icon: "backend" },
+    { name: "Logging & Monitoring", category: "Backend Concepts", level: 80, icon: "backend" },
+    { name: "Environment Variables", category: "Backend Concepts", level: 90, icon: "backend" },
+    { name: "Exception Handling", category: "Backend Concepts", level: 88, icon: "backend" },
     
     // Tools & Platforms
     { name: "Git", category: "Tools & Platforms", level: 92, icon: "git" },
     { name: "GitHub", category: "Tools & Platforms", level: 94, icon: "github" },
+    { name: "Postman", category: "Tools & Platforms", level: 88, icon: "backend" },
     { name: "Jupyter Notebook", category: "Tools & Platforms", level: 88, icon: "jupyter" },
+    { name: "VS Code", category: "Tools & Platforms", level: 90, icon: "default" },
+    { name: "IntelliJ IDEA", category: "Tools & Platforms", level: 85, icon: "default" },
   ];
 
   const experience = [
@@ -755,6 +788,16 @@ export default function PortfolioThree() {
             <ellipse cx="12" cy="5" rx="9" ry="3" />
             <path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5" />
             <path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6" />
+          </svg>
+        );
+      case "shield":
+        return <ShieldCheck className="size-10 text-emerald-600" />;
+      case "redis":
+        return (
+          <svg viewBox="0 0 100 100" className="size-10 text-[#D82C20] fill-none stroke-current" strokeWidth="2.5">
+            <path d="M50 15 L80 30 L80 50 L50 65 L20 50 L20 30 Z" />
+            <path d="M50 35 L80 50 L80 70 L50 85 L20 70 L20 50 Z" />
+            <path d="M50 55 L80 70 L80 85 L50 95 L20 85 L20 70" />
           </svg>
         );
       default:
