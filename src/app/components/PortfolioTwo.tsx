@@ -141,8 +141,16 @@ export default function PortfolioTwo() {
   ];
 
   const skills = [
-    "React", "TypeScript", "Node.js", "Python", "Angular",
-    "Firebase", "MongoDB", "AWS", "Docker", "Git"
+    "HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Bootstrap", "Responsive Web Design",
+    "C", "C++", "Java", "Python", "JavaScript", "SQL",
+    "Node.js", "Express.js", "Spring Boot (Basics)", "REST APIs", "MVC Architecture", "Authentication & Authorization (JWT Basics)", "API Versioning",
+    "MySQL", "MongoDB", "Redis (Basics)",
+    "Machine Learning", "Deep Learning", "Generative AI (GenAI)", "TensorFlow", "PyTorch", "Keras", "Hugging Face Transformers", "Vision Transformer (ViT)", "Streamlit", "Prompt Engineering",
+    "LangChain", "LangGraph", "LangSmith", "Retrieval-Augmented Generation (RAG)", "AI Agents", "Vector Databases (FAISS, ChromaDB)", "Model Context Protocol (MCP)",
+    "AWS (EC2, S3, IAM Basics)", "Docker", "Kubernetes (Basics)", "Maven", "Jenkins", "GitHub Actions", "CI/CD",
+    "Data Structures & Algorithms (DSA)", "Algorithm Analysis", "Problem Solving", "Competitive Programming", "Object-Oriented Programming (OOP)", "Operating Systems", "Database Management Systems (DBMS)", "Computer Networks", "Software Engineering", "System Design (Basics)", "Design Patterns (Basics)", "Cyber Security",
+    "RESTful API Design", "Pagination", "Authentication & Authorization", "Sessions & Cookies", "Idempotency", "Caching (Redis Basics)", "Rate Limiting", "RabbitMQ", "Prometheus", "Logging & Monitoring", "Environment Variables", "Exception Handling",
+    "Git", "GitHub", "Postman", "Jupyter Notebook", "VS Code", "IntelliJ IDEA"
   ];
 
   return (
